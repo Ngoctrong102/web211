@@ -3,8 +3,10 @@ session_start();
 
 define('SITE_PATH', realpath(dirname(__FILE__)) . '/');
 
+
 /*Require necessary files.*/
 require_once(SITE_PATH . 'configs/routes.php');
+require_once(SITE_PATH . 'configs/database.php');
 require_once(SITE_PATH . 'application/Request.php');
 require_once(SITE_PATH . 'application/Router.php');
 require_once(SITE_PATH . 'application/BaseController.php');

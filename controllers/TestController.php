@@ -5,6 +5,7 @@ class TestController extends BaseController
 
 	public function index()
 	{
+		$this->load->model("User");
 		echo '<pre>' . print_r(__METHOD__, 1) . '</pre>';
 	}
 

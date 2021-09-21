@@ -19,5 +19,15 @@ $routes = array(
     "login" => array(
         "handler" => "account/index",
         "roles" => ["all"]
+    ),
+    "register" => array(
+        "handler" => "account/renderRegisterView",
+        "roles" => ["all"]
+    ),
+
+
+    "test" => array(
+        "handler" => "test/index",
+        "roles" => ["all"]
     )
 );

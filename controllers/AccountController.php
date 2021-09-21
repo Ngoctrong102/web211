@@ -8,7 +8,13 @@ class AccountController extends BaseController
 
     public function index()
     {
-        $this->load->view("layouts/client", "login");
+        $data["title"] = "Login";
+        $data["cssFiles"] = [
+            "breadcum.css",
+            "login/login-form.css",
+        ];
+
+        $this->load->view("layouts/client", "account/login", $data);
     }
     public function login()
     {
@@ -22,5 +28,15 @@ class AccountController extends BaseController
             "script.js"
         ];
         $this->load->view("layouts/client", "student/math/index", $data);
+    }
+    public function renderRegisterView()
+    {
+        $data["title"] = "Login";
+        $data["cssFiles"] = [
+            "breadcum.css",
+            "register/register-form.css",
+        ];
+
+        $this->load->view("layouts/client", "account/register", $data);
     }
 }
