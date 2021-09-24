@@ -6,7 +6,6 @@ abstract class BaseModel
     {
         global $database;
         extract($database);
-        // $this->conn = new PDO('mysql:host=' . $host . ';dbname=' . $databasename, $username, $password);
-        echo 'mysql:host=' . $host . ';dbname=' . $databasename . $username . $password;
+        $this->conn = new PDO('mysql:host=' . $host . ';dbname=' . $databasename, $username, $password);
     }
 }

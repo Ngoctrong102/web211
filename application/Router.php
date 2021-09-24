@@ -9,6 +9,7 @@ class Router
 		$controller = $request->getController();
 		$method = $request->getMethod();
 		$path = $request->getPath();
+		$agrs = $request->getArgs();
 
 		$controllerFile = SITE_PATH . 'controllers/' . $path . $controller .  'Controller.php';
 
@@ -18,8 +19,8 @@ class Router
 			$controller = new $controller;
 			$method = (is_callable(array($controller, $method))) ? $method : 'index';
 
-			if (!empty($args)) {
-				call_user_func_array(array($controller, $method), $args);
+			if (!empty($agrs)) {
+				call_user_func_array(array($controller, $method), $agrs);
 			} else {
 				call_user_func(array($controller, $method));
 			}

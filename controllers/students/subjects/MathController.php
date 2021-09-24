@@ -21,4 +21,8 @@ class MathController extends BaseController
         $content = $this->post->getEntries();
         $this->load->view("layouts/client", "student/math/index", $data);
     }
+    public function pathVariable($x, $y)
+    {
+        echo $x . " " . $y;
+    }
 }
