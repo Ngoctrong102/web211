@@ -22,7 +22,7 @@
             <p>Please Register using account detail bellow</p>
         </div>
         <div class="register-form">
-            <form action="#">
+            <form action="user/register" method="POST">
                 <div class="form-group">
                     <input type="text" name="firstName" id="first-name" placeholder="First Name">
                 </div>

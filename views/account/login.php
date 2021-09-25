@@ -22,7 +22,7 @@
             <p>Please login using account detail bellow</p>
         </div>
         <div class="login-form">
-            <form action="#">
+            <form action="user/login" method="POST">
                 <div class="form-group">
                     <input type="email" name="email" id="email" placeholder="Email">
                 </div>

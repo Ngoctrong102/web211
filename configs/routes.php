@@ -24,28 +24,28 @@ $routes = array(
         "handler" => "students/subjects/math/index",
         "roles" => ["admin", "user"]
     ),
-    "admin/abc" => array(
-        "handler" => "students/subjects/math/index",
-        "roles" => ["admin"]
-    ),
-    "account/login" => array(
-        "handler" => "account/login",
-        "roles" => ["all"]
-    ),
     "login" => array(
-        "handler" => "account/index",
+        "handler" => "user/renderLoginForm",
         "roles" => ["all"]
     ),
     "register" => array(
-        "handler" => "account/renderRegisterView",
+        "handler" => "user/renderRegisterForm",
+        "roles" => ["all"]
+    ),
+    "user/register" => array(
+        "handler" => "user/register",
+        "roles" => ["all"]
+    ),
+    "user/login" => array(
+        "handler" => "user/login",
         "roles" => ["all"]
     ),
     "subject/math/:num(x)/:str(y)" => array(
         "handler" => "students/subjects/math/pathVariable",
         "roles" => ["all"]
     ),
-    "test" => array(
-        "handler" => "test/index",
+    "logout" => array(
+        "handler" => "user/logout",
         "roles" => ["all"]
     )
 );
