@@ -47,5 +47,10 @@ $routes = array(
     "logout" => array(
         "handler" => "user/logout",
         "roles" => ["all"]
+    ),
+
+    "admin" => array(
+        "handler" => "admin/dashboard/renderDashboard",
+        "roles" => ["all"]
     )
 );
