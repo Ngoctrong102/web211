@@ -23,18 +23,6 @@ div#contact {
     padding: 50px 0px;
 }
 
-div.container {
-    max-width: 70vw;
-    margin: 0px auto;
-    padding: 0 10px;
-}
-
-div.row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
 div#follow-section {
     width: 30%;
     height: 110px;

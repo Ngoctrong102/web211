@@ -11,8 +11,8 @@ class UserController extends BaseController
     {
         $data["title"] = "Login";
         $data["cssFiles"] = [
-            "breadcum.css",
-            "login/login-form.css",
+            "css/customer/commons/breadcum.css",
+            "css/customer/login/login-form.css",
         ];
         $this->load->view("layouts/client", "account/login", $data);
     }
@@ -21,8 +21,8 @@ class UserController extends BaseController
     {
         $data["title"] = "Login";
         $data["cssFiles"] = [
-            "breadcum.css",
-            "register/register-form.css",
+            "css/customer/commons/breadcum.css",
+            "css/customer/register/register-form.css",
         ];
         $this->load->view("layouts/client", "account/register", $data);
     }
