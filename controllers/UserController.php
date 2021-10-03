@@ -50,5 +50,6 @@ class UserController extends BaseController
     {
         session_destroy();
         header("Location: /");
+        echo "trong";
     }
 }
