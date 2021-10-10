@@ -1,100 +1,98 @@
-<div id="footer">
-    <div id="footer-top">
-        <div id="contact">
-            <div class="container">
-                <div class="row">
-                    <div id="follow-section">
-                        <div id="social-media">
-                            <h2 style="color:#888888; font-size: 25px;">Follow us</h2>
-                            <div id="social-links">
-                                <a class="fa fa-facebook" href="#"></a>
-                                <a class="fa fa-instagram" href="#"></a>
-                                <a class="fa fa-youtube" href="#"></a>
-                            </div>
+
+<!--Footer-->
+ <div id="footer-cover">
+           <div id="footer-top">
+             <div id="footer-contact">
+               <div class="footer-container">
+                 <div class="footer-row">
+                   <div id="footer-follow-section">
+                     <div id="footer-social-media">
+                      <h2 style="color: #222222; font-size: 30px;">Follow us</h2>
+                       <div id="footer-social-links">
+                        <a class="fa fa-facebook" href="#"></a>
+                        <a class="fa fa-instagram" href="#"></a>
+                        <a class="fa fa-youtube" href="#"></a>
+                       </div>
+                     </div>
+                   </div>
+                   <div id="footer-contact-section">
+                     <div id="footer-contact-summery">
+                      <h2 style="color:#222222; font-size: 30px;">Contact</h2>
+                       <div id="footer-contact3ways">
+                        <div id="footer-address"><span class="material-icons-outlined" style="font-size:40px;">location_on</span><p>Adress:<br>HCM city</p>
+                        </div>                         
+                        <div id="footer-phone"><span class="material-icons-outlined" style="font-size:40px;"> phone_android</span><p>Phone:<br>+84282828289</p>                         
                         </div>
+                        <div id="footer-email"><span class="material-icons-outlined"  style="font-size:40px;">
+                          email
+                          </span><p>Email:<br>abc@gmail.com</p></div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>                
+               </div>
+             </div>             
+           </div>
+           <hr class="break" style="width: 70vw;">
+           <div id="footer-mid">
+             <div id="footer-cover-mid">
+               <div class="footer-container">
+                 <div class="footer-row">
+                   <div class="footer-cover-mid-common">
+                     <div class="footer-mid-common">
+                       <h3>INFORMATION</h3>
+                       <ul>
+                         <li><a href="#">ABOUT US</a></li>
+                         <li><a href="#">DELIVERY INFORMATION</a></li>
+                         <li><a href="#">PRIVACY POLICY</a></li>
+                         <li><a href="#">TERMS & CONDITION</a></li>
+                       </ul>
+                     </div>
+                   </div>
+                   <div class="footer-cover-mid-common">
+                     <div class="footer-mid-common">
+                       <h3>ACCOUNT</h3>
+                       <ul>
+                        <li><a href="#">MY ACCOUNT</a></li>
+                         <li><a href="#">WISHLIST</a></li>
+                         <li><a href="#">SHOPPING CART</a></li>
+                         <li><a href="#">NEWS</a></li>
+                      </ul>
+                     </div>
+                   </div>
+                   <div class="footer-cover-mid-common">
+                     <div class="footer-mid-common">
+                       <h3>CUSTOMER SERVICE</h3>
+                       <ul>
+                        <li><a href="#">CONTACT</a</li>
+                        <li><a href="#">OUR SERVICE</a></li>
+                        <li><a href="#">RETURNS</a></li>
+                         <li><a href="#">GIFT VOUCHERS</a></li>
+                      </ul>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <hr class="break" style="width: 70vw;">
+           <div id="footer-bottom">
+             <div id="footer-cover-bottom">
+               <div class="footer-container">
+                <div class="footer-row">
+                  <div id="footer-cover-bottom-left">
+                    <div id="footer-bottom-left">
+                      <p>Privacy Policy<span> | </span>Term and conditions</p>
+                      <p>© Copyright <a href="#">BK Mobile</a></p>
                     </div>
-                    <div id="contact-section">
-                        <div id="contact-summery">
-                            <h2 style="color:#888888; font-size: 25px;">Liên hệ</h2>
-                            <div id="contact3ways">
-                                <div id="address"><span class="material-icons-outlined" style="font-size:40px;">location_on</span>
-                                    <p>Địa chỉ:<br>HCM city</p>
-                                </div>
-                                <div id="phone"><span class="material-icons-outlined" style="font-size:40px;"> phone_android</span>
-                                    <p>Phone:<br>+84282828289</p>
-                                </div>
-                                <div id="email"><span class="material-icons-outlined" style="font-size:40px;">
-                                        email
-                                    </span>
-                                    <p>Email:<br>abc@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                  <div id="footer-cover-bottom-right">
+                    <div id="footer-bottom-right">
+                      <p><a href="#">Allow payment base on</a><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/files/payment-icon.png?v=1543387168"/></p>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <hr style="width: 70vw;">
-    <div id="footer-mid">
-        <div id="cover-mid">
-            <div class="container">
-                <div class="row">
-                    <div class="cover-mid-common">
-                        <div class="mid-common">
-                            <h3>THÔNG TIN</h3>
-                            <ul>
-                                <li><a href="#">Cửa hàng</a></li>
-                                <li><a href="#">Vận chuyển</a></li>
-                                <li><a href="#">Chính sách</a></li>
-                                <li><a href="#">Điều khoản</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="cover-mid-common">
-                        <div class="mid-common">
-                            <h3>TÀI KHOẢN</h3>
-                            <ul>
-                                <li><a href="#">Tài khoản của bạn</a></li>
-                                <li><a href="#">Yêu thích</a></li>
-                                <li><a href="#">Giỏ hàng</a></li>
-                                <li><a href="#">Tin tức</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="cover-mid-common">
-                        <div class="mid-common">
-                            <h3>CSKH</h3>
-                            <ul>
-                                <li><a href="#">Liên hệ</a< /li>
-                                <li><a href="#">Dịch vụ</a></li>
-                                <li><a href="#">Hoàn trả</a></li>
-                                <li><a href="#">Quà tặng</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr style="width: 70vw;">
-    <div id="footer-bottom">
-        <div id="cover-bottom">
-            <div class="container">
-                <div class="row">
-                    <div id="cover-bottom-left">
-                        <div id="bottom-left">
-                            <p>Chính sách<span> | </span>Điều Khoản</p>
-                            <p>© Copyright <a href="#">BK Mobile</a></p>
-                        </div>
-                    </div>
-                    <div id="cover-bottom-right">
-                        <div id="bottom-right">
-                            <p><a href="#">Thanh toán</a><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/files/payment-icon.png?v=1543387168" /></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+               </div>
+             </div>
+           </div>
+         </div>

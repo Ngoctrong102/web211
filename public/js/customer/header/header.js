@@ -1,5 +1,7 @@
 const giae71 = 350000;
 const giae72 = 350000;
+const giae71usd = (giae71 / 23000).toFixed(2);
+const giae72usd = (giae72 / 23000).toFixed(2);
 const count = document.querySelectorAll('.currency-unit').length;
 window.onload = function() {
     document.getElementById("currency-active").innerHTML = "VNĐ";
@@ -9,6 +11,10 @@ window.onload = function() {
     for (let i = 0; i <= count; i++) {
         currencyunitvnd[i].innerHTML = "VNĐ";
     }
+}
+function total(){
+    
+    document.getElementById("price-total").innerHTML = giae71+giae72;
 }
 
 function changeUnittoVND() {
@@ -23,8 +29,6 @@ function changeUnittoVND() {
 
 function changeUnittoUSD() {
     document.getElementById("currency-active").innerHTML = "USD";
-    const giae71usd = (giae71 / 23000).toFixed(2);
-    const giae72usd = (giae72 / 23000).toFixed(2);
     document.getElementById("gia-e71").innerHTML = giae71usd;
     document.getElementById("gia-e72").innerHTML = giae72usd;
     var currencyunitusd = document.getElementsByClassName("currency-unit");

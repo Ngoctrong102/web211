@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/public/css/customer/setup.css">
     <link rel="stylesheet" href="/public/css/customer/footer/footer.css">
     <link rel="stylesheet" href="/public/css/customer/header/header.css">
+    <link rel="stylesheet" href="/public/css/customer/cart/cart.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
@@ -41,7 +42,7 @@
     <script src="/public/js/customer/header/header.js"></script>
 
     <?php
-    if (isset($cssFiles)) {
+    if (isset($jsFiles)) {
         foreach ($jsFiles as $file) {
     ?>
             <script src=<?php echo "/public/" . $file; ?>></script>
