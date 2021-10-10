@@ -31,5 +31,9 @@ $routes = array(
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
         "roles" => ["all"]
+    ),
+    "home" => array(
+        "handler" => "customer/home/renderHomePage",
+        "roles" => ["all"]
     )
 );
