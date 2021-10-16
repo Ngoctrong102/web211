@@ -3,7 +3,7 @@
  <div id="footer-cover">
            <div id="footer-top">
              <div id="footer-contact">
-               <div class="footer-container">
+               <div class="container"> 
                  <div class="footer-row">
                    <div id="footer-follow-section">
                      <div id="footer-social-media">
@@ -36,7 +36,7 @@
            <hr class="break" style="width: 70vw;">
            <div id="footer-mid">
              <div id="footer-cover-mid">
-               <div class="footer-container">
+               <div class="container">
                  <div class="footer-row">
                    <div class="footer-cover-mid-common">
                      <div class="footer-mid-common">
@@ -78,12 +78,12 @@
            <hr class="break" style="width: 70vw;">
            <div id="footer-bottom">
              <div id="footer-cover-bottom">
-               <div class="footer-container">
+               <div class="container">
                 <div class="footer-row">
                   <div id="footer-cover-bottom-left">
                     <div id="footer-bottom-left">
                       <p>Privacy Policy<span> | </span>Term and conditions</p>
-                      <p>© Copyright <a href="#">BK Mobile</a></p>
+                      <p>© Copyright <a href="#">BK Farm</a></p>
                     </div>
                   </div>
                   <div id="footer-cover-bottom-right">

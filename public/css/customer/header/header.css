@@ -4,20 +4,19 @@
     box-sizing: border-box;
 }
 div#header{
-    width: 100%;
-    height: auto;
     font-family: "Karla", sans-serif;
-    margin: auto;
+    width: 100%;
+    box-shadow: 0 2px 5px 0 rgba(75, 74, 74, 0.2), 0 2px 10px 0 rgba(59, 59, 59, 0.19);
+    position:relative;
 }
 div#header-top {
-    max-width: 100%;
+    width: 100%;
     height: 44px;
     background-color: #f5f5f5;
-    margin: 0px auto;
     padding: 10px 0px;
 }
 div#header-row{
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     height: 24px;
@@ -58,7 +57,7 @@ div#currency ul#currency-unit {
     padding: 0px;
     height: auto;
     visibility: hidden;
-    background-color: #f5f5f5;
+    background-color: white;
     margin-top: 8px ;
 }
 
@@ -85,7 +84,6 @@ div#currency ul#currency-unit li a.unit:hover {
 
 div#currency div:hover ul#currency-unit {
     visibility: visible;
-    
 }
 
 div#header-top-menu {
@@ -99,15 +97,16 @@ div#header-top-menu ul {
     margin: 0;
     padding: 0;
     line-height: 24px;
+    display: flex;
+    justify-content: end;
 }
 
 div#header-top-menu ul li {
-    float: left;
     list-style: none;
-    padding-left: 6%;
     height: 24px;
     line-height: 24px;
     width: auto;
+    margin-left: 5%;
 }
 
 div#header-top-menu ul li a.top_menu {
@@ -123,53 +122,54 @@ div#header-top-menu ul li a:hover {
 div#header-bottom {
     width: 100%;
     height: 142px;
-    background-color: #eeeeee;
+    background-color: #fff;
+}
+div.header-bottom-content{
+    display: flex;
+    
 }
 
 div#header-bottom div#cover-logo {
     height: 142px;
-    width: 25%;
     background-color: #ffffff;
-    padding: 5px 50px 5px 0px;
-    float: left;
+    display: block;
+    width: 25%;
 }
 
 div#header-bottom div#cover-logo div#logo {
-    height: 130px;
-    width: auto;
-    padding: 5px 10px 5px 0px;
+    height: 142px;
+    padding: 10px 0 10px 0;
+    width: 100%;
 }
 
 div#header-bottom div#cover-logo div#logo img {
-    float: right;
-    height: 120px;
+    height: 122px;
 }
 
 div#header-bottom div#cover-right {
-    width: 75%;
     height: 142px;
     background-color: white;
-    float: left;
-    padding: 0px 25px 0px 0px;
+    width: 75%;
 }
 
 div#header-bottom div#cover-right div#cover-right-top {
     height: 80px;
     max-width: 100%;
     background-color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#phone {
     display: flex;
     font-size: 14px;
     color: #888888;
-    width: 20%;
-    margin-left: 7%;
-    float: left;
     height: 80px;
+    min-width: 168px;
 }
 div#header-bottom div#cover-right div#cover-right-top div#phone p{
     margin: auto 0;
+    line-height: 25px;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#phone img {
@@ -177,32 +177,27 @@ div#header-bottom div#cover-right div#cover-right-top div#phone img {
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#search {
-    padding: 15px 0;
     background-color: white;
     height: 80px;
-    width: 30%;
-    min-width: 255px;
-    float: left;
-    margin-left: 2%;
+    width: 50%;
+    padding: 15px 0 15px 0;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#search form {
     border-radius: 30px;
     border: 0.2pt solid #dddddd;
     height: 50px;
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    padding: 5px 5px 5px 20px;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#search input {
-    height: 30px;
+    height: 40px;
     border: none;
-    float: left;
-    margin: 10px 0px 5px 15px;
     line-height: 40px;
     padding: 0;
-    width: 65%;
 }
 
 #input:focus {
@@ -219,8 +214,7 @@ div#header-bottom div#cover-right div#cover-right-top div#search form button {
     border-radius: 20px;
     border: none;
     background-color: #70B100;
-    margin: 5px 5px;
-    padding: 6px 0px 0px 0px;
+    padding: 7px 0 7px 0;
 }
 button:hover {
     cursor: pointer;
@@ -228,9 +222,6 @@ button:hover {
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart {
-    width: 30%;
-    float: left;
-    margin: 0px 0px 0px 5%;
     height: 80px;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects{
@@ -238,7 +229,6 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects a {
-    float: left;
     display: flex;
     width: max-content;
     color: #888888;
@@ -249,7 +239,6 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
 div#header-bottom div#cover-right div#cover-right-top div#cart ul {
     list-style: none;
     visibility: hidden;
-    float: left;
     width: max-content;
     margin: 0;
     height: max-content;
@@ -292,23 +281,25 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
     margin: 0px;
     border: 0.2pt solid #aaaaaa;
     padding: 5px 5px;
-    background-color: #70B100;
-}
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover{
-    opacity: 0.7;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a span{
     line-height: 40px;
     height: 40px;
     margin: 0;
-    color: white;
+    color: black;
     font-size: 14px;
+}
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover{
+    background-color: #70B100;
+   
+}
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover span{
+    color: white;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p {
     height: 70px;
     line-height: 70px;
     font-size: 14px;
-    float: left;
     margin: 0;
 }
 
@@ -318,6 +309,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-det
 
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects:hover ul {
     visibility: visible;
+    transition: all 0.2s ease-in-out 0s, visibility 0s linear 0.2s, z-index 0s linear 0.01s;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart div img {
@@ -330,7 +322,6 @@ div#header-bottom div#cover-right div#cover-right-top div#cart a span:hover{
 
 div#header-bottom div#cover-right div#cover-right-top div#cart a {
     width: fit-content;
-    float: left;
     font-size: 16px;
     margin-top: 20px;
 }
@@ -350,16 +341,18 @@ div#cover-right-bottom {
 }
 
 
-div#cover-right-bottom ul {
+div#cover-right-bottom > ul {
     margin: 0px 0px 0px 5%;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 div#cover-right-bottom ul li {
     list-style: none;
-    float: left;
     height: 62px;
-    margin-right: 20px;
     width: 8%;
+    margin-right: 3%;
 }
 div#cover-right-bottom ul li i.fa.fa-chevron-down{
     font-size: 10px; 
@@ -369,6 +362,7 @@ div#cover-right-bottom ul li i.fa.fa-chevron-down{
 }
 div#cover-right-bottom ul li:hover ul.direction {
     visibility: visible;
+    transition: all 0.2s ease-in-out 0s, visibility 0s linear 0.2s, z-index 0s linear 0.01s;
 }
 
 div#cover-right-bottom ul li ul.direction {

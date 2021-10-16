@@ -40,8 +40,8 @@
                         <td class="pro-price"><span class="price">price</span></td>
                         <td class="pro-quantity"><div class="product-quantity">
                                                   <input type="text" value="1" name="updates[]">
-                                                  <p><a href="#" class="inc-btn">+</a><br/>
-                                                  <a href="#" class="dec-btn">-</a></p>
+                                                  <div><a href="#" class="inc-btn"><span class="inc">+</span></a>
+                                                       <a href="#" class="dec-btn"><span class="dec">-</span></a></div>
                                                  </div>
                         </td>
                         <td class="pro-total"><span class="total">350000</span></td>
