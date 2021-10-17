@@ -47,6 +47,8 @@ $routes = array(
         "roles" => ["customer"]
     ),
 
+    "showA" => array(),
+
     // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
