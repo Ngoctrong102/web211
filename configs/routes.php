@@ -56,6 +56,10 @@ $routes = array(
         "handler" => "admin/dashboard/renderDashboard",
         "roles" => ["all"]
     ),
+    "admin/form" => array(
+        "handler" => "admin/form/renderForm",
+        "roles" => ["all"]
+    ),
     "home" => array(
         "handler" => "customer/home/renderHomePage",
         "roles" => ["all"]
