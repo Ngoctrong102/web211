@@ -214,7 +214,7 @@ div#header-bottom div#cover-right div#cover-right-top div#search form button {
     border-radius: 20px;
     border: none;
     background-color: #70B100;
-    padding: 7px 0 7px 0;
+    padding: 8px 7px;
 }
 button:hover {
     cursor: pointer;
