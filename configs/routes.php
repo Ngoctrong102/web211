@@ -1,5 +1,7 @@
 <?php
 $routes = array(
+
+    // customer
     "" => array(
         "handler" => "home/renderHome",
         "roles" => ["all"]
@@ -28,6 +30,24 @@ $routes = array(
         "handler" => "customer/product/renderHomeShop",
         "roles" => ["all"]
     ),
+    "account" => array(
+        "handler" => "customer/account/renderAccountPage",
+        "roles" => ["customer"]
+    ),
+    "account/addNewAddress" => array(
+        "handler" => "customer/account/addNewAddress",
+        "roles" => ["customer"]
+    ),
+    "account/deleteAddress" => array(
+        "handler" => "customer/account/deleteAddress",
+        "roles" => ["customer"]
+    ),
+    "account/updateAddress" => array(
+        "handler" => "customer/account/updateAddress",
+        "roles" => ["customer"]
+    ),
+
+    // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
         "roles" => ["all"]

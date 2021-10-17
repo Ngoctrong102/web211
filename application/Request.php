@@ -61,6 +61,7 @@ class Request
 			}
 			$segment_curr = array_pop($segments_key);
 		}
+		$this->_agrs = array_reverse($this->_agrs);
 	}
 	private function auth($roles)
 	{

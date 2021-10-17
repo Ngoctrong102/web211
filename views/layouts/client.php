@@ -58,7 +58,7 @@
     <!-- endhomepage -->
 
     <?php
-    if (isset($cssFiles)) {
+    if (isset($jsFiles)) {
         foreach ($jsFiles as $file) {
     ?>
             <script src=<?php echo "/public/" . $file; ?>></script>
