@@ -12,8 +12,18 @@
     <link rel="stylesheet" href="/public/css/customer/footer/footer.css">
     <link rel="stylesheet" href="/public/css/customer/header/header.css">
 
+    <!-- homepage -->
+    <link rel="stylesheet" href="/public/css/customer/homepage/homepage.css" /> 
+    <!-- endhomepage -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+
+     <!-- homepage -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.css"/>
+    <!-- endhomepage -->
+    
     <?php
     if (isset($cssFiles)) {
         foreach ($cssFiles as $file) {
@@ -39,6 +49,13 @@
     <script src="https://kit.fontawesome.com/28dc87ed53.js" crossorigin="anonymous"></script>
 
     <script src="/public/js/customer/header/header.js"></script>
+
+    <!-- homepage -->
+    <!-- ======== SwiperJS ======= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="/public/js/customer/homepage/homepage.js"></script>
+    <!-- endhomepage -->
 
     <?php
     if (isset($jsFiles)) {
