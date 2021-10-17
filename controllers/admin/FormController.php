@@ -7,6 +7,7 @@ class FormController extends BaseController
     }
     public function renderForm()
     {
+        $data["cssFiles"] = array("css/admin/form.css");
         $data["title"] = "Admin Form";
         $this->load->view("layouts/admin", "admin/form/form", $data);
     }
