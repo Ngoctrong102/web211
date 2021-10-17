@@ -22,6 +22,10 @@ $routes = array(
         "handler" => "user/login",
         "roles" => ["all"]
     ),
+    "cart" => array(
+        "handler" => "user/renderShoppingCart",
+        "roles" => ["all"]
+    ),
     "logout" => array(
         "handler" => "user/logout",
         "roles" => ["all"]

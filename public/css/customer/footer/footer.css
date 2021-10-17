@@ -1,253 +1,224 @@
-body {
-    font-family: "Roboto", sans-serif;
-    margin: 0px;
-}
-
-* {
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
+  * {
     box-sizing: border-box;
-}
+  }
+  div#footer-cover{
+      width: 100%;
+      height: auto;
+      background-color: white;
+      font-family: "Karla", sans-serif;
+      margin: auto;
+  }
+  div#footer-top{
+      width: 100%;
+      height: 210px;
+  }
+  div#footer-contact{
+      width: 100%;
+      height: 210px;
+      padding: 50px 0px;
+  }
 
-div#footer {
-    width: 100vw;
-    height: auto;
-}
+  div.footer-row{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  hr.break{
+      margin: auto;
+  }
+  div#footer-follow-section{
+      width: 30%;
+      height: 110px;
+      padding: 0px 15px;
+  }
+  div#footer-social-media{
+      width: 100%;
+      height: 110px;
+  }
+  div#footer-social-media h2{
+      width: max-content;
+      height: 40px;
+      margin: 0px 0px 25px 0px;
+  }
+  div#footer-social-links{
+      width: max-content;
+      height: 40px;
+  }
+  div#footer-social-links a{
+    line-height: 38px;
+  }
 
-div#footer-top {
-    width: 98vw;
-    height: 210px;
-}
-
-div#contact {
-    width: 98vw;
-    height: 210px;
-    padding: 50px 0px;
-}
-
-div#follow-section {
-    width: 30%;
-    height: 110px;
-    padding: 0px 15px;
-}
-
-div#social-media {
-    width: 100%;
-    height: 110px;
-}
-
-div#social-media h2 {
-    width: max-content;
-    height: 40px;
-    margin: 0px 0px 25px 0px;
-}
-
-div#social-links {
-    width: max-content;
-    height: 40px;
-}
-
-.fa {
-    border-radius: 50%;
+  .fa{
+    border-radius: 50%;   
     width: 40px;
     height: 40px;
     text-align: center;
-    padding: 8px 5px 5px 5px;
     margin-right: 10px;
     text-decoration: none;
     font-size: 25px;
-}
+  }
 
-.fa:hover {
-    opacity: 0.7;
-}
-
-.fa-facebook {
+  
+  .fa-facebook {
     background: #3B5998;
     color: white;
-}
-
-.fa-youtube {
+  }
+  .fa-youtube {
     background: #bb0000;
     color: white;
-}
-
-.fa-instagram {
+  }
+  
+  .fa-instagram {
     background: #125688;
     color: white;
+  }
+  div#footer-contact-section{
+      width: 70%;
+      height: 110px;
+      padding: 0 15px;
+  }
+  div#footer-contact-summery{
+      width: 100%;
+      height: 110px;
+      margin: 0;
+  }
+  div#footer-contact-summery h2{
+      width: 100%;
+      height: 40px;
+      margin: 0px 0px 25px 0px;
+      float: left;
+      line-height: 40px;
+      
+  }
+  div#footer-contact3ways{
+      width: 100%;
+      height: 48px;
+      display: flex;
+      justify-content: space-between;
+  }
+  div#footer-address{
+      display: flex;
+  }
+  div#footer-address p{
+      height: 48px;
+      font-size: 14px;
+      color: #666666;
+      margin: 0;
+      width: max-content;
+  }
+  div#footer-phone{
+    display: flex;
 }
-
-div#contact-section {
-    width: 70%;
-    height: 110px;
-    padding: 0 15px;
+div#footer-phone p{
+    height: 48px;
+      font-size: 14px;
+      color: #666666;
+      margin: 0;
 }
-
-div#contact-summery {
+  div#footer-email{
+    display: flex;
+}
+  div#footer-email p{
+    height: 48px;
+      font-size: 14px;
+      color: #666666;
+      margin: 0;
+}
+div#footer-mid{
     width: 100%;
-    height: 110px;
-    margin: 0;
-}
-
-div#contact-summery h2 {
-    width: 100%;
-    height: 40px;
-    margin: 0px 0px 25px 0px;
-    float: left;
-    line-height: 40px;
-}
-
-div#contact3ways {
-    width: 100%;
-    height: 48px;
-    display: flex;
-    justify-content: space-between;
-}
-
-div#address {
-    display: flex;
-}
-
-div#address p {
-    height: 48px;
-    font-size: 14px;
-    color: #888888;
-    margin: 0;
-    width: max-content;
-}
-
-div#phone {
-    display: flex;
-}
-
-div#phone p {
-    height: 48px;
-    font-size: 14px;
-    color: #888888;
-    margin: 0;
-}
-
-div#email {
-    display: flex;
-}
-
-div#email p {
-    height: 48px;
-    font-size: 14px;
-    color: #888888;
-    margin: 0;
-}
-
-div#footer-mid {
-    width: 98vw;
     height: 200px;
 }
-
-div#cover-mid {
-    width: 98vw;
+div#footer-cover-mid{
+    width: 100%;
     height: 200px;
     margin-top: 30px;
 }
-
-div.cover-mid-common {
+div.footer-cover-mid-common{
     width: 33.4%;
     height: 166px;
 }
-
-div.mid-common {
+div.footer-mid-common{
     height: 166px;
-    padding: 0 15px;
+    padding:0 15px;
 }
-
-div.mid-common h3 {
-    font-size: 16px;
-    color: #888888;
-    margin: 0;
-    letter-spacing: 0.5px;
+div.footer-mid-common h3{
+ font-size: 16px;
+ color: #222222;
+ margin: 0;
+ letter-spacing: 0.5px;
 }
-
-div.mid-common ul {
+div.footer-mid-common ul{
     list-style: none;
     margin: 5px 0px 0px 0px;
     padding: 0;
 }
-
-div.mid-common ul li {
-    padding-top: 10px;
+div.footer-mid-common ul li{
+    padding-top: 10px ;
 }
-
-div.mid-common ul li a {
+div.footer-mid-common ul li a{
     text-decoration: none;
     font-size: 14px;
-    color: #888888;
+    color: #666666;
     letter-spacing: 0.5px;
 }
-
-div.mid-common ul li a:hover {
+div.footer-mid-common ul li a:hover{
     color: #70b100;
 }
-
-div#footer-bottom {
-    width: 98vw;
+div#footer-bottom{
+    width: 100%;
     height: 118px;
 }
-
-div#cover-bottom {
-    width: 98vw;
+div#footer-cover-bottom{
+    width: 100%;
     height: 118;
     padding: 35px 0px 35px 0px;
 }
-
-div#cover-bottom-left {
+div#footer-cover-bottom-left{
     height: 48px;
     margin: 0;
     width: 35%;
 }
-
-div#cover-bottom-right {
+div#footer-cover-bottom-right{
     height: 48px;
     margin: 0;
     width: 65%;
 }
-
-div#bottom-left {
-    height: 48px;
-    padding: 0 15px;
+div#footer-bottom-left{
+   height: 48px;
+   padding: 0 15px;
 }
-
-div#bottom-left p {
+div#footer-bottom-left p{
     margin: 0;
     padding: 0;
     font-size: 16px;
-    color: #888888;
+    color: #666666;
     width: max-content;
 }
-
-div#bottom-left p a {
+div#footer-bottom-left p a{
     text-decoration: none;
     font-size: 16px;
-    color: #888888;
+    color: #666666;
 }
-
-div#bottom-left p a:hover {
-    color: #70b100;
+div#footer-bottom-left p a:hover{
+ color: #70b100;
 }
-
-div#bottom-right {
+div#footer-bottom-right{
     height: 48px;
     padding: 0 15px;
-}
-
-div#bottom-right p {
+ }
+div#footer-bottom-right p{
     height: 48px;
     margin: 0;
     font-size: 16px;
-    color: #888888;
+    color: #666666;
     width: max-content;
+    
 }
-
-div#bottom-right p a {
+div#footer-bottom-right p a{
     text-decoration: none;
     font-size: 16px;
-    color: #888888;
+    color: #666666;
     float: left;
     line-height: 48px;
     height: 48px;
