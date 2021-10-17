@@ -31,7 +31,7 @@ class UserController extends BaseController
         $data["title"] = "Your Shopping Cart";
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
-            "css/cart/cart.css",
+            "css/customer/cart/cart.css",
         ];
         $this->load->view("layouts/client", "client/shoppage/cartpage", $data);
     }

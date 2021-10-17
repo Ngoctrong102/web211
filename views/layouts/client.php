@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/public/css/customer/setup.css">
     <link rel="stylesheet" href="/public/css/customer/footer/footer.css">
     <link rel="stylesheet" href="/public/css/customer/header/header.css">
-    <link rel="stylesheet" href="/public/css/customer/cart/cart.css">
 
     <!-- homepage -->
     <link rel="stylesheet" href="/public/css/customer/homepage/homepage.css" /> 
