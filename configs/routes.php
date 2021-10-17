@@ -52,5 +52,4 @@ $routes = array(
         "handler" => "admin/dashboard/renderDashboard",
         "roles" => ["all"]
     ),
-
 );
