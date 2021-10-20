@@ -56,9 +56,8 @@
                                      <!--cart-->
                     <div id="cart">
                         <div onmouseover="total()"id="hover-objects">
-                            <a href="#"><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
+                            <a href="#" id="icon"><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
                                        shopping_bag</span><span>Shopping Cart</span></a>
-                                 <br/>
                             <ul>
                                  <li class="product-detail">
                                    <a href="#"><img src="/public/images/e71.jpg" width="70px" height="70px" style="border: 0.1pt solid #dddddd" /></a>

@@ -211,13 +211,13 @@
                             <div class="flex-align-center">
                                 <div class="form-col-auto">
                                     <div class="content">
-                                        <label class="name" for="inlineFormInput">Name</label>
-                                        <input type="text" class="name-input" id="inlineFormInput" placeholder="BK">
+                                        <label class="sr-only" for="inlineFormInput">Name</label>
+                                        <input type="text" class="form-control" id="inlineFormInput" placeholder="BK">
                                     </div>
                                 </div>
                                 <div class="form-col-auto">
                                     <div class="content">
-                                           <label class="username" for="inlineFormInputGroup">Username</label>
+                                           <label class="sr-only" for="inlineFormInputGroup">Username</label>
                                            <div class="input-group-text">@</div>
                                             <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
                                     </div>
@@ -229,7 +229,7 @@
                                         </label>
                                 </div>
                                 <div class="form-col-auto">
-                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </form>  
