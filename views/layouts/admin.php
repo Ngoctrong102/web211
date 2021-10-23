@@ -15,7 +15,7 @@
     if (isset($cssFiles)) {
         foreach ($cssFiles as $file) {
     ?>
-            <link rel="stylesheet" href=<?php echo "/public/css/" . $file; ?>>
+            <link rel="stylesheet" href=<?php echo "/public/" . $file; ?>>
     <?php
         }
     }
@@ -49,7 +49,7 @@
     if (isset($cssFiles)) {
         foreach ($jsFiles as $file) {
     ?>
-            <script src=<?php echo "/public/js/" . $file; ?>></script>
+            <script src=<?php echo "/public/" . $file; ?>></script>
     <?php
         }
     }
