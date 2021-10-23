@@ -1,6 +1,6 @@
 let arrow = document.querySelectorAll(".arrow");
-for(var i=0;i<arrow.length;i++){
-    arrow[i].addEventListener("click",(e)=>{
+for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e) => {
         let arrowParent = e.target.parentElement.parentElement;
 
         arrowParent.classList.toggle("showMenu");
@@ -10,12 +10,12 @@ for(var i=0;i<arrow.length;i++){
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".bx-menu");
 console.log(sidebarBtn);
-sidebarBtn.addEventListener("click", ()=>{
+sidebarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("close");
+    $(".nav-bar-wrapper").toggleClass("close");
 });
 
-function openprofile(){
+function openprofile() {
     var dropdownContent = document.querySelector('.dropdown-content');
     dropdownContent.classList.toggle('dropdown-toggle');
 }
-
