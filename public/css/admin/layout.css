@@ -20,7 +20,8 @@
 }
 
 .subview-wrapper {
-    height: 1000px;
+    min-height: 90vh;
+    padding: 15px 20px;
 }
 
 .header-wrapper {
