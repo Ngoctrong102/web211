@@ -4,53 +4,62 @@
         <span class="logo_name">Logo</span>
     </div>
     <ul class="nav-links">
-        <li>
+        <li class="<?php echo isset($nav) && $nav == "dashboard" ? "active" : "" ?>">
             <a href="#">
                 <i class='bx bx-grid-alt'></i>
                 <span class="link_name">Dashboard</span>
             </a>
 
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">dashboard</a></li>
+                <li><a class="link_name" href="#">Dashboard</a></li>
             </ul>
         </li>
 
-        <li>
+        <li class="<?php echo isset($nav) && $nav == "categories" ? "active" : "" ?>">
             <div class="icon-link">
-                <a href="#">
+                <a href="/admin/categories">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="link_name">Category</span>
+                    <span class="link_name">Categories</span>
                 </a>
                 <i class='bx bx-caret-down arrow'></i>
             </div>
 
             <!-- thanhphanbentrong -->
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">Category</a></li>
-                <li><a href="#">Web design</a></li>
+                <li><a class="link_name" href="/admin/categories">Categories</a></li>
+                <li><a href="/admin/categories">All categories</a></li>
                 <li><a href="#">Web design</a></li>
                 <li><a href="#">Web design</a></li>
                 <li><a href="#">Web design</a></li>
             </ul>
         </li>
 
-        <li>
+        <li class="<?php echo isset($nav) && $nav == "products" ? "active" : "" ?>">
             <div class="icon-link">
-                <a href="#">
+                <a href="/admin/products">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="link_name">post</span>
+                    <span class="link_name">Products</span>
                 </a>
                 <i class='bx bx-caret-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">post</a></li>
+                <li><a class="link_name" href="/admin/products">Products</a></li>
                 <li><a href="#">Web design 1</a></li>
                 <li><a href="#">Web design 2</a></li>
                 <li><a href="#">Web design 3</a></li>
-
             </ul>
         </li>
 
+        <li class="<?php echo isset($nav) && $nav == "units" ? "active" : "" ?>">
+            <a href="/admin/units">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Unit</span>
+            </a>
+
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Unit</a></li>
+            </ul>
+        </li>
 
 
     </ul>

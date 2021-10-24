@@ -90,6 +90,10 @@
     background: #273b53;
 }
 
+.app-wrapper .sidebar .nav-links li.active {
+    background: #273b53;
+}
+
 .app-wrapper .sidebar .nav-links li i {
     height: 50px;
     min-width: 78px;
@@ -103,6 +107,10 @@
 }
 
 .app-wrapper .sidebar .nav-links li:hover i {
+    color: #fff;
+}
+
+.app-wrapper .sidebar .nav-links li.active i {
     color: #fff;
 }
 
@@ -131,6 +139,10 @@
     color: #fff;
 }
 
+.app-wrapper .sidebar .nav-links li.active a .link_name {
+    color: #fff;
+}
+
 .app-wrapper .sidebar.close .nav-links li a .link_name {
     opacity: 0;
     pointer-events: none;
@@ -153,7 +165,7 @@
 .app-wrapper .sidebar .nav-links li .sub-menu a {
     color: #fff;
     font-size: 15px;
-    padding: 5px 0;
+    padding: 8px 0;
     white-space: nowrap;
     opacity: 0.6;
     transition: all 0.3 ease;
