@@ -22,6 +22,10 @@ $routes = array(
         "handler" => "user/login",
         "roles" => ["all"]
     ),
+    "cart" => array(
+        "handler" => "user/renderShoppingCart",
+        "roles" => ["all"]
+    ),
     "logout" => array(
         "handler" => "user/logout",
         "roles" => ["all"]
@@ -52,6 +56,10 @@ $routes = array(
     // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
+        "roles" => ["all"]
+    ),
+    "admin/form" => array(
+        "handler" => "admin/form/renderForm",
         "roles" => ["all"]
     ),
     "home" => array(

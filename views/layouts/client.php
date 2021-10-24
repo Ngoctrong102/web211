@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/public/css/customer/setup.css">
     <link rel="stylesheet" href="/public/css/customer/footer/footer.css">
     <link rel="stylesheet" href="/public/css/customer/header/header.css">
+    <link rel="stylesheet" href="/public/css/customer/cart/cart.css">
 
     <!-- homepage -->
     <link rel="stylesheet" href="/public/css/customer/homepage/homepage.css" /> 
@@ -37,11 +38,15 @@
 </head>
 
 <body>
-    <?php include SITE_PATH . "views/blocks/customer/header.php" ?>
+      <?php include SITE_PATH . "views/blocks/customer/header.php" ?>
 
-    <?php include $subview ?>
+      <?php include $subview ?>
 
-    <?php include SITE_PATH . "views/blocks/customer/footer.php" ?>
+      <?php include SITE_PATH . "views/blocks/customer/footer.php" ?>
+
+
+
+      
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
@@ -70,3 +75,5 @@
 
 
 </html>
+
+
