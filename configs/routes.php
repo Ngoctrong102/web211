@@ -3,7 +3,7 @@ $routes = array(
 
     // customer
     "" => array(
-        "handler" => "home/renderHome",
+        "handler" => "customer/home/renderHomePage",
         "roles" => ["all"]
     ),
     "login" => array(
@@ -51,7 +51,6 @@ $routes = array(
         "roles" => ["customer"]
     ),
 
-    "showA" => array(),
 
     // admin
     "admin" => array(
@@ -62,38 +61,69 @@ $routes = array(
         "handler" => "admin/form/renderForm",
         "roles" => ["all"]
     ),
-    "home" => array(
-        "handler" => "customer/home/renderHomePage",
+    "admin/categories" => array(
+        "handler" => "admin/category/renderAllCategories",
+        "roles" => ["all"]
+    ),
+    "admin/categories/add" => array(
+        "handler" => "admin/category/renderAddPage",
+        "roles" => ["all"]
+    ),
+    "admin/categories/addNew" => array(
+        "handler" => "admin/category/addNewCategory",
+        "roles" => ["all"]
+    ),
+    "admin/categories/edit/:num(id)" => array(
+        "handler" => "admin/category/renderEditPage",
+        "roles" => ["all"]
+    ),
+    "admin/categories/editCategory/:num(id)" => array(
+        "handler" => "admin/category/editCategory",
+        "roles" => ["all"]
+    ),
+    "admin/categories/delete/:num(id)" => array(
+        "handler" => "admin/category/deteleCategory",
+        "roles" => ["all"]
+    ),
+    "admin/units" => array(
+        "handler" => "admin/unit/renderAllUnits",
+        "roles" => ["all"]
+    ),
+    "admin/units/add" => array(
+        "handler" => "admin/unit/renderAddPage",
+        "roles" => ["all"]
+    ),
+    "admin/units/addNew" => array(
+        "handler" => "admin/unit/addNewUnit",
+        "roles" => ["all"]
+    ),
+    "admin/units/edit/:num(id)" => array(
+        "handler" => "admin/unit/renderEditPage",
+        "roles" => ["all"]
+    ),
+    "admin/units/editUnit/:num(id)" => array(
+        "handler" => "admin/unit/editUnit",
+        "roles" => ["all"]
+    ),
+    "admin/units/delete/:num(id)" => array(
+        "handler" => "admin/unit/deteleUnit",
+        "roles" => ["all"]
+    ),
+    "admin/products" => array(
+        "handler" => "admin/product/renderAllProducts",
+        "roles" => ["all"]
+    ),
+    "admin/products/add" => array(
+        "handler" => "admin/product/renderAddPage",
+        "roles" => ["all"]
+    ),
+    "admin/products/addNew" => array(
+        "handler" => "admin/product/addNewProduct",
+        "roles" => ["all"]
+    ),
+    "admin/products/edit/:num(id)" => array(
+        "handler" => "admin/product/renderAddPage",
         "roles" => ["all"]
     ),
 
-
-    "color" => array(
-        "handler" => "color/color/renderColorPage",
-        "roles" => ['all']
-    ),
-    "color/add" => array(
-        "handler" => "color/color/renderAddPage",
-        "roles" => ['all']
-    ),
-    "color/addNewColor" => array(
-        "handler" => "color/color/addNewColor",
-        "roles" => ['all']
-    ),
-    "color/edit/:num(id)" => array(
-        "handler" => "color/color/renderEditPage",
-        "roles" => ["all"]
-    ),
-    "color/editColor/:num(id)" => array(
-        "handler" => "color/color/submitEditColor",
-        "roles" => ["all"]
-    ),
-    "color/delete/:num(id)" => array(
-        "handler" => "color/color/deleteColor",
-        "roles" => ["all"]
-    ),
-    "color/addNewColorAjax" => array(
-        "handler" => "color/color/addNewColorAjax",
-        "roles" => ["all"]
-    )
 );

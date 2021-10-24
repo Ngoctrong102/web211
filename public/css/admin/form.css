@@ -1,39 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
-
-*{
+* {
     box-sizing: border-box;
 }
-div.form-content{
+
+div.form-content {
     background-color: #F3F3F4;
     margin-left: 250px;
     height: auto;
     padding: 0 20px;
     font-family: "Karla", sans-serif;
     color: #505d69;
-   
 }
-div.form-container{
+
+div.form-container {
     width: 100%;
 }
-.form-row{
+
+.form-row {
     width: 100%;
     margin-bottom: 15px;
 }
-div.form-title{
+
+div.form-title {
     display: flex;
     justify-content: space-between;
-    height: 50px; 
-  margin-bottom: 15px;
-
-}
-div.form-title > h4{
-  margin: 0;
-  line-height: 50px;
-  font-weight: 900;
-  font-size: 20px;
+    height: 50px;
+    margin-bottom: 15px;
 }
 
-.form-breadcum ul{
+div.form-title>h4 {
+    margin: 0;
+    line-height: 50px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.form-breadcum ul {
     display: flex;
     list-style: none;
     line-height: 50px;
@@ -41,71 +43,101 @@ div.form-title > h4{
     margin: 0;
     text-align: center;
 }
-.form-breadcum ul li a{
+
+.form-breadcum ul li a {
     text-decoration: none;
     color: #505d69;
 }
-div.form-card{
+
+div.form-card {
     background-color: white;
     border-radius: 20px;
     padding: 20px 20px;
 }
-.input-flex{
-  display: flex;
-  height: 45px;
-  margin-bottom: 15px;
+
+.input-flex {
+    display: flex;
+    height: 45px;
+    margin-bottom: 15px;
 }
-.label{
+
+.label {
     width: 20%;
     line-height: 45px;
     font-weight: bolder;
 }
-.cover-input{
+
+.cover-input {
     width: 80%;
 }
-.input{
+
+.input {
     width: 100%;
     border-radius: 5px;
     border: 1pt solid #cfcfcf;
     height: 100%;
     padding: 15px 15px;
 }
-.input:focus{
+
+.input:focus {
     outline: none;
 }
-.row-flex{
+
+.row-flex {
     display: flex;
     justify-content: start;
     width: 100%;
 }
-.col25{
+
+.col25 {
     width: 25%;
 }
-.col50{
+
+.col50 {
     width: 50%;
 }
-.form-check.inline{
+
+.form-check.inline {
     display: inline-block;
 }
-.inline-form{
+
+.inline-form {
     display: flex;
 }
-.flex-align-center{
+
+.flex-align-center {
     display: flex;
     justify-content: start;
     width: 100%;
 }
-.form-check-label{
+
+.form-check-label {
     font-weight: bolder;
 }
-.form-col{
+
+.form-col {
     padding: 0 10px;
 }
-.form-col-auto{
+
+.form-col-auto {
     align-items: center;
     width: auto;
     padding: 0 10px;
 }
-.content{
+
+.content {
     display: flex;
+}
+
+
+/* trong */
+
+button {
+    color: white;
+    padding: 0px 15px;
+}
+
+.input-flex.right {
+    justify-content: end;
+    gap: 10px;
 }
