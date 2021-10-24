@@ -57,5 +57,35 @@ $routes = array(
     "home" => array(
         "handler" => "customer/home/renderHomePage",
         "roles" => ["all"]
+    ),
+
+
+    "color" => array(
+        "handler" => "color/color/renderColorPage",
+        "roles" => ['all']
+    ),
+    "color/add" => array(
+        "handler" => "color/color/renderAddPage",
+        "roles" => ['all']
+    ),
+    "color/addNewColor" => array(
+        "handler" => "color/color/addNewColor",
+        "roles" => ['all']
+    ),
+    "color/edit/:num(id)" => array(
+        "handler" => "color/color/renderEditPage",
+        "roles" => ["all"]
+    ),
+    "color/editColor/:num(id)" => array(
+        "handler" => "color/color/submitEditColor",
+        "roles" => ["all"]
+    ),
+    "color/delete/:num(id)" => array(
+        "handler" => "color/color/deleteColor",
+        "roles" => ["all"]
+    ),
+    "color/addNewColorAjax" => array(
+        "handler" => "color/color/addNewColorAjax",
+        "roles" => ["all"]
     )
 );

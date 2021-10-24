@@ -46,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/28dc87ed53.js" crossorigin="anonymous"></script>
     <?php
-    if (isset($cssFiles)) {
+    if (isset($jsFiles)) {
         foreach ($jsFiles as $file) {
     ?>
             <script src=<?php echo "/public/" . $file; ?>></script>
