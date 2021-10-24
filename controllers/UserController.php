@@ -35,7 +35,6 @@ class UserController extends BaseController
         ];
         $this->load->view("layouts/client", "client/shoppage/cartpage", $data);
     }
-
     public function register()
     {
         if ($_POST["password"] == $_POST['rePassword']) {

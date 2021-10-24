@@ -18,7 +18,7 @@
                          <li><a class="top_menu" href="#">My Account</a></li>
                          <li><a class="top_menu" href="#">Wishlist</a></li>
                          <li><a class="top_menu" href="#">Checkout</a></li>
-                         <li><a class="top_menu" href="#">Sign in</a></li>
+                         <li><a class="top_menu" href="login">Sign in</a></li>
                          <li><a class="top_menu" href="#">Register</a></li>
                     </ul>
                 </div>

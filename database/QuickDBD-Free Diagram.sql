@@ -11,7 +11,7 @@ CREATE TABLE `user` (
     `last_name` varchar(20)  NOT NULL ,
     `email` varchar(100)  NOT NULL ,
     `phone` varchar(15)  NOT NULL ,
-    `role` enum('admin','customser')  NOT NULL ,
+    `role` enum('admin','customer')  NOT NULL ,
     PRIMARY KEY (
         `id`
     ),

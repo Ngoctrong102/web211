@@ -858,6 +858,7 @@ position:relative;
   height: 500px;
   position: relative;
   overflow: hidden;
+  z-index: -1;
 }
 
 .home-page-code .swiper-container,

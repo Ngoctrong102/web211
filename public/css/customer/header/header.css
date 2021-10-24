@@ -57,7 +57,6 @@ div#currency ul#currency-unit {
     visibility: hidden;
     background-color: white;
     margin-top: 8px ;
-    z-index: 999;
     position: absolute;
     
 }
