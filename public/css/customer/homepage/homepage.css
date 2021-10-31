@@ -172,6 +172,7 @@ li {
     padding: 20px 10px;
     margin: 0px 0px;
     background-color: #fff;
+    
 }
 
 .home-page-code .product-cate {
@@ -261,7 +262,7 @@ li {
 .home-page-code .product .bottom p a {
     margin: 0 0 7px;
     font-weight: inherit;
-    font-size: 13px;
+    font-size: 15px;
     font-family: 'Karla', sans-serif;
     color: #999999;
 }
@@ -294,7 +295,7 @@ li {
 .home-page-code .product .bottom .name-bottom a {
     margin: 0 0 8px;
     font-weight: inherit;
-    font-size: 16px;
+    font-size: 19px;
     font-family: 'Karla', sans-serif;
     color: #222222;
     transition: all 300ms ease-in-out;
