@@ -60,19 +60,19 @@ class ProductModel extends BaseModel
     // Lay tat ca cac category
     public function getAllCategoryHomeCus()
     {
-        
+
         // $stmt = $this->conn->prepare("
         // SELECT product.*,product_category.*,category.*
         // FROM product_category
         // INNER JOIN product on  product_category.product_id = product.id
         // LEFT JOIN  category on product_category.category_id = category.id
         // ");
-       
+
         // $stmt->setFetchMode(PDO::FETCH_ASSOC);
         // $stmt->execute();
 
         // $products = $stmt->fetchAll();
-        
+
         // return $products;
 
         $stmt = $this->conn->prepare("SELECT * FROM product");
@@ -88,5 +88,89 @@ class ProductModel extends BaseModel
             $products[$i]["categories"] = $stmt->fetchAll();
         }
         return $products;
+    }
+    public function getProductById($id)
+    {
+        $stmt = $this->conn->prepare("SELECT *,product.id as id, unit.title as unit_title, unit.id as unit_id FROM (product JOIN unit ON product.unit_id = unit.id) WHERE product.id = :id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("id" => $id));
+        $rows = $stmt->fetchAll();
+        if (isset($rows[0])) {
+            $product = $rows[0];
+            $stmt = $this->conn->prepare("SELECT id, title FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $product["id"]
+            ));
+            $product["categories"] = $stmt->fetchAll();
+
+            $stmt = $this->conn->prepare("SELECT image_url FROM product_image WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $product["id"]
+            ));
+            $product["images"] = $stmt->fetchAll();
+            return $product;
+        } else return null;
+    }
+
+    public function updateProducts($id, $product)
+    {
+        $unit["id"] = $id;
+        $stmt = $this->conn->prepare('UPDATE product SET name = :name,thumbnails = :thumbnails,description = :description,unit_id = :unit_id, price = :price, quantity = :quantity WHERE id = :id');
+        $result =  $stmt->execute(array(
+            "name" => $product["name"],
+            "thumbnails" => $product["thumbnails"],
+            "description" => $product["description"],
+            "unit_id" => $product["unit_id"],
+            "price" => $product["price"],
+            "quantity" => $product["quantity"],
+            "id" => $id
+        ));
+
+        $stmt = $this->conn->prepare('DELETE FROM product_category WHERE product_id = :id');
+        $result = $stmt->execute(array(
+            "id" => $id
+        ));
+        $stmt = $this->conn->prepare('DELETE FROM product_image WHERE product_id = :id');
+        $result = $stmt->execute(array(
+            "id" => $id
+        ));
+
+        $imageUrls = explode(":_:_:", trim($product["product_images"]));
+        $values = [];
+        foreach ($imageUrls as $url) {
+            array_push($values, $id . ",'" . $url . "'");
+        }
+        $values = "values(" . join("),(", $values) . ")";
+        $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
+        $stmt = $this->conn->prepare($sqlInsertImage);
+        $result = $stmt->execute();
+
+        $values = [];
+        foreach ($product["categories"] as $categoryId) {
+            array_push($values, $id . "," . $categoryId);
+        }
+        $values = "values(" . join("),(", $values) . ")";
+        $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
+        $stmt = $this->conn->prepare($sqlInsertCategories);
+        $result = $stmt->execute();
+        return $result;
+    }
+
+    public function deleteById($id)
+    {
+        $stmt = $this->conn->prepare('DELETE FROM product_image WHERE product_id = :id');
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        $stmt = $this->conn->prepare('DELETE FROM product_category WHERE product_id = :id');
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        $stmt = $this->conn->prepare('DELETE FROM product WHERE id = :id');
+        $stmt->execute(array(
+            "id" => $id
+        ));
     }
 }

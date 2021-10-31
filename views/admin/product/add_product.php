@@ -17,7 +17,7 @@
                     <div class="col-3 thumbnails-wrapper">
                         <img src="/public/images/default_product.png" id="thumbnails-img" alt="">
                         <button id="thumbnails-btn">Choose another image</button>
-                        <input type="text" name="thumbnails" id="thumbnails-input">
+                        <input type="text" name="thumbnails" id="thumbnails-input" value="/public/images/default_product.png">
                     </div>
                     <div class="col-9">
                         <div class="input-flex">

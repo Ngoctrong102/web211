@@ -50,7 +50,34 @@ $routes = array(
         "handler" => "customer/account/updateAddress",
         "roles" => ["customer"]
     ),
-
+    "news" => array(
+        "handler" => "customer/news/renderAllNews",
+        "roles" => ["all"]
+    ),
+    "news/:num(id)" => array(
+        "handler" => "customer/news/renderNewsDetails",
+        "roles" => ["all"]
+    ),
+    "news/comment" => array(
+        "handler" => "customer/news/addComment",
+        "roles" => ["all"]
+    ),
+    "user/uploadAvatar" => array(
+        "handler" => "customer/account/uploadAvatar",
+        "roles" => ["all"]
+    ),
+    "user/updateEmail" => array(
+        "handler" => "customer/account/updateEmail",
+        "roles" => ["all"]
+    ),
+    "user/updatePhone" => array(
+        "handler" => "customer/account/updatePhone",
+        "roles" => ["all"]
+    ),
+    "news/loadComments" => array(
+        "handler" => "customer/news/loadComments",
+        "roles" => ["all"]
+    ),
 
     // admin
     "admin" => array(
@@ -122,8 +149,44 @@ $routes = array(
         "roles" => ["all"]
     ),
     "admin/products/edit/:num(id)" => array(
-        "handler" => "admin/product/renderAddPage",
+        "handler" => "admin/product/renderEditPage",
         "roles" => ["all"]
     ),
+    "admin/products/editProduct/:num(id)" => array(
+        "handler" => "admin/product/editProduct",
+        "roles" => ["all"]
+    ),
+    "admin/products/delete/:num(id)" => array(
+        "handler" => "admin/product/deleteProduct",
+        "roles" => ["all"]
+    ),
+    "admin/file-manager" => array(
+        "handler" => "admin/fileManager/renderFileManager",
+        "roles" => ["all"]
+    ),
+    "admin/news" => array(
+        "handler" => "admin/news/renderAllNews",
+        "roles" => ["all"]
+    ),
+    "admin/news/add" => array(
+        "handler" => "admin/news/renderAddPage",
+        "roles" => ["all"]
+    ),
+    "admin/news/addNew" => array(
+        "handler" => "admin/news/addNews",
+        "roles" => ["all"]
+    ),
+    "admin/news/edit/:num(id)" => array(
+        "handler" => "admin/news/renderEditPage",
+        "roles" => ["all"]
+    ),
+    "admin/news/editNews/:num(id)" => array(
+        "handler" => "admin/news/editNews",
+        "roles" => ["all"]
+    ),
+    "admin/news/delete/:num(id)" => array(
+        "handler" => "admin/news/deleteNews",
+        "roles" => ["all"]
+    )
 
 );
