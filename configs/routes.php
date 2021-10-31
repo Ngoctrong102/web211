@@ -26,34 +26,6 @@ $routes = array(
         "handler" => "cart/renderShoppingCart",
         "roles" => ["all"]
     ),
-    "showcolor" => array(
-        "handler" => "color/renderShowColor",
-        "roles" => ["all"]
-    ),
-    "add" => array(
-        "handler" => "color/renderAddColor",
-        "roles" => ["all"]
-    ),
-    "add/coloradded" => array(
-        "handler" => "color/ColorAdded",
-        "roles" => ["all"]
-    ),
-    "addcolorajax" => array(
-        "handler" => "color/ColorAddedAjax",
-        "roles" => ["all"]
-    ),
-    "edit/:num(id)" => array(
-        "handler" => "color/renderEditColor",
-        "roles" => ["all"]
-    ),
-    "edit/coloredited/:num(id)" => array(
-        "handler" => "color/ColorEdited",
-        "roles" => ["all"]
-    ),
-    "delete/:num(id)" => array(
-        "handler" => "color/ColorDeleted",
-        "roles" => ["all"]
-    ),
     "logout" => array(
         "handler" => "user/logout",
         "roles" => ["all"]

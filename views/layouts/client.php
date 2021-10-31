@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
 
-    <?php if ($specialCss) { 
+    <?php if (isset($specialCss)) { 
         echo $specialCss;
     } ?>
 
@@ -49,7 +49,7 @@
 
     <script src="/public/js/customer/header/header.js"></script>
 
-    <?php if ($specialJs) { 
+    <?php if (isset($specialJs)) { 
         echo $specialJs;
     } ?>
     <?php
