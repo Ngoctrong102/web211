@@ -61,6 +61,28 @@
             </ul>
         </li>
 
+        <li class="<?php echo isset($nav) && $nav == "files" ? "active" : "" ?>">
+            <a href="/admin/file-manager">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">File manager</span>
+            </a>
+
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">File manager</a></li>
+            </ul>
+        </li>
+        
+        <li class="<?php echo isset($nav) && $nav == "news" ? "active" : "" ?>">
+            <a href="/admin/news">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">News</span>
+            </a>
+
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">News</a></li>
+            </ul>
+        </li>
+
 
     </ul>
 </div>
