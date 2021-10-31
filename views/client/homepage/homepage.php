@@ -46,104 +46,28 @@
 
       <div class="swiper-container slider-4">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories1.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Vagatables</a>
+          <?php 
+            foreach($categoryhomeCus as $categoryHomeC){
+                echo "
+                <div class='swiper-slide'>
+                <div class='product-cate'>
+                  <div class='img-categories'>
+                    <a href=''><img src='".$categoryHomeC['thumbnails']."' alt=''></a>
+                    
+                  </div>
+                  <div class='bottom'>
+                    <div class='name-bottom'>
+                      <a href=''>phan loai</a>
+                    </div>
+                  </div>
+    
                 </div>
               </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories2.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Fish & Meats</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories3.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Fruits</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories4.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Fast Foods</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories5.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Beans</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories6.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Brids</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product-cate">
-              <div class="img-categories">
-                <a href=""><img src="/public/images/homepage/topcategories7.png" alt=""></a>
-              </div>
-              <div class="bottom">
-                <div class="name-bottom">
-                  <a href="">Bread</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
+                ";
+            }
+          ?>
         </div>
-
-
-
       </div>
-
-
   </section>
 
 
@@ -194,524 +118,607 @@
 
 
       <div id="row-fe" class="swiper-container slider-7">
-
-
-
-
+        <div class="swiper-wrapper">
+        
+          
+          <?php 
+                $dem = 0;
+                $i = count($categoryhomeCus);
+                $giua = (int)($i/2) + 1 ;
+                // Chia thanh 2 truong hop
+                // So product la chan thi chia doi binh thuong
+                // So product le thi lay phan tu giua nhan 2
+                if($i%2==0){
+                  // Cho nay hoi lu :V 
+                  $giua = $giua - 1;
+                  for($dem;$dem<$giua;$dem++){ 
+                  
+                    echo "
+                          <div class='swiper-slide'>
+                          <div class='product'>
+              
+                            <div class='img-container'>
+                              <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+              
+                              <ul class='side-icons'>
+                                <a><i class='fas fa-heart'></i></a>
+                                <a><i class='fas fa-search'></i></a>
+                                <a><i class='fas fas fa-cart-plus'></i></a>
+                              </ul>
+                            </div>
+                            
+                            <div class='bottom'>
+                            <p>
+                            ";
+                            
+                          foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                            echo "<a href=''>".$c["title"]."</a> "; 
+                          }
+                          
+                          
+                             
+                            echo "</p>
+                              <div class='name-bottom'>
+                                <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                              </div>
+                              <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                            </div>
+                          </div>
+                          <div class='product'>
+              
+                            <div class='img-container'>
+                              <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+              
+                              <ul class='side-icons'>
+                                <a><i class='fas fa-heart'></i></a>
+                                <a><i class='fas fa-search'></i></a>
+                                <a><i class='fas fas fa-cart-plus'></i></a>
+                              </ul>
+                            </div>
+                            <div class='bottom'><p>"
+                            ;
+                            foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                              echo "<a href=''>".$c["title"]."</a> "; 
+                            }
+                         
+                             echo "</p> <div class='name-bottom'>
+                                <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                              </div>
+                              <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                            </div>
+                          </div>
+                        </div>
+                      ";
+                         
+                  }
+                }
+                else{
+                  for($dem;$dem<$giua-1;$dem++){
+                  
+                    echo "
+                          <div class='swiper-slide'>
+                          <div class='product'>
+              
+                            <div class='img-container'>
+                              <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+              
+                              <ul class='side-icons'>
+                                <a><i class='fas fa-heart'></i></a>
+                                <a><i class='fas fa-search'></i></a>
+                                <a><i class='fas fas fa-cart-plus'></i></a>
+                              </ul>
+                            </div>
+                            
+                            <div class='bottom'>
+                            <p>
+                            ";
+                            
+                          foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                            echo "<a href=''>".$c["title"]."</a> "; 
+                          }
+                          
+                          
+                             
+                            echo "</p>
+                              <div class='name-bottom'>
+                                <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                              </div>
+                              <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                            </div>
+                          </div>
+                          <div class='product'>
+              
+                            <div class='img-container'>
+                              <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+              
+                              <ul class='side-icons'>
+                                <a><i class='fas fa-heart'></i></a>
+                                <a><i class='fas fa-search'></i></a>
+                                <a><i class='fas fas fa-cart-plus'></i></a>
+                              </ul>
+                            </div>
+                            <div class='bottom'>
+                              <p>";
+                              foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                                echo "<a href=''>".$c["title"]."</a> "; 
+                              }
+                              echo "</p>
+                              <div class='name-bottom'>
+                                <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                              </div>
+                              <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                            </div>
+                          </div>
+                        </div>
+                      ";
+                         
+                  }
+                  $giua=$giua-1;
+                  echo "
+                  <div class='swiper-slide'>
+                  <div class='product'>
+      
+                    <div class='img-container'>
+                      <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+      
+                      <ul class='side-icons'>
+                        <a><i class='fas fa-heart'></i></a>
+                        <a><i class='fas fa-search'></i></a>
+                        <a><i class='fas fas fa-cart-plus'></i></a>
+                      </ul>
+                    </div>
+                    
+                    <div class='bottom'>
+                    <p>
+                    ";
+                    
+                  foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                    echo "<a href=''>".$c["title"]."</a> "; 
+                  }              
+                    echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$giua ]['name']."</a>
+                      </div>
+                      <div class='price'><span>$900000</span>$".$categoryhomeCus[$giua]['price']."</div>
+                    </div>
+                  </div>
+                  <div class='product'>      
+                    <div class='img-container'>
+                      <a href=''><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+      
+                      <ul class='side-icons'>
+                        <a><i class='fas fa-heart'></i></a>
+                        <a><i class='fas fa-search'></i></a>
+                        <a><i class='fas fas fa-cart-plus'></i></a>
+                      </ul>
+                    </div>
+                    <div class='bottom'>
+                      <p>";
+                        foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                    echo "<a href=''>".$c["title"]."</a> "; 
+                    }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>".$categoryhomeCus[ $giua]['price']."</div>
+                    </div>
+                  </div>
+                </div>
+              ";
+                }
+                
+               
+                ?>            
+        </div>
+      </div>
+      <div id="row-new-arr" class="swiper-container slider-71" style="display: none;">
+  
 
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal1.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
+        
+          
+        <?php 
+              $dem = 0;
+              $i = count($categoryhomeCus);
+              $giua = (int)($i/2) + 1 ;
+              
+              if($i%2==0){
+                $giua = $giua - 1;
+                for($dem;$dem<$giua;$dem++){
+                
+                  echo "
+                        <div class='swiper-slide'>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          
+                          <div class='bottom'>
+                          <p>
+                          ";
+                          
+                        foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
+                        
+                        
+                           
+                          echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                            </div>
+                            <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                          </div>
+                        </div>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          <div class='bottom'><p>"
+                          ;
+                          foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                            echo "<a href=''>".$c["title"]."</a> "; 
+                          }
+                       
+                           echo "</p> <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                            </div>
+                            <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                          </div>
+                        </div>
+                      </div>
+                    ";
+                       
+                }
+              }
+              else{
+                for($dem;$dem<$giua-1;$dem++){
+                
+                  echo "
+                        <div class='swiper-slide'>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          
+                          <div class='bottom'>
+                          <p>
+                          ";
+                          
+                        foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
+                        
+                        
+                           
+                          echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                            </div>
+                            <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                          </div>
+                        </div>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          <div class='bottom'>
+                            <p>";
+                            foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                              echo "<a href=''>".$c["title"]."</a> "; 
+                            }
+                            echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                            </div>
+                            <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                          </div>
+                        </div>
+                      </div>
+                    ";
+                       
+                }
+                $giua=$giua-1;
+                echo "
+                <div class='swiper-slide'>
+                <div class='product'>
+    
+                  <div class='img-container'>
+                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <ul class='side-icons'>
+                      <a><i class='fas fa-heart'></i></a>
+                      <a><i class='fas fa-search'></i></a>
+                      <a><i class='fas fas fa-cart-plus'></i></a>
+                    </ul>
+                  </div>
+                  
+                  <div class='bottom'>
+                  <p>
+                  ";
+                  
+                foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                  echo "<a href=''>".$c["title"]."</a> "; 
+                }
+                
+                
+                   
+                  echo "</p>
+                    <div class='name-bottom'>
+                      <a href=''>".$categoryhomeCus[$giua ]['name']."</a>
+                    </div>
+                    <div class='price'><span>$900000</span>$".$categoryhomeCus[$giua]['price']."</div>
+                  </div>
                 </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal1.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
+                <div class='product'>
+    
+                  <div class='img-container'>
+                    <a href=''><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <ul class='side-icons'>
+                      <a><i class='fas fa-heart'></i></a>
+                      <a><i class='fas fa-search'></i></a>
+                      <a><i class='fas fas fa-cart-plus'></i></a>
+                    </ul>
+                  </div>
+                  <div class='bottom'>
+                    <p>";
+                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                  echo "<a href=''>".$c["title"]."</a> "; 
+                  }
+                    echo "</p>
+                    <div class='name-bottom'>
+                      <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                    </div>
+                    <div class='price'><span>$85.00</span>".$categoryhomeCus[ $giua]['price']."</div>
+                  </div>
                 </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
               </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal2.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal2.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
+            ";
+              }
+              
+             
+              ?>
+          
+        
+        
 
 
       </div>
-
-      <div id="row-new-arr" class="swiper-container slider-71" style="display: none;">
-        <div class="swiper-wrapper" id="swiper-new-arr">
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal10.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
-                </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal10.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
-                </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal5.jpg" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div id="row-on" class="swiper-container slider-72" style="display: none;">
-        <div class="swiper-wrapper" id="swiper-new-arr">
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
+      <div class="swiper-wrapper">
+        
+          
+        <?php 
+              $dem = 0;
+              $i = count($categoryhomeCus);
+              $giua = (int)($i/2) + 1 ;
+              
+              if($i%2==0){
+                $giua = $giua - 1;
+                for($dem;$dem<$giua;$dem++){
+                
+                  echo "
+                        <div class='swiper-slide'>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          
+                          <div class='bottom'>
+                          <p>
+                          ";
+                          
+                        foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
+                        
+                        
+                           
+                          echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                            </div>
+                            <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                          </div>
+                        </div>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          <div class='bottom'><p>"
+                          ;
+                          foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                            echo "<a href=''>".$c["title"]."</a> "; 
+                          }
+                       
+                           echo "</p> <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                            </div>
+                            <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                          </div>
+                        </div>
+                      </div>
+                    ";
+                       
+                }
+              }
+              else{
+                for($dem;$dem<$giua-1;$dem++){
+                
+                  echo "
+                        <div class='swiper-slide'>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          
+                          <div class='bottom'>
+                          <p>
+                          ";
+                          
+                        foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
+                        
+                        
+                           
+                          echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem ]['name']."</a>
+                            </div>
+                            <div class='price'><span>$900000</span>$".$categoryhomeCus[$dem]['price']."</div>
+                          </div>
+                        </div>
+                        <div class='product'>
+            
+                          <div class='img-container'>
+                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+            
+                            <ul class='side-icons'>
+                              <a><i class='fas fa-heart'></i></a>
+                              <a><i class='fas fa-search'></i></a>
+                              <a><i class='fas fas fa-cart-plus'></i></a>
+                            </ul>
+                          </div>
+                          <div class='bottom'>
+                            <p>";
+                            foreach ($categoryhomeCus[$dem+ $giua]["categories"] as $c) {
+                              echo "<a href=''>".$c["title"]."</a> "; 
+                            }
+                            echo "</p>
+                            <div class='name-bottom'>
+                              <a href=''>".$categoryhomeCus[$dem + $giua]['name']."</a>
+                            </div>
+                            <div class='price'><span>$85.00</span>".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                          </div>
+                        </div>
+                      </div>
+                    ";
+                       
+                }
+                $giua=$giua-1;
+                echo "
+                <div class='swiper-slide'>
+                <div class='product'>
+    
+                  <div class='img-container'>
+                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <ul class='side-icons'>
+                      <a><i class='fas fa-heart'></i></a>
+                      <a><i class='fas fa-search'></i></a>
+                      <a><i class='fas fas fa-cart-plus'></i></a>
+                    </ul>
+                  </div>
+                  
+                  <div class='bottom'>
+                  <p>
+                  ";
+                  
+                foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                  echo "<a href=''>".$c["title"]."</a> "; 
+                }
+                
+                
+                   
+                  echo "</p>
+                    <div class='name-bottom'>
+                      <a href=''>".$categoryhomeCus[$giua ]['name']."</a>
+                    </div>
+                    <div class='price'><span>$900000</span>$".$categoryhomeCus[$giua]['price']."</div>
+                  </div>
                 </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
+                <div class='product'>
+    
+                  <div class='img-container'>
+                    <a href=''><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <ul class='side-icons'>
+                      <a><i class='fas fa-heart'></i></a>
+                      <a><i class='fas fa-search'></i></a>
+                      <a><i class='fas fas fa-cart-plus'></i></a>
+                    </ul>
+                  </div>
+                  <div class='bottom'>
+                    <p>";
+                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                  echo "<a href=''>".$c["title"]."</a> "; 
+                  }
+                    echo "</p>
+                    <div class='name-bottom'>
+                      <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                    </div>
+                    <div class='price'><span>$85.00</span>".$categoryhomeCus[ $giua]['price']."</div>
+                  </div>
                 </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
               </div>
-            </div>
-          </div>
+            ";
+              }
+              
+             
+              ?>
+          
+        
+        
 
-          <div class="swiper-slide">
-            <div class="product">
 
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
       </div>
     </div>
   </section>
-
-
-
 
   <!-- Pagecut san pham -->
   <section class="pagecut">
@@ -726,8 +733,6 @@
         <a href="#"><img src="/public/images/homepage/fullbanner-5.jpg" alt=""></a>
         <a href="#"><img src="/public/images/homepage/fullbanner-6.jpg" alt=""></a>
       </div>
-
-
     </div>
 
   </section>
@@ -750,445 +755,37 @@
       </div>
       <div class="swiper-container slider-2">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal1.png" alt=""><span class="discount">-50%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">3. Variable product</a>
+        <?php 
+              foreach($categoryhomeCus as $greefarm){
+                echo "
+                  <div class='swiper-slide'>
+                  <div class='product'>
+                    <div class='img-container'>
+                      <a href=''><img src='".$greefarm['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+      
+                      <ul class='side-icons'>
+                        <a><i class='fas fa-heart'></i></a>
+                        <a><i class='fas fa-search'></i></a>
+                        <a><i class='fas fas fa-cart-plus'></i></a>
+                      </ul>
+                    </div>
+                    <div class='bottom'>
+                      <p>";
+                      foreach ($greefarm["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$greefarm['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$greefarm['price']."</div>
+                    </div>
+                  </div>
                 </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal2.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Bread</a></p>
-                <div class="name-bottom">
-                  <a href="">2. New badge product</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">11. Product with video</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal5.jpg" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">5. Simple product</a>
-                </div>
-                <div class="price">$50.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal5-1.jpg" alt=""> <span class="discount">-10%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Eggs</a></p>
-                <div class="name-bottom">
-                  <a href="">Product title here</a>
-                </div>
-                <div class="price"><span>$21.00</span>$19.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal6.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product dummy title</a>
-                </div>
-                <div class="price">$39.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal7.jpg" alt=""><span class="discount">-10%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Demo product title</a>
-                </div>
-                <div class="price"><span>$21.00</span>$19.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal8.jpg" alt=""> <span class="discount">-15%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy product name</a>
-                </div>
-                <div class="price"><span>$13.00</span>$110.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal9.png" alt=""><span class="discount">-18%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text for title</a>
-                </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal10.png" alt=""><span class="discount">-15%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product dummy title</a>
-                </div>
-                <div class="price"><span>$130.00</span>$110.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""> <img src="/public/images/homepage/deal11.jpg" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy procut name</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal12.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Demo product title</a>
-                </div>
-                <div class="price">$80.00</div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal13.png" alt=""><span class="discount">-18%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product title here</a>
-                </div>
-                <div class="price"><span>$85.00</span>$70.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal14.jpg" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product dummy title</a>
-                </div>
-                <div class="price"><span>$29.00</span>$19.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal15.png" alt=""><span class="discount">SOLDOUT</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product dummy title</a>
-                </div>
-                <div class="price"><span>$29.00</span>$19.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal16.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Demo product title</a>
-                </div>
-                <div class="price">$50.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal17.png" alt=""></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Demo product title</a>
-                </div>
-                <div class="price">$50.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal18.jpg" alt=""><span class="discount">-27%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Dummy text for title</a>
-                </div>
-                <div class="price"><span>$75.00</span>$55.00</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-container">
-                <a href=""><img src="/public/images/homepage/deal19.png" alt=""><span class="discount">-27%</span></a>
-
-                <ul class="side-icons">
-                  <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-search"></i></a>
-                  <a><i class="fas fas fa-cart-plus"></i></a>
-                </ul>
-              </div>
-              <div class="bottom">
-                <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                <div class="name-bottom">
-                  <a href="">Product dummy title</a>
-                </div>
-                <div class="price"><span>$75.00</span>$55.00</div>
-              </div>
-            </div>
-          </div>
+                ";
+              }
+              
+              ?>
         </div>
       </div>
     </div>
@@ -1215,137 +812,162 @@
 
       <div class="swiper-container slider-5">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal1.png" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
+        <?php 
+            $dem = 0;
+            $i = count($categoryhomeCus);
+            $giua = (int)($i/2) + 1 ; // Cho nay hoi lu :V ket qua no cu bi lam sao y
+            if($i%2==0){
+              
+              $giua = $giua - 1;
+              for($dem;$dem<$giua;$dem++){
+                echo "
+                <div class='swiper-slide'>
+        
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$dem]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$dem]['price']."</div>
+                    </div>
                   </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
+    
                 </div>
-              </div>
 
-            </div>
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal5.jpg" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$dem + $giua]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$dem+ $giua]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                    </div>
                   </div>
-                  <div class="price"><span>$5.00</span>$70.00</div>
+    
                 </div>
+               
               </div>
+              ";
+              }
 
-            </div>
-          </div>
+            }
+            else{
+              
+              for($dem;$dem<$giua-1;$dem++){
+                echo "
+                <div class='swiper-slide'>
+        
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$dem]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$dem]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$dem]['price']."</div>
+                    </div>
+                  </div>    
+                </div>
 
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal2.png" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$dem + $giua]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$dem+ $giua]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$dem+ $giua]['price']."</div>
+                    </div>
                   </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
+    
                 </div>
+               
               </div>
+              ";
+              }
+            }
 
-            </div>
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal6.png" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
+            // nhan doi product
+            $giua -= 1;
+            echo "
+                <div class='swiper-slide'>
+        
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$giua]['price']."</div>
+                    </div>
                   </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
+    
                 </div>
-              </div>
 
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal3.png" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
+                <div class='product'>
+    
+                  <div class='img-seller'>
+                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+    
+                    <div class='next-img'>
+                      <p>";
+                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                        echo "<a href=''>".$c["title"]."</a> "; 
+                      }
+                      echo "</p>
+                      <div class='name-bottom'>
+                        <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                      </div>
+                      <div class='price'><span>$85.00</span>$".$categoryhomeCus[$giua]['price']."</div>
+                    </div>
                   </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
+    
                 </div>
+               
               </div>
+              ";
+              
+        ?>
 
-            </div>
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal7.jpg" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
-                  </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal4.png" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
-                  </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
-                </div>
-              </div>
-
-            </div>
-            <div class="product">
-
-              <div class="img-seller">
-                <a href=""><img src="/public/images/homepage/deal8.jpg" alt=""><span class="discount">-50%</span></a>
-
-                <div class="next-img">
-                  <p><a href="">Beans</a>, <a href="">Birds</a></p>
-                  <div class="name-bottom">
-                    <a href="">3. Variable product</a>
-                  </div>
-                  <div class="price"><span>$85.00</span>$70.00</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
         </div>
       </div>
     </div>

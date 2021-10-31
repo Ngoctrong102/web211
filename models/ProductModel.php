@@ -56,4 +56,37 @@ class ProductModel extends BaseModel
         $result = $stmt->execute();
         return $result;
     }
+
+    // Lay tat ca cac category
+    public function getAllCategoryHomeCus()
+    {
+        
+        // $stmt = $this->conn->prepare("
+        // SELECT product.*,product_category.*,category.*
+        // FROM product_category
+        // INNER JOIN product on  product_category.product_id = product.id
+        // LEFT JOIN  category on product_category.category_id = category.id
+        // ");
+       
+        // $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        // $stmt->execute();
+
+        // $products = $stmt->fetchAll();
+        
+        // return $products;
+
+        $stmt = $this->conn->prepare("SELECT * FROM product");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $stmt = $this->conn->prepare("SELECT * FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $products[$i]["id"]
+            ));
+            $products[$i]["categories"] = $stmt->fetchAll();
+        }
+        return $products;
+    }
 }
