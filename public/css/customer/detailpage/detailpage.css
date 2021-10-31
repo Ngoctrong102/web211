@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+.content{
+    display: flex;
+}
+.col1{
+    width: 50%;
+}
+.col2{
+    width: 50%;
+}
+.detail-info{
+  display: flex;
+
+}

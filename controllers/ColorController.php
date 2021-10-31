@@ -10,6 +10,7 @@ class ColorController extends BaseController
     {   
         $data["title"]="Color";
         $data["cssFiles"]=["css/admin/showcolor.css",];
+        $data["jsFiles"]=["js/color/color.js",];
         $data["colors"]= $this->color->getAllColors();
         $this->load->view("layouts/admin","admin/color/showcolor",$data);
     }
@@ -24,6 +25,17 @@ class ColorController extends BaseController
        $color = $_POST["addingcolorname"];
        $this->color->addColor($color);
        header ("Location: /showcolor");
+    }
+    
+    public function ColorAddedAjax($color)
+    {   
+       $color = $_POST["addingcolorname"];
+      $success = $this->color->addColor($color);
+      $response = [
+          "success" => $success,
+          "color" => $color,
+      ];
+       echo json_encode($response);
     }
 
     public function renderEditColor($id)

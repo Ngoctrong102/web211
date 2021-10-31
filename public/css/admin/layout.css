@@ -7,7 +7,11 @@
     top: 0px;
     height: 100vh;
     width: 250px;
-    transition: all .3s ease-in-out .2s;
+    transition: all .5s ease;
+}
+
+.nav-bar-wrapper.close {
+    width: 78px;
 }
 
 .content-wrapper {
@@ -16,7 +20,8 @@
 }
 
 .subview-wrapper {
-    height: auto;
+    min-height: 90vh;
+    padding: 15px 20px;
 }
 
 .header-wrapper {

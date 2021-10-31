@@ -225,6 +225,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart {
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects{
     height: 60px;
+    direction: rtl;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects a#icon{
     margin: 0;
@@ -239,13 +240,14 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
     margin: 10px 0 0 0;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul {
+    direction: ltr;
     visibility: hidden;
     position: absolute;
     list-style: none;
-    width: max-content;
+    width: 350px;
     margin: 0;
     height: max-content;
-    padding: 0px 5px 0px 5px;
+    padding: 5px 15px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -257,9 +259,9 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail {
     height: 80px;
     display: flex;
-    padding-top: 15px;
+    justify-content: space-between;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div{
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div.total{
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -274,19 +276,20 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
     margin: 0;
     padding: 5px 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p{
     height: auto;
     margin: 0;
     padding: 5px 5px;
-   
+    width: 100%;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a{
     height: 50px;
     margin: 0px;
     border: 0.2pt solid #aaaaaa;
     padding: 5px 5px;
+    width: 100%;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a span{
     line-height: 40px;
@@ -294,6 +297,8 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
     margin: 0;
     color: black;
     font-size: 14px;
+    width: 100%;
+    text-align: center;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover{
     background-color: #70B100;
@@ -302,15 +307,27 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover span{
     color: white;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p {
-    height: 70px;
-    line-height: 70px;
+div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p.pro {
+    height: 35px;
+    line-height: 40px;
     font-size: 14px;
-    margin: 0;
+    margin:  0 0 0 10px;
+}
+.remove span:hover{
+    cursor: pointer;
+    color: #70b100;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail img {
-    margin-top: -20px;
+  
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+}
+div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p.pro-price{
+    line-height: 100px;
+    width: 30%;
+    text-align: right;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart div img {

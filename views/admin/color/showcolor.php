@@ -11,3 +11,9 @@
     </div>
     <button type="button"><a style="text-decoration: none; color: black; font-weight: 1000" href="/add">Click to add</a></button>
 </div>
+
+<form>
+        <input id="colorinput" type="text" placeholder="Add color using Ajax" name="addingcolorname">
+        <button id="addcolorbtn" type="button">Add</button>
+</form>
+<button type="button"><a style="text-decoration: none; color: black; font-weight: 1000" href="/showcolor">Cancel</a></button>
