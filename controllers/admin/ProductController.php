@@ -5,6 +5,8 @@ class ProductController extends BaseController
     {
         parent::__construct();
         $this->load->model("product");
+        $this->load->model("category");
+        $this->load->model("unit");
     }
 
     public function renderAllProducts()
@@ -45,10 +47,8 @@ class ProductController extends BaseController
 
         ];
 
-        $this->load->model("category");
         $data["categories"] = $this->category->getAllCategories();
 
-        $this->load->model("unit");
         $data["units"] = $this->unit->getAllUnits();
 
         $this->load->view("layouts/admin", "admin/product/add_product", $data);
@@ -58,6 +58,45 @@ class ProductController extends BaseController
     {
         $product = $_POST;
         $this->product->insertNewProducts($product);
+        header("Location: /admin/products");
+    }
+
+    public function renderEditPage($id)
+    {
+        $data["nav"] = "products";
+        $data["cssFiles"] = [
+            "css/admin/form.css",
+            "css/admin/products/add_product/thumbnails.css",
+            "css/admin/products/add_product/product_images_input.css",
+            "libs/tags/dist/tokenize2.min.css"
+        ];
+        $data["specialJs"] = '<script src="/plugins/ckfinder/ckfinder.js"></script>';
+        $data["jsFiles"] = [
+            "libs/tags/dist/tokenize2.min.js",
+            "js/admin/products/add_product/choose_thumbnails.js",
+            "js/admin/products/add_product/select_categories.js",
+            "js/admin/products/add_product/choose_product_images.js",
+
+        ];
+
+        $data["product"] = $this->product->getProductById($id);
+
+        $data["categories"] = $this->category->getAllCategories();
+
+        $data["units"] = $this->unit->getAllUnits();
+        $this->load->view("layouts/admin", "admin/product/edit_product", $data);
+    }
+
+    public function editProduct($id)
+    {
+        $product = $_POST;
+        $this->product->updateProducts($id, $product);
+        header("Location: /admin/products");
+    }
+
+    public function deleteProduct($id)
+    {
+        $this->product->deleteById($id);
         header("Location: /admin/products");
     }
 }
