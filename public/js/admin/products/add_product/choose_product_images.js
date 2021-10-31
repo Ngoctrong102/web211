@@ -28,7 +28,7 @@ function addNewImage(fileUrl) {
     let image = document.getElementById("template-image").content.cloneNode(true);
     $(image).find("button").data("imageUrl", fileUrl);
     $(image).find("img").attr("src", fileUrl);
-    let inputImagesVal = $("#product_images_input").val();
+    let inputImagesVal = $("#product_images_input").val().trim();
     let newValue = inputImagesVal ? `${inputImagesVal}:_:_:${fileUrl}` : fileUrl;
     $("#product_images_input").val(newValue);
     let insertBtn = document.getElementById("add-image-btn");

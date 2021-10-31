@@ -21,7 +21,12 @@
             <div class="col-lg-4 col-12">
                 <div class="avatar-wrapper">
                     <div class="avatar">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCa60fMkDagsMcNx3CrY2Kyq9QSHQBWPL8_w&usqp=CAU" alt="" srcset="">
+                        <form id="form-avatar">
+                            <label for="avatar-input">
+                                <img src="<?php echo $user["avatar"]; ?>" id="avatar-img">
+                            </label>
+                            <input style="visibility: hidden;" type="file" name="avatar-input" id="avatar-input">
+                        </form>
                     </div>
                     <div class="name"><?php echo $user["first_name"] . " " . $user["last_name"] ?></div>
                 </div>
@@ -29,26 +34,30 @@
             <div class="col-lg-8 col-12">
                 <div class="info-wrapper">
                     <div class="row">
-                        <span class="col-4">
-                            Email
-                        </span>
-                        <span class="col-7" id="email">
-                            <?php echo $user["email"] ?>
-                        </span>
-                        <span class="col-1">
+                        <div class="col-4">
+                            <span>
+                                Email
+                            </span>
+                        </div>
+                        <div class="col-7">
+                            <span id="email"><?php echo $user["email"] ?></span>
+                        </div>
+                        <div class="col-1">
                             <button id="edit-email" class="edit-btn"><i class="far fa-edit"></i></button>
-                        </span>
+                        </div>
                     </div>
                     <div class="row">
-                        <span class="col-4">
-                            Phone
-                        </span>
-                        <span class="col-7" id="phone">
-                            <?php echo $user["phone"] ?>
-                        </span>
-                        <span class="col-1">
+                        <div class="col-4">
+                            <span>
+                                Phone
+                            </span>
+                        </div>
+                        <div class="col-7">
+                            <span id="phone"><?php echo $user["phone"] ?></span>
+                        </div>
+                        <div class="col-1">
                             <button id="edit-phone" class="edit-btn"><i class="far fa-edit"></i></button>
-                        </span>
+                        </div>
                     </div>
                 </div>
                 <div class="address-wrapper">
@@ -86,3 +95,15 @@
         </div>
     </div>
 </template>
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="color: white; background-color: red;">
+            <strong class="me-auto" style="color: white;">Error</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>

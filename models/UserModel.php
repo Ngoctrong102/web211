@@ -32,4 +32,28 @@ class UserModel extends BaseModel
             return $rows[0];
         } else return null;
     }
+    public function updateAvatar($userId, $avatar_path)
+    {
+        $stmt = $this->conn->prepare('UPDATE user SET avatar = :avatar WHERE id = :id');
+        return $stmt->execute(array(
+            "id" => $userId,
+            "avatar" => $avatar_path
+        ));
+    }
+    public function updateEmail($userId, $email)
+    {
+        $stmt = $this->conn->prepare('UPDATE user SET email = :email WHERE id = :id');
+        return $stmt->execute(array(
+            "id" => $userId,
+            "email" => $email
+        ));
+    }
+    public function updatePhone($userId, $phone)
+    {
+        $stmt = $this->conn->prepare('UPDATE user SET phone = :phone WHERE id = :id');
+        return $stmt->execute(array(
+            "id" => $userId,
+            "phone" => $phone
+        ));
+    }
 }

@@ -13,18 +13,13 @@
     <link rel="stylesheet" href="/public/css/customer/header/header.css">
     <link rel="stylesheet" href="/public/css/customer/cart/cart.css">
 
-    <!-- homepage -->
-    <link rel="stylesheet" href="/public/css/customer/homepage/homepage.css" /> 
-    <!-- endhomepage -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
 
-     <!-- homepage -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.css"/>
-    <!-- endhomepage -->
-    
+    <?php if ($specialCss) { 
+        echo $specialCss;
+    } ?>
+
     <?php
     if (isset($cssFiles)) {
         foreach ($cssFiles as $file) {
@@ -38,15 +33,15 @@
 </head>
 
 <body>
-      <?php include SITE_PATH . "views/blocks/customer/header.php" ?>
+    <?php include SITE_PATH . "views/blocks/customer/header.php" ?>
 
-      <?php include $subview ?>
+    <?php include $subview ?>
 
-      <?php include SITE_PATH . "views/blocks/customer/footer.php" ?>
+    <?php include SITE_PATH . "views/blocks/customer/footer.php" ?>
 
 
 
-      
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
@@ -55,13 +50,9 @@
 
     <script src="/public/js/customer/header/header.js"></script>
 
-    <!-- homepage -->
-    <!-- ======== SwiperJS ======= -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.js"></script>
-    <!-- Custom Scripts -->
-    <script src="/public/js/customer/homepage/homepage.js"></script>
-    <!-- endhomepage -->
-
+    <?php if ($specialJs) { 
+        echo $specialJs;
+    } ?>
     <?php
     if (isset($jsFiles)) {
         foreach ($jsFiles as $file) {
@@ -75,5 +66,3 @@
 
 
 </html>
-
-
