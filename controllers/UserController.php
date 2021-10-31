@@ -26,16 +26,6 @@ class UserController extends BaseController
         ];
         $this->load->view("layouts/client", "account/register", $data);
     }
-    public function renderShoppingCart()
-    {
-        $data["title"] = "Your Shopping Cart";
-        $data["cssFiles"] = [
-            "css/customer/commons/breadcum.css",
-            "css/cart/cart.css",
-        ];
-        $this->load->view("layouts/client", "client/shoppage/cartpage", $data);
-    }
-
     public function register()
     {
         if ($_POST["password"] == $_POST['rePassword']) {

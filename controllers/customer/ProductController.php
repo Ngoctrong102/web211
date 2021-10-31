@@ -27,4 +27,13 @@ class ProductController extends BaseController
         ];
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }
+    public function renderDetailPage()
+    {
+        $data["title"] = "Detail";
+        $data["cssFiles"] = [
+            "css/customer/commons/breadcum.css",
+            "css/customer/detailpage/detailpage.css",
+        ];
+        $this->load->view("layouts/client", "client/shoppage/detailpage", $data);
+    }
 }

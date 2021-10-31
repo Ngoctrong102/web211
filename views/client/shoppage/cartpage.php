@@ -33,18 +33,22 @@
                       <th class="pro-remove">Remove</th>
                      </tr>                    
                     </thead>
+
+                    <?php foreach ($cartproducts as $cartproduct){ ?>
+         
+       
                     <tbody>
                         <tr>
-                        <td class="pro-image"><a href="#"><img src="public/images/e71.jpg"/></a></td>
-                        <td class="pro-title"><a href="#">title</a></td>
-                        <td class="pro-price"><span class="price">price</span></td>
+                        <td class="pro-image"><a href="#"><img src="<?php echo $cartproduct["thumbnails"] ?>"/></a></td>
+                        <td class="pro-title"><a href="#"><?php echo $cartproduct["name"] ?></a></td>
+                        <td class="pro-price"><span class="price"><?php echo $cartproduct["price"] ?></span></td>
                         <td class="pro-quantity"><div class="product-quantity">
-                                                  <input type="text" value="1" name="updates[]">
+                                                  <input type="text" value="<?php echo $cartproduct["quantity"] ?>" name="updates[]">
                                                   <div><a href="#" class="inc-btn"><span class="inc">+</span></a>
                                                        <a href="#" class="dec-btn"><span class="dec">-</span></a></div>
                                                  </div>
                         </td>
-                        <td class="pro-total"><span class="total">350000</span></td>
+                        <td class="pro-total"><span class="total"><?php echo $cartproduct["price"]*$cartproduct["quantity"] ?></span></td>
                         <td class="pro-remove"><a href="#"><span class="material-icons-outlined">
                                                                delete_forever
                                                            </span>
@@ -52,6 +56,7 @@
                         </td>  
                         </tr>
                     </tbody>
+                    <?php } ?>
                 </table>
             </div>
         </form>

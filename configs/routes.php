@@ -23,7 +23,7 @@ $routes = array(
         "roles" => ["all"]
     ),
     "cart" => array(
-        "handler" => "user/renderShoppingCart",
+        "handler" => "cart/renderShoppingCart",
         "roles" => ["all"]
     ),
     "logout" => array(
@@ -32,6 +32,10 @@ $routes = array(
     ),
     "shop" => array(
         "handler" => "customer/product/renderHomeShop",
+        "roles" => ["all"]
+    ),
+    "shop/detail" => array(
+        "handler" => "customer/product/renderDetailPage",
         "roles" => ["all"]
     ),
     "account" => array(
