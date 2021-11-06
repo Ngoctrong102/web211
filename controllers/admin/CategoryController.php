@@ -34,7 +34,13 @@ class CategoryController extends BaseController
 
         $data["cssFiles"] = [
             "css/admin/form.css",
-            "css/admin/categories/add_category/form.css"
+            "css/admin/categories/add_category/form.css",
+            "css/admin/products/add_product/thumbnails.css",
+        ];
+        $data["specialJs"] = '<script src="/plugins/ckfinder/ckfinder.js"></script>';
+
+        $data["jsFiles"] = [
+            "js/admin/products/add_product/choose_thumbnails.js",
         ];
 
         $this->load->view("layouts/admin", "admin/category/add_category", $data);
@@ -42,7 +48,7 @@ class CategoryController extends BaseController
 
     public function addNewCategory()
     {
-        $category["title"] = $_POST["title"];
+        $category = $_POST;
         $this->category->insertNewCategory($category);
         header("Location: /admin/categories");
     }
@@ -53,9 +59,14 @@ class CategoryController extends BaseController
 
         $data["cssFiles"] = [
             "css/admin/form.css",
-            "css/admin/categories/add_category/form.css"
+            "css/admin/categories/add_category/form.css",
+            "css/admin/products/add_product/thumbnails.css",
         ];
+        $data["specialJs"] = '<script src="/plugins/ckfinder/ckfinder.js"></script>';
 
+        $data["jsFiles"] = [
+            "js/admin/products/add_product/choose_thumbnails.js",
+        ];
         $data["category"] = $this->category->getCategoryById($id);
 
         $this->load->view("layouts/admin", "admin/category/edit_category", $data);

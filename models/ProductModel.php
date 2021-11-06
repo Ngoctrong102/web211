@@ -64,7 +64,7 @@ class ProductModel extends BaseModel
         $rows = $stmt->fetchAll();
         if (isset($rows[0])) {
             $product = $rows[0];
-            $stmt = $this->conn->prepare("SELECT id, title FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt = $this->conn->prepare("SELECT id, title, thumbnails FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute(array(
                 "productId" => $product["id"]

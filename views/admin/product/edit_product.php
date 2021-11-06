@@ -12,7 +12,7 @@
             <h4 class="title">Edit product</h4>
         </div>
         <div class="subview-content">
-            <form action="/admin/products/editProduct/<?php echo $product["id"];?>" method="POST" class="add-product-form">
+            <form action="/admin/products/editProduct/<?php echo $product["id"]; ?>" method="POST" class="add-product-form">
                 <div class="row">
                     <div class="col-3 thumbnails-wrapper">
                         <img src="<?php echo $product["thumbnails"]; ?>" id="thumbnails-img" alt="">
@@ -27,7 +27,7 @@
                         <div style="display: flex; margin-bottom: 15px;">
                             <label class="label">Description</label>
                             <div class="cover-input">
-                                <textarea class="form-control" placeholder="Description" rows="5" name="description" ><?php echo $product["description"]; ?></textarea>
+                                <textarea class="form-control" placeholder="Description" rows="5" name="description"><?php echo $product["description"]; ?></textarea>
                             </div>
                         </div>
                         <div class="input-flex">
@@ -65,7 +65,7 @@
                     <div class="images">
                         <?php foreach ($product["images"] as $image) { ?>
                             <div class="image">
-                                <button class="delete-btn error-bg" data-image-url=""><i class="fas fa-times"></i></button>
+                                <button class="delete-btn error-bg" data-image-url="<?php echo $image["image_url"]; ?>"><i class="fas fa-times"></i></button>
                                 <img src="<?php echo $image["image_url"]; ?>" alt="">
                             </div>
                         <?php } ?>
@@ -74,8 +74,8 @@
                         </button>
                     </div>
                     <textarea type="text" name="product_images" id="product_images_input"><?php echo join(":_:_:", array_map(function ($image) {
-                            return $image["image_url"];
-                        }, $product["images"])); ?></textarea>
+                                                                                                return $image["image_url"];
+                                                                                            }, $product["images"])); ?></textarea>
                 </div>
                 <div class="input-flex right">
                     <a role="button" href="/admin/products" class="error-bg border-radius">Cancel</a>
