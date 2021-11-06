@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th style="width: 100px;">Category thumbnails</th>
                     <th>Category title</th>
                     <th style="text-align: center;">Actions</th>
                 </tr>
@@ -23,6 +24,7 @@
                 <?php foreach ($categories as $category) { ?>
                     <tr>
                         <td><?php echo $category["id"]; ?></td>
+                        <td><img style="width: 100px;" src="<?php echo $category["thumbnails"]; ?>" alt=""></td>
                         <td><?php echo $category["title"]; ?></td>
                         <td style="text-align: center;">
                             <div class="btn-group" style="border: 1px solid #1b2c3f; border-radius: .26rem">
