@@ -1,8 +1,30 @@
 create table category
 (
-    id    int auto_increment
+    id         int auto_increment
         primary key,
-    title varchar(256) not null
+    title      varchar(256) not null,
+    thumbnails varchar(255) null
+);
+
+create table comment_news
+(
+    id         int auto_increment
+        primary key,
+    user_id    int                                 null,
+    news_id    int                                 null,
+    content    varchar(255)                        null,
+    created_at timestamp default CURRENT_TIMESTAMP null
+);
+
+create table news
+(
+    id          int auto_increment
+        primary key,
+    title       varchar(255)                        null,
+    thumbnails  varchar(255)                        null,
+    content     text                                null,
+    description varchar(255)                        null,
+    created_at  timestamp default CURRENT_TIMESTAMP null
 );
 
 create table unit
@@ -40,9 +62,10 @@ create table product_category
 
 create table product_image
 (
+    id         int auto_increment
+        primary key,
     product_id int          not null,
     image_url  varchar(256) not null,
-    primary key (product_id, image_url),
     constraint fk_product_image_product_id
         foreign key (product_id) references product (id)
 );
@@ -51,13 +74,13 @@ create table user
 (
     id         int auto_increment
         primary key,
-    email      varchar(100)               not null,
-    password   varchar(256)               not null,
-    first_name varchar(10)                not null,
-    last_name  varchar(20)                not null,
-    avatar     varchar(256)               null,
-    phone      varchar(15)                null,
-    role       enum ('admin', 'customer') not null,
+    email      varchar(100)                                             not null,
+    password   varchar(256)                                             not null,
+    first_name varchar(10)                                              not null,
+    last_name  varchar(20)                                              not null,
+    avatar     varchar(256) default '/public/images/default_avatar.jpg' null,
+    phone      varchar(15)                                              null,
+    role       enum ('admin', 'customer')                               not null,
     constraint uc_user_email
         unique (email)
 );
@@ -112,4 +135,5 @@ create table product_order
     constraint fk_product_order_unit_id
         foreign key (unit_id) references unit (id)
 );
+
 
