@@ -75,7 +75,7 @@ class ProductModel extends BaseModel
 
         // return $products;
 
-        $stmt = $this->conn->prepare("SELECT * FROM product");
+        $stmt = $this->conn->prepare("SELECT * FROM product ORDER BY id LIMIT 12");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         $products = $stmt->fetchAll();
@@ -89,6 +89,33 @@ class ProductModel extends BaseModel
         }
         return $products;
     }
+
+    public function getNewCategoryHome()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM product ORDER BY id DESC LIMIT 12");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $stmt = $this->conn->prepare("SELECT * FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $products[$i]["id"]
+            ));
+            $products[$i]["categories"] = $stmt->fetchAll();
+        }
+        return $products;
+    }
+
+    public function loadTittleImgCate()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM category");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+        return $products;
+    }
+
     public function getProductById($id)
     {
         $stmt = $this->conn->prepare("SELECT *,product.id as id, unit.title as unit_title, unit.id as unit_id FROM (product JOIN unit ON product.unit_id = unit.id) WHERE product.id = :id");

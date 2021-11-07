@@ -205,8 +205,20 @@ li {
     object-fit: cover;
 }
 
+.home-page-code .product .imgNews {
+    position: relative;
+    cursor: pointer;
+}
+
+.home-page-code .product .imgNews img {
+    width: 310px;
+    height: 200px;
+    object-fit: cover;
+}
+
 .home-page-code .product .img-seller img {
-    width: 100%;
+    width:  158px;
+    height: 158px;
     display: block;
     object-fit: cover;
     /* vertical-align: middle; */
@@ -685,10 +697,10 @@ li {
 
 .home-page-code .product .next-img .name-bottom a {
     margin: 0 0 8px;
-    font-weight: inherit;
-    font-size: 16px;
+    font-weight:normal;
+    font-size: 18px;
     font-family: 'Karla', sans-serif;
-    color: #222222;
+    color: #333;
     transition: all 200ms ease-in-out;
 }
 
