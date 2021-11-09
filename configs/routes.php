@@ -82,6 +82,10 @@ $routes = array(
         "handler" => "customer/news/loadComments",
         "roles" => ["all"]
     ),
+    "contact" => array(
+        "handler" => "customer/contact/renderPageContact",
+        "roles" => ["all"]
+    ),
 
     // admin
     "admin" => array(
