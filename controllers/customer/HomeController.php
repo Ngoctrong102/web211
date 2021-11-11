@@ -5,6 +5,7 @@ class HomeController extends BaseController
     {
         parent::__construct();
         $this->load->model("product");
+        $this->load->model("cart");
     }
 
     public function renderHomePage()
@@ -22,12 +23,13 @@ class HomeController extends BaseController
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.css"/>';
 
-        $data["specialJs"] ='
+        $data["specialJs"] = '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.js"></script>
         ';
         $data["jsFiles"] = [
             "js/customer/homepage/homepage.js",
         ];
+        $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/homepage/homepage", $data);
     }
 }

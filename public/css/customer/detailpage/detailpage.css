@@ -1,16 +1,95 @@
-*{
+* {
     box-sizing: border-box;
 }
-.content{
-    display: flex;
-}
-.col1{
-    width: 50%;
-}
-.col2{
-    width: 50%;
-}
-.detail-info{
-  display: flex;
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.column1 {
+    width: 50%;
+}
+
+.column2 {
+    width: 50%;
+    font-family: sans-serif;
+}
+
+.buy {
+    border: 1px solid rgb(112, 177, 0);
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(112, 177, 0);
+    text-align: center;
+    padding: 10px;
+    width: 300px;
+}
+
+a:link.category,
+a:visited.category {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover.category,
+a:active.category {
+    color: green;
+}
+
+.yellow {
+    background-color: yellow;
+    width: 30px;
+    height: 30px;
+}
+
+.gray {
+    background-color: gray;
+    width: 30px;
+    height: 30px;
+}
+
+.aqua {
+    background-color: aqua;
+    width: 30px;
+    height: 30px;
+}
+
+.brown {
+    background-color: brown;
+    width: 30px;
+    height: 30px;
+}
+
+.purple {
+    background-color: purple;
+    width: 30px;
+    height: 30px;
+}
+
+.addbutton {
+    border: 1px solid rgb(112, 177, 0);
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(112, 177, 0);
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 10px;
+}
+
+input[type=number] {
+    padding: 10px;
+}
+.content{
+    padding: 0 0 50px 0;
+}
+form#qt{
+    height: 68px;
+    padding: 10px 0;
+}
+#quantity:focus{
+  outline: none;
+}
+#quantity{
+    height: 46px;
 }

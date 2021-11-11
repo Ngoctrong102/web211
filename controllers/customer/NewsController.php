@@ -5,6 +5,7 @@ class NewsController extends BaseController
     {
         parent::__construct();
         $this->load->model("news");
+        $this->load->model("cart");
     }
 
     public function renderAllNews()
@@ -19,6 +20,7 @@ class NewsController extends BaseController
         ];
 
         $data["list_news"] = $this->news->getAllNews();
+        $data["cartproducts"] = $this->cart->getAllProducts();
         $this->load->view("layouts/client", "client/news/list_news", $data);
     }
 
@@ -48,6 +50,7 @@ class NewsController extends BaseController
         $data["comments"] = $this->commentNews->loadCommentsOfNews($id, $pagination);
         $this->load->model("user");
         $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
+        $data["cartproducts"] = $this->cart->getAllProducts();
         $this->load->view("layouts/client", "client/news/news_details", $data);
     }
 
