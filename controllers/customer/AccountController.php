@@ -6,6 +6,7 @@ class AccountController extends BaseController
         parent::__construct();
         $this->load->model("user");
         $this->load->model("address");
+        $this->load->model("cart");
     }
 
     public function renderAccountPage()
@@ -23,8 +24,9 @@ class AccountController extends BaseController
             "js/customer/myaccount/information.js",
             "js/customer/myaccount/avatar.js"
         ];
+        $data["title"] = "My Account";
 
-
+        $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $user = $this->user->findUserById($_SESSION["user_id"]);
         $user["addresses"] = $this->address->findAllAddressOfUser($_SESSION["user_id"]);
         $data["user"] = $user;

@@ -26,16 +26,52 @@ $routes = array(
         "handler" => "cart/renderShoppingCart",
         "roles" => ["all"]
     ),
+    "cart/setQuantity" => array(
+        "handler" => "cart/setQuantity",
+        "roles" => ["all"]
+    ),
+    "cart/productDeleted/:num(id)" => array(
+        "handler" => "cart/ProductDeleted",
+        "roles" => ["all"]
+    ),
+    "orderproduct" => array(
+        "handler" => "order/renderOrderProductPage",
+        "roles" => ["all"]
+    ),
+    "order/:num(id)" => array(
+        "handler" => "order/addOrder",
+        "roles" => ["all"]
+    ),
+    "order" => array(
+        "handler" => "order/renderOrderPage",
+        "roles" => ["all"]
+    ),
+    "order/orderedit/:num(order_id)" => array(
+        "handler" => "order/renderOrderEditPage",
+        "roles" => ["all"]
+    ),
+    "order/:num(address_id)/:num(order_id)" => array(
+        "handler" => "order/orderUpdated",
+        "roles" => ["all"]
+    ),
+    "order/orderDeleted/:num(id)" => array(
+        "handler" => "order/orderDeleted",
+        "roles" => ["all"]
+    ),
+    "detail/:num(id)" => array(
+        "handler" => "customer/product/renderDetailPage",
+        "roles" => ["all"]
+    ),
+    "detail/addtocart" => array(
+        "handler" => "customer/product/addToCart",
+        "roles" => ["all"]
+    ),
     "logout" => array(
         "handler" => "user/logout",
         "roles" => ["all"]
     ),
     "shop" => array(
         "handler" => "customer/product/renderHomeShop",
-        "roles" => ["all"]
-    ),
-    "shop/detail" => array(
-        "handler" => "customer/product/renderDetailPage",
         "roles" => ["all"]
     ),
     "account" => array(
