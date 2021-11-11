@@ -27,7 +27,15 @@ class ProductController extends BaseController
         $data["jsFiles"] = [
             "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
+<<<<<<< HEAD
+        $pagination = array(
+            "size" => 9,
+            "page" => isset($_GET["page"]) ? $_GET["page"] : 0
+        );
+        $data["products"] = $this->product->getAllProducts($pagination);
+=======
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
+>>>>>>> master
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }
     public function renderDetailPage($id)
