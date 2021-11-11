@@ -6,6 +6,7 @@ class HomeController extends BaseController
         parent::__construct();
         $this->load->model("product");
         $this->load->model("cart");
+        $this->load->model("news");
     }
 
     public function renderHomePage()
@@ -19,6 +20,9 @@ class HomeController extends BaseController
         ];
 
         $data["categoryhomeCus"] = $this->product->getAllCategoryHomeCus();
+        $data["newCategoryHome"] = $this->product->getNewCategoryHome();
+        $data["loadTittleImgCate"] = $this->product->loadTittleImgCate();
+        $data["loadNewsHomePage"] = $this->news->getAllNews();
         $data["specialCss"] = '
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.css"/>';

@@ -125,7 +125,7 @@
                                 </ul>
                             </li>
                             <li><a href="/news">BLOG</a></li>
-                            <li><a href="#">CONTACT</a></li>
+                            <li><a href="/contact">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>

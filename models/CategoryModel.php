@@ -8,7 +8,7 @@ class CategoryModel extends BaseModel
 
     public function insertNewCategory($category)
     {
-        $stmt = $this->conn->prepare('INSERT INTO category(title) values(:title)');
+        $stmt = $this->conn->prepare('INSERT INTO category(thumbnails,title) values(:thumbnails,:title)');
         $result = $stmt->execute($category);
         return $result ? $this->conn->lastInsertId() : -1;
     }
@@ -35,7 +35,7 @@ class CategoryModel extends BaseModel
     public function editCategory($id, $category)
     {
         $category["id"] = $id;
-        $stmt = $this->conn->prepare('UPDATE category SET title = :title WHERE id = :id');
+        $stmt = $this->conn->prepare('UPDATE category SET title = :title, thumbnails = :thumbnails WHERE id = :id');
         return $stmt->execute($category);
     }
     public function deleteById($id)
