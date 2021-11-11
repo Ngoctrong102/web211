@@ -200,4 +200,33 @@ class ProductModel extends BaseModel
             "id" => $id
         ));
     }
+    public function getProductForDetail($id)
+    {
+        $stmt = $this->conn->prepare("SELECT *, product.id as product_id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        $rows = $stmt->fetchAll();
+        if (isset($rows[0])) {
+            return $rows[0];
+        } else return null;
+    }
+    public function addToCart($user_id, $product_id, $quantity)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO product_cart(user_id, product_id, quantity) VALUES(:user_id, :product_id, :quantity) ON DUPLICATE KEY UPDATE quantity = :quantity + quantity");
+        return $stmt->execute(array(
+            "product_id" => $product_id,
+            "quantity" => $quantity,
+            "user_id" => $user_id
+        ));
+    }
+    public function getCurrentProduct($product_id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM (product JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
+        $stmt->execute(array(
+            "id" => $product_id,
+        ));
+        return $stmt->fetchAll();
+    }
 }

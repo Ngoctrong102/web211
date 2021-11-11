@@ -257,9 +257,10 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail {
-    height: 80px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
+    padding: 10px 0;
 }
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div.total{
     height: 30px;
