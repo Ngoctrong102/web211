@@ -127,15 +127,16 @@
                     </div>
                 </div>
                 <div class="grid-products row grid" style="margin: 0px;">
-                    <?php for ($i = 0; $i < 9; $i++) { ?>
+                    <?php foreach ($products as $product) { ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 p-0">
                             <div class="card-product">
                                 <div class="image">
                                     <a href="#">
-                                        <span class="badge">Soldout</span>
-                                        <img class="mini_img" src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/01_large.png?v=1543646110" alt="11. Product with video">
+                                        <?php if ($product["quantity"] == 0) { ?>
+                                            <span class="badge">Soldout</span>
+                                        <?php } ?>
+                                        <img class="mini_img" src="<?php echo $product["thumbnails"]; ?>" alt="11. Product with video">
                                     </a>
-
                                     <div class="product-hover-icons">
                                         <a class="cart-disable cart_btn" data-tooltip="Add to cart">
                                             <span class="icon">
@@ -165,12 +166,13 @@
                                 </div>
                                 <div class="product-content">
                                     <div class="product-categories">
-                                        <a href="#">Beans</a>,
-                                        <a href="#">Birds</a>
+                                        <?php echo join(", ", array_map(function ($category){
+                                            return '<a href="/">'.$category["title"].'</a>';
+                                        },$product["categories"]) ); ?>
                                     </div>
                                     <h3 class="product-title"><a href="#">11. Đậu cô que</a></h3>
                                     <div class="price-box">
-                                        <span class="price" data-currency-usd="$39.00">$39.00</span>
+                                        <span class="price" data-currency-usd="$39.00"><?php echo $product["price"] ?>đ</span>
                                         <span class="main-price" data-currency-usd="$39.00">$39.00</span>
                                     </div>
                                 </div>

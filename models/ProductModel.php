@@ -6,9 +6,13 @@ class ProductModel extends BaseModel
         parent::__construct();
     }
 
-    public function getAllProducts()
+    public function getAllProducts($pagination = null)
     {
-        $stmt = $this->conn->prepare("SELECT *,product.id as id, unit.title as unit_title FROM (product JOIN unit ON product.unit_id = unit.id)");
+        $sql = "SELECT *,product.id as id, unit.title as unit_title FROM (product JOIN unit ON product.unit_id = unit.id)";
+        if (isset($pagination)){
+            $sql .= " LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        } 
+        $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         $products = $stmt->fetchAll();

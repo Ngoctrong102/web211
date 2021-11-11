@@ -4,6 +4,7 @@ class ProductController extends BaseController
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("product");
     }
 
     public function renderHomeShop()
@@ -25,6 +26,11 @@ class ProductController extends BaseController
         $data["jsFiles"] = [
             "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
+        $pagination = array(
+            "size" => 9,
+            "page" => isset($_GET["page"]) ? $_GET["page"] : 0
+        );
+        $data["products"] = $this->product->getAllProducts($pagination);
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }
     public function renderDetailPage()
