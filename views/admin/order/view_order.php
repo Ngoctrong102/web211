@@ -13,7 +13,7 @@
 
             <div class="actions">
                 <?php if ($order["status"] == "Processing") { ?>
-                    <a class="btn bg-error" role="button" href="/admin/products/add">Cancel</a>
+                    <a class="btn bg-error" role="button" href="/admin/orders/cancel/<?php echo $order["id"]; ?>">Cancel</a>
                     <a class="btn" role="button" href="/admin/orders/deliver/<?php echo $order["id"]; ?>">Delivered</a>
                 <?php } else { ?>
                     <a class="btn" role="button" href="/admin/orders">Back</a>
