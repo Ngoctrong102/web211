@@ -231,6 +231,21 @@ $routes = array(
     "admin/news/delete/:num(id)" => array(
         "handler" => "admin/news/deleteNews",
         "roles" => ["all"]
-    )
-
+    ),
+    "admin/orders" => array(
+        "handler" => "admin/order/renderAllOrder",
+        "roles" => ["all"]
+    ),
+    "admin/orders/:num(id)" => array(
+        "handler" => "admin/order/renderDetail",
+        "roles" => ["all"]
+    ),
+    "admin/orders/deliver/:num(id)" => array(
+        'handler' => "admin/order/deliverOrder",
+        "roles" => ["all"]
+    ),
+    "admin/orders/cancel/:num(id)" => array(
+        'handler' => "admin/order/cancelOrder",
+        "roles" => ["all"]
+    ) 
 );

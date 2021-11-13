@@ -19,7 +19,7 @@ class UserController extends BaseController
 
     public function renderRegisterForm()
     {
-        $data["title"] = "Login";
+        $data["title"] = "Register";
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/register/register-form.css",
@@ -36,13 +36,29 @@ class UserController extends BaseController
     }
     public function login()
     {
+        $data["title"] = "Login";
+        $data["cssFiles"] = [
+            "css/customer/commons/breadcum.css",
+            "css/customer/login/login-form.css",
+        ];
         $user = $this->user->findUserByEmail($_POST["email"]);
+        $data["email"] = $_POST["email"];
         if ($user) {
-            if ($user["password"] = password_hash($_POST["password"], PASSWORD_BCRYPT, array("cost" => 12))) {
+            if (password_verify($_POST["password"],$user["password"])) {
                 $_SESSION["user_id"] = $user["id"];
                 $_SESSION["role"] = $user["role"];
                 header("Location: /");
+            } else {
+                $data["error"] = [
+                    "password" => "Mật khẩu không đúng"
+                ];
+                $this->load->view("layouts/client", "account/login", $data);
             }
+        } else {
+            $data["error"] = [
+                "email" => "Email chưa đăng ký"
+            ];
+            $this->load->view("layouts/client", "account/login", $data);
         }
     }
     public function logout()
