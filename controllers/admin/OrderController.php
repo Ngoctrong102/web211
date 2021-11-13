@@ -47,7 +47,7 @@ class OrderController extends BaseController {
         header("Location: /admin/orders");
     }
 
-    public function cancleOrder($id)
+    public function cancelOrder($id)
     {
         $status = "Canceled";
         $this->order->updateStatus($id, $status);

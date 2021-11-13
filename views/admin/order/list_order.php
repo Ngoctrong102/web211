@@ -38,8 +38,8 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="/admin/orders/<?php echo $order["id"]; ?>">Detail</a></li>
-                                    <li><a class="dropdown-item" href="/admin/orders/delete/<?php echo $order["id"]; ?>">Delivered</a></li>
-                                    <li><a class="dropdown-item" href="/admin/orders/delete/<?php echo $order["id"]; ?>">Cancle</a></li>
+                                    <li><a class="dropdown-item" href="/admin/orders/deliver/<?php echo $order["id"]; ?>">Delivered</a></li>
+                                    <li><a class="dropdown-item" href="/admin/orders/cancel/<?php echo $order["id"]; ?>">Cancel</a></li>
                                 </ul>
                             </div>
                         </td>
