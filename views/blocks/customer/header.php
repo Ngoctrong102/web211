@@ -3,12 +3,6 @@
         <div class="container">
             <div id="header-row">
                 <div id="currency">
-                    <!--<div><a><span id="currency-active"></span><i style="font-size: 10px; height:10px; width:10px" class="fa fa-chevron-down"></i></a>
-                        <ul id="currency-unit">
-                            <li onclick="changeUnittoVND()"><a class="unit">VNĐ</a></li>
-                            <li onclick="changeUnittoUSD()"><a class="unit">USD</a></li>
-                        </ul>
-                    </div>-->
                     Welcome!
                 </div>
 
@@ -16,10 +10,12 @@
                 <div id="header-top-menu">
                     <ul>
                         <li><a class="top_menu" href="/account">My Account</a></li>
-                        <li><a class="top_menu" href="#">Wishlist</a></li>
-                        <li><a class="top_menu" href="#">Checkout</a></li>
+                        <?php if (isset($_SESSION["user_id"])) { ?>
+                            <li><a class="top_menu" href="/logout">Logout</a></li>
+                        <?php } else { ?>
                         <li><a class="top_menu" href="/login">Sign in</a></li>
                         <li><a class="top_menu" href="/register">Register</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -32,7 +28,7 @@
                 <!--logo-->
                 <div id="cover-logo">
                     <div id="logo">
-                        <a href="#"><img alt="logo" src="/public/images/headerlogo.png" /></a>
+                        <a href="/"><img alt="logo" src="/public/images/goodfdlogo.png" /></a>
                     </div>
                 </div>
                 <!--right bar-->

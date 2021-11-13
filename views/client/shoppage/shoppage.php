@@ -131,7 +131,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 p-0">
                             <div class="card-product">
                                 <div class="image">
-                                    <a href="#">
+                                    <a href="/detail/<?php echo $product["id"]?>">
                                         <?php if ($product["quantity"] == 0) { ?>
                                             <span class="badge">Soldout</span>
                                         <?php } ?>

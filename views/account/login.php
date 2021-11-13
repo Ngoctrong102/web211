@@ -22,12 +22,18 @@
             <p>Please login using account detail bellow</p>
         </div>
         <div class="login-form">
-            <form action="user/login" method="POST">
+            <form action="/user/login" method="POST">
                 <div class="form-group">
-                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="email" name="email" id="email" placeholder="Email" value="<?php echo  isset($email) ? $email : ""; ?>">
+                    <?php if (isset($error["email"])) { ?>
+                        <small style="color:red; margin-left:15px"><?php echo $error["email"]; ?></small>
+                    <?php } ?>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" id="password" placeholder="Password">
+                    <?php if (isset($error["password"])) { ?>
+                        <small style="color:red; margin-left:15px"><?php echo $error["password"]; ?></small>
+                    <?php } ?>
                 </div>
                 <div class="_row">
                     <button type="submit">

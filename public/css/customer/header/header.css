@@ -1,26 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
-
 * {
     box-sizing: border-box;
 }
-div#header{
+
+div#header {
     font-family: "Karla", sans-serif;
     width: 100%;
     box-shadow: 0 2px 5px 0 rgba(75, 74, 74, 0.2), 0 2px 10px 0 rgba(59, 59, 59, 0.19);
 }
+
 div#header-top {
     width: 100%;
     height: 44px;
     background-color: #f5f5f5;
     padding: 10px 0px;
 }
-div#header-row{
+
+div#header-row {
     width: 100%;
     display: flex;
     justify-content: center;
     height: 24px;
     margin: 0 auto;
 }
+
 div#currency {
     height: 24px;
     width: 50%;
@@ -35,6 +38,7 @@ div#currency div {
     width: max-content;
     cursor: pointer;
 }
+
 div#currency div a i {
     margin-left: 2px;
 }
@@ -56,9 +60,8 @@ div#currency ul#currency-unit {
     height: auto;
     visibility: hidden;
     background-color: white;
-    margin-top: 8px ;
+    margin-top: 8px;
     position: absolute;
-    
 }
 
 div#currency ul#currency-unit li {
@@ -87,9 +90,9 @@ div#currency div:hover ul#currency-unit {
 }
 
 div#header-top-menu {
-   margin: 0;
-   height: 24px;
-   width: 50%;
+    margin: 0;
+    height: 24px;
+    width: 50%;
 }
 
 div#header-top-menu ul {
@@ -124,7 +127,8 @@ div#header-bottom {
     height: 142px;
     background-color: #fff;
 }
-div.header-bottom-content{
+
+div.header-bottom-content {
     display: flex;
 }
 
@@ -166,7 +170,8 @@ div#header-bottom div#cover-right div#cover-right-top div#phone {
     height: 80px;
     min-width: 168px;
 }
-div#header-bottom div#cover-right div#cover-right-top div#phone p{
+
+div#header-bottom div#cover-right div#cover-right-top div#phone p {
     margin: auto 0;
     line-height: 25px;
 }
@@ -215,19 +220,23 @@ div#header-bottom div#cover-right div#cover-right-top div#search form button {
     background-color: #70B100;
     padding: 8px 7px;
 }
+
 button:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart {
-    height: 80px;padding: 10px 0;
+    height: 80px;
+    padding: 10px 0;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects {
     height: 60px;
     direction: rtl;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects a#icon{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects a#icon {
     margin: 0;
 }
 
@@ -239,6 +248,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
     line-height: 60px;
     margin: 10px 0 0 0;
 }
+
 div#header-bottom div#cover-right div#cover-right-top div#cart ul {
     direction: ltr;
     visibility: hidden;
@@ -251,6 +261,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects:hover ul {
     visibility: visible;
     transition: all 0.2s ease-in-out 0s, visibility 0s linear 0.2s, z-index 0s linear 0.01s;
@@ -262,37 +273,43 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-det
     justify-content: space-between;
     padding: 10px 0;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div.total{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div.total {
     height: 30px;
     display: flex;
     justify-content: space-between;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div span#price-total{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div span#price-total {
     height: 30px;
     width: 40px;
     font-size: 16px;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button {
     height: max-content;
     margin: 0;
     padding: 5px 5px;
     display: flex;
     justify-content: center;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p {
     height: auto;
     margin: 0;
     padding: 5px 5px;
     width: 100%;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a {
     height: 50px;
     margin: 0px;
     border: 0.2pt solid #aaaaaa;
     padding: 5px 5px;
     width: 100%;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a span{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a span {
     line-height: 40px;
     height: 40px;
     margin: 0;
@@ -301,31 +318,34 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
     width: 100%;
     text-align: center;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover {
     background-color: #70B100;
-   
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover span{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover span {
     color: white;
 }
+
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p.pro {
     height: 35px;
     line-height: 40px;
     font-size: 14px;
-    margin:  0 0 0 10px;
+    margin: 0 0 0 10px;
 }
-.remove span:hover{
+
+.remove span:hover {
     cursor: pointer;
     color: #70b100;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail img {
-  
     width: 70px;
     height: 70px;
     border-radius: 5px;
 }
-div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p.pro-price{
+
+div#header-bottom div#cover-right div#cover-right-top div#cart ul li.product-detail p.pro-price {
     line-height: 100px;
     width: 30%;
     text-align: right;
@@ -335,7 +355,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div img {
     float: left;
 }
 
-div#header-bottom div#cover-right div#cover-right-top div#cart a span:hover{
+div#header-bottom div#cover-right div#cover-right-top div#cart a span:hover {
     color: #70b100;
 }
 
@@ -359,8 +379,7 @@ div#cover-right-bottom {
     min-width: 853px;
 }
 
-
-div#cover-right-bottom > ul {
+div#cover-right-bottom>ul {
     margin: 0px 0px 0px 5%;
     display: flex;
     margin: 0;
@@ -373,12 +392,14 @@ div#cover-right-bottom ul li {
     width: 8%;
     margin-right: 3%;
 }
-div#cover-right-bottom ul li i.fa.fa-chevron-down{
-    font-size: 10px; 
-    height: auto; 
-    width: auto; 
+
+div#cover-right-bottom ul li i.fa.fa-chevron-down {
+    font-size: 10px;
+    height: auto;
+    width: auto;
     margin: 0
 }
+
 div#cover-right-bottom ul li:hover ul.direction {
     visibility: visible;
     transition: all 0.2s ease-in-out 0s, visibility 0s linear 0.2s, z-index 0s linear 0.01s;
@@ -391,7 +412,7 @@ div#cover-right-bottom ul li ul.direction {
     visibility: hidden;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    position:relative;
+    position: relative;
 }
 
 div#cover-right-bottom ul li ul.direction li {
@@ -428,34 +449,36 @@ div#cover-right-bottom ul li a i {
 div#contact-ways {
     height: 210px;
 }
+
 @media only screen and (max-width: 1040px) {
-    div#currency{
+    div#currency {
         width: 40%;
     }
-    div#header-top-menu{
+    div#header-top-menu {
         width: 60%;
     }
-    div#header{
+    div#header {
         overflow: visible;
     }
- }
- @media only screen and (max-width: 768px) {
-    div#header{
+}
+
+@media only screen and (max-width: 768px) {
+    div#header {
         overflow: visible;
     }
-     div#currency{
-         width: 25%;
-     }
-     div#phone{
-         min-width: 30%;
-     }
-     div#search{
-         margin-left: 50px;
-     }
-     div#header-top-menu{
-         width: 75%;
-     }
-     div#cover-right-bottom{
-         display: none;
-     }
- }
+    div#currency {
+        width: 25%;
+    }
+    div#phone {
+        min-width: 30%;
+    }
+    div#search {
+        margin-left: 50px;
+    }
+    div#header-top-menu {
+        width: 75%;
+    }
+    div#cover-right-bottom {
+        display: none;
+    }
+}
