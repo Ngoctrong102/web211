@@ -1,0 +1,23 @@
+ /*.messageJust1line{
+    text-align: justify;
+    line-height: 1.6em;
+    height: calc(1.6em*2.6);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+ 
+   
+}
+/* .titleJust1line{
+    text-align: justify;
+    line-height: 1.6em;
+    height: calc(1.6em*2.6);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+} */ 
+

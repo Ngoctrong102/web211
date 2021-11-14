@@ -59,32 +59,32 @@
                 <div class="titleContact">
                     <span>Tell Us Your Message</span>
                 </div>
-                <form action="post" class="formContact">
+                <form action="contact/addnewcontact" method="POST" class="formContact">
                     <div class="inputform">
                         <div class="nametext">
                             <span>Your Name</span> 
                         </div>
-                        <input type="text">
+                        <input type="text" name="name">
                     </div>
                     <div class="inputform">
                         <div class="nametext">
                             <span>Your Email</span>
                         </div>
-                        <input type="text">
+                        <input type="text" name="email">
                     </div>
                     <div class="inputform">
                         <div class="nametext">
                             <span>Title</span>
                         </div>  
-                        <input type="text">
+                        <input type="text" name="title">
                     </div>
                     <div class="inputMess">
                         <div class="nametext">
                             <span>Your Message</span> 
                         </div>
-                        <textarea name="messContact" id="messContact" cols="30" rows="8"></textarea>
+                        <textarea  id="messContact" cols="30" rows="8" name="message"></textarea>
                     </div>
-                    <button>Send</button>
+                    <button type="submit">Send</button>
                 </form>
             </div>
             <div class="row3">
