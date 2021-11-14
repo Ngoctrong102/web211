@@ -79,4 +79,11 @@ class NewsModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
+    public function get6News()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM news ORDER BY id LIMIT 6");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
