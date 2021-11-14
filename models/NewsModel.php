@@ -49,4 +49,11 @@ class NewsModel extends BaseModel
         $result = $stmt->execute($comment);
         return $result ? $this->conn->lastInsertId() : -1;
     }
+    public function get6News()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM news ORDER BY id LIMIT 6");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
