@@ -243,7 +243,7 @@ class ProductModel extends BaseModel
     }
     public function getProductForDetail($id)
     {
-        $stmt = $this->conn->prepare("SELECT *, product.id as product_id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
+        $stmt = $this->conn->prepare("SELECT *, product.id as id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute(array(
             "id" => $id
@@ -267,6 +267,38 @@ class ProductModel extends BaseModel
         $stmt = $this->conn->prepare("SELECT * FROM (product JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
         $stmt->execute(array(
             "id" => $product_id,
+        ));
+        return $stmt->fetchAll();
+    }
+
+    public function addComment($comment)
+    {
+        $stmt = $this->conn->prepare('INSERT INTO comment_product(user_id, product_id, content, created_at) values(:user_id, :product_id, :content, :created_at)');
+        $result = $stmt->execute($comment);
+        return $result ? $this->conn->lastInsertId() : -1;
+    }
+
+    public function loadCommentsOfProduct($productId, $pagination)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_product.id AS id FROM (comment_product JOIN user ON comment_product.user_id = user.id ) WHERE comment_product.product_id = :productId ORDER BY comment_product.created_at DESC ";
+        if (isset($pagination)) {
+            $sql .= "LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("productId" => $productId));
+        return $stmt->fetchAll();
+    }
+
+    public function loadMoreCommentsOfProduct($productId, $lastCommentId)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_product.id AS id FROM (comment_product JOIN user ON comment_product.user_id = user.id ) WHERE comment_product.product_id = :productId AND  comment_product.id < :lastCommentId ORDER BY comment_product.created_at DESC ";
+        $sql .= "LIMIT 5";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "productId" => $productId,
+            "lastCommentId" => $lastCommentId
         ));
         return $stmt->fetchAll();
     }

@@ -50,12 +50,26 @@ class ProductController extends BaseController
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/detailpage/detailpage.css",
+            "css/customer/news/news_comment.css",
+            "libs/rateit.js-master/scripts/rateit.css",
         ];
         $data["jsFiles"] = [
             "js/customer/detailpage/detailpage.js",
+            "js/customer/product/comment.js",
+            "js/customer/product/rate.js",
+            "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
         $data["product"] = $this->product->getProductForDetail($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
+        $pagination = array(
+            "page" => 0,
+            "size" => 5
+        );
+        $data["comments"] = $this->product->loadCommentsOfProduct($id, $pagination);
+
+        $this->load->model("user");
+        $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
+
         $this->load->view("layouts/client", "client/shoppage/detailpage", $data);
     }
     public function addToCart()
@@ -71,6 +85,39 @@ class ProductController extends BaseController
             "productinfo" => $current_product
         ];
 
+        echo json_encode($response);
+    }
+
+    public function addComment()
+    {
+        $userId = $_SESSION["user_id"];
+        $now = (new DateTime())->format('Y-m-d H:i:s');
+        $comment = [
+            "user_id" => $userId,
+            "product_id" => $_POST["productId"],
+            "content" => $_POST["content"],
+            "created_at" => $now
+        ];
+        $this->product->addComment($comment);
+        $this->load->model("user");
+        $user = $this->user->findUserById($userId);
+
+        $comment["avatar"] = $user["avatar"];
+        $comment["username"] = $user["first_name"] . " " . $user["last_name"];
+        $comment["created_at"] = $now;
+
+        $response = [
+            "success" => true,
+            "comment" => $comment
+        ];
+        echo json_encode($response);
+    }
+
+    public function loadComments()
+    {
+        $productId = $_GET["productId"];
+        $lastCommentId = $_GET["lastCommentId"];
+        $response["comments"] = $this->product->loadMoreCommentsOfProduct($productId, $lastCommentId);
         echo json_encode($response);
     }
 }

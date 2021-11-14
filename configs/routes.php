@@ -130,6 +130,14 @@ $routes = array(
         "handler" => "customer/search/search",
         "roles" => ["all"]
     ),
+    "product/comment" => array(
+        "handler" => "customer/product/addComment",
+        "roles" => ["all"]
+    ),
+    "product/loadComments" => array(
+        "handler" => "customer/product/loadComments",
+        "roles" => ["all"]
+    ),
 
     // admin
     "admin" => array(

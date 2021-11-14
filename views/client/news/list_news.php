@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="breadcum">
+    <div class="breadcum" style="margin-bottom: 0px;">
         <ul>
             <li>
                 <a href="#">
@@ -19,127 +19,45 @@
 <div class="container">
     <div class="shoppage">
         <div class="row">
-            <div class="col-3">
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bánh mỳ</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
+            <div class="filter">
+                <div class="col-lg-12 col-md-12 col-sm-12 d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center">
+                    <h4 style="color: #80bb01; font-weight:bolder;">News</h4>
+                    <form class="search" action="/news" method="GET">
+                        <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo $_GET["q"]; ?>">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bread</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
-                </div>
-                <div class="toprate">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <div class="top-rated-product-container">
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                    <span class="main-price" data-currency-usd="$85.00">$85.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
+            </div>
+            <div class="row" style="margin: 0px;">
+                <?php foreach ($list_news as $news) { ?>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                        <div class="card">
+                            <img src="<?php echo $news["thumbnails"]; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title"><?php echo $news["title"]; ?></h4>
+                                <small><b>Posted on: </b><?php echo substr($news["created_at"],0,10); ?></small>
+                                <hr>
+                                <p class="card-text"><?php echo $news["description"]; ?></p>
+                                <a href="/news/<?php echo $news["id"] ?>" class="btn">Continue</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tags-product">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="tags">
-                        <li><a href="#" class="active">Beans</a></li>
-                        <li><a href="#">Birds</a></li>
-                        <li><a href="#">Bread</a></li>
-                        <li><a href="#">Deal Products</a></li>
-                        <li><a href="#">Eggs</a></li>
-                    </ul>
-                </div>
+                <?php } ?>
             </div>
-            <div class="col-9">
-                <div class="row">
-                    <?php foreach ($list_news as $news) { ?>
-                        <div class="col-6">
-                            <div class="card">
-                                <img src="<?php echo $news["thumbnails"]; ?>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h4 class="card-title"><?php echo $news["title"]; ?></h4>
-                                    <small><b>Posted on: </b><?php echo $news["created_at"]; ?></small>
-                                    <hr>
-                                    <p class="card-text"><?php echo $news["description"]; ?></p>
-                                    <a href="/news/<?php echo $news["id"] ?>" class="btn">Continue</a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="pagination-container">
+                <ul>
+                    <li class="<?php echo $_GET["page"] == 1 ? "disabled" : ""; ?> prev">
+                        <a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                    <?php
+                    $num_pages = ceil(floatval($number_news) / 9);
+                    for ($i = 0; $i < $num_pages; $i++) { ?>
+                        <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
                     <?php } ?>
-                </div>
-                <div class="pagination-container">
-                    <ul>
-                        <li class="disabled prev">
-                            <a><i class="fas fa-chevron-left"></i></a>
-                        </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li>
-                            <a href="/collections/all?page=2" title="">2</a>
-                        </li>
-                        <li>
-                            <a href="/collections/all?page=3" title="">3</a>
-                        </li>
-                        <li>
-                            <a href="/collections/all?page=4" title="">4</a>
-                        </li>
-                        <li class="next"><a href="/collections/all?page=2" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
-                    </ul>
-                </div>
+                    <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next">
+                        <a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

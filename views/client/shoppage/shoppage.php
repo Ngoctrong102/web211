@@ -171,7 +171,7 @@
                                             return '<a href="/">' . $category["title"] . '</a>';
                                         }, $product["categories"])); ?>
                                     </div>
-                                    <h3 class="product-title"><a href="#"><?php echo $product["name"] ?></a></h3>
+                                    <h3 class="product-title"><a href="/detail/<?php echo $product["id"] ?>"><?php echo $product["name"] ?></a></h3>
                                     <div class="price-box">
                                         <span class="price" data-currency-usd="$39.00"><?php echo $product["price"] ?>đ</span>
                                         <span class="main-price" data-currency-usd="$39.00">$39.00</span>

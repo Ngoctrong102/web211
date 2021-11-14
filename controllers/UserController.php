@@ -36,6 +36,7 @@ class UserController extends BaseController
     {
         if ($_POST["password"] == $_POST['rePassword']) {
             unset($_POST["rePassword"]);
+            $_POST["avatar"] = "/public/images/default_avt.png";
             $this->user->register($_POST);
             header("Location: /login");
         }
