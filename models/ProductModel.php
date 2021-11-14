@@ -8,10 +8,11 @@ class ProductModel extends BaseModel
 
     public function getAllProducts($pagination = null)
     {
+
         $sql = "SELECT *,product.id as id, unit.title as unit_title FROM (product JOIN unit ON product.unit_id = unit.id)";
-        if (isset($pagination)){
+        if (isset($pagination)) {
             $sql .= " LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
-        } 
+        }
         $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
@@ -26,7 +27,38 @@ class ProductModel extends BaseModel
         }
         return $products;
     }
+    public function getAllProductsShopPage($condition)
+    {
 
+        $sql = "SELECT * FROM product ";
+        if (isset($condition["categoryId"]) && $condition["categoryId"] != "") {
+            $sql .= "WHERE id IN (SELECT product_id FROM product_category WHERE category_id = " . $condition["categoryId"] . ") ";
+            if (isset($condition["q"]) && $condition["q"] != "") {
+                $sql .= "AND (name LIKE '%" . $condition["q"] . "%' OR description LIKE '%" . $condition["q"] . "%') ";
+            }
+        } else {
+            if (isset($condition["q"]) && $condition["q"] != "") {
+                $sql .= "WHERE name LIKE '%" . $condition["q"] . "%' OR description LIKE '%" . $condition["q"] . "%' ";
+            }
+        }
+
+        if (isset($condition["pagination"])) {
+            $sql .= "LIMIT " . $condition["pagination"]["size"] . " OFFSET " . ($condition["pagination"]["size"] * $condition["pagination"]["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $stmt = $this->conn->prepare("SELECT id, title FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $products[$i]["id"]
+            ));
+            $products[$i]["categories"] = $stmt->fetchAll();
+        }
+        return $products;
+    }
     public function insertNewProducts($product)
     {
         $product_images = $product["product_images"];
@@ -39,25 +71,27 @@ class ProductModel extends BaseModel
         if (!$result) return false;
 
         $productId = $this->conn->lastInsertId();
-
-        $imageUrls = explode(":_:_:", $product_images);
-        $values = [];
-        foreach ($imageUrls as $url) {
-            array_push($values, $productId . ",'" . $url . "'");
+        if ($product_images != "") {
+            $imageUrls = explode(":_:_:", $product_images);
+            $values = [];
+            foreach ($imageUrls as $url) {
+                array_push($values, $productId . ",'" . $url . "'");
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertImage);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertImage);
-        $result = $stmt->execute();
-
         $values = [];
-        foreach ($categories as $categoryId) {
-            array_push($values, $productId . "," . $categoryId);
+        if (sizeof($categories) > 0) {
+            foreach ($categories as $categoryId) {
+                array_push($values, $productId . "," . $categoryId);
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertCategories);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertCategories);
-        $result = $stmt->execute();
         return $result;
     }
 
@@ -168,24 +202,27 @@ class ProductModel extends BaseModel
             "id" => $id
         ));
 
-        $imageUrls = explode(":_:_:", trim($product["product_images"]));
-        $values = [];
-        foreach ($imageUrls as $url) {
-            array_push($values, $id . ",'" . $url . "'");
+        if ($product["product_images"] != '') {
+            $imageUrls = explode(":_:_:", trim($product["product_images"]));
+            $values = [];
+            foreach ($imageUrls as $url) {
+                array_push($values, $id . ",'" . $url . "'");
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertImage);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertImage);
-        $result = $stmt->execute();
-
-        $values = [];
-        foreach ($product["categories"] as $categoryId) {
-            array_push($values, $id . "," . $categoryId);
+        if (sizeof($product["categories"]) > 0) {
+            $values = [];
+            foreach ($product["categories"] as $categoryId) {
+                array_push($values, $id . "," . $categoryId);
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertCategories);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertCategories);
-        $result = $stmt->execute();
         return $result;
     }
 

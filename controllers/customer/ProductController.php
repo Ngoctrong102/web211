@@ -27,11 +27,20 @@ class ProductController extends BaseController
         $data["jsFiles"] = [
             "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
-        $pagination = array(
-            "size" => 9,
-            "page" => isset($_GET["page"]) ? $_GET["page"] : 0
+        $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
+        $condition = array(
+            "categoryId" => $_GET["category"],
+            "q" => $_GET["q"],
+            "pagination" => array(
+                "size" => 9,
+                "page" => $_GET["page"] - 1
+            )
         );
-        $data["products"] = $this->product->getAllProducts($pagination);
+        $data["products"] = $this->product->getAllProductsShopPage($condition);
+        unset($condition["pagination"]);
+        $data["number_products"] = sizeof($this->product->getAllProductsShopPage($condition));
+        $this->load->model("category");
+        $data["categories"] = $this->category->getAllCategories();
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }

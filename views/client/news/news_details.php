@@ -143,18 +143,24 @@
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="comment">
-                        <div class="avatar">
-                            <img src="<?php echo $user["avatar"]; ?>" alt="">
+                    <?php if (isset($_SESSION["user_id"])) { ?>
+                        <div class="comment">
+                            <div class="avatar">
+                                <img src="<?php echo $user["avatar"]; ?>" alt="">
+                            </div>
+                            <div class="body-comment">
+                                <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
+                                <form id="form-comment" data-news-id="<?php echo $news["id"]; ?>">
+                                    <textarea name="content" id="input-comment" rows="2"></textarea>
+                                    <button>Submit</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="body-comment">
-                            <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
-                            <form id="form-comment" data-news-id="<?php echo $news["id"]; ?>">
-                                <textarea name="content" id="input-comment" rows="2"></textarea>
-                                <button>Submit</button>
-                            </form>
+                    <?php } else { ?> 
+                        <div class="comment">
+                            <a href="/redirectLogin?location=/news/<?php echo $news["id"];?>">Login to comment</a>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
