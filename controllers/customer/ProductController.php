@@ -29,13 +29,20 @@ class ProductController extends BaseController
         ];
         $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
         $condition = array(
-            "categoryId" => $_GET["category"],
-            "q" => $_GET["q"],
             "pagination" => array(
                 "size" => 9,
                 "page" => $_GET["page"] - 1
             )
         );
+
+        if (isset($_GET["category"])) {
+
+            $condition["categoryId"] = $_GET["category"];
+        }
+        if (isset($_GET["q"])) {
+
+            $condition["q"] = $_GET["q"];
+        }
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         unset($condition["pagination"]);
         $data["number_products"] = sizeof($this->product->getAllProductsShopPage($condition));

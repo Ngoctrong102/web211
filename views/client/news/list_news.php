@@ -23,7 +23,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center">
                     <h4 style="color: #80bb01; font-weight:bolder;">News</h4>
                     <form class="search" action="/news" method="GET">
-                        <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo $_GET["q"]; ?>">
+                        <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>">
                         <button><i class="fas fa-search"></i></button>
                     </form>
                 </div>
@@ -47,15 +47,15 @@
             <div class="pagination-container">
                 <ul>
                     <li class="<?php echo $_GET["page"] == 1 ? "disabled" : ""; ?> prev">
-                        <a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
+                        <a href="/news?q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
                     </li>
                     <?php
                     $num_pages = ceil(floatval($number_news) / 9);
                     for ($i = 0; $i < $num_pages; $i++) { ?>
-                        <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
+                        <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/news?q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
                     <?php } ?>
                     <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next">
-                        <a href="/news?q=<?php echo $_GET["q"]; ?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a>
+                        <a href="/news?q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a>
                     </li>
                 </ul>
             </div>
