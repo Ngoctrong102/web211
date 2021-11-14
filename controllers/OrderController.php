@@ -19,22 +19,6 @@ class OrderController extends BaseController
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/orderpage", $data);
     }
-    public function renderOrderEditPage($order_id)
-    {
-        $data["title"] = "Edit Information";
-        $data["cssFiles"] = [
-            "css/customer/commons/breadcum.css",
-            "css/customer/cart/cart.css",
-        ];
-        $user_id = $_SESSION["user_id"];
-        $data["order_id"] = $order_id;
-        $data["addresses"] = $this->cart->getAddresses($user_id);
-        $data["phonenumber"] = $this->cart->getPhoneNumber($user_id);
-        $data["jsFiles"] = ["js/customer/cart/cart.js"];
-        $data["cartproducts"] = $this->cart->getAllProducts_cart();
-        $this->load->view("layouts/client", "client/shoppage/ordereditpage", $data);
-    }
-
 
     public function renderOrderProductPage()
     {
@@ -43,14 +27,16 @@ class OrderController extends BaseController
             "css/customer/commons/breadcum.css",
             "css/customer/order/orderproduct.css",
         ];
+        $user_id = $_SESSION["user_id"];
+        $data["orders"] = $this->order->getOrderInfo($user_id);
         $data["orderproducts"] = $this->order->getAllProducts_order();
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/orderproductpage", $data);
     }
-    public function orderDeleted($id)
+    public function orderCancelled($id)
     {
         $this->order->product_orderDeleted($id);
-        $this->order->orderDeleted($id);
+        $this->order->orderCancelled($id);
         header("Location: /order");
     }
     public function addOrder($id)

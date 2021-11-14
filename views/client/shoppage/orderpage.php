@@ -34,9 +34,8 @@
                     <td class="orderAddress"><?php echo $order["address"] ?></td>
                     <td class="orderDate"><?php echo $order["created_at"] ?></td>
                     <td><a class="link-option" href="/orderproduct">Detail</a>
-                        <a class="link-option" href="/order/orderedit/<?php echo $order["id"] ?>">Edit</a>
                         <a class="link-option" href="">Checkout</a>
-                        <a class="link-option" href="/order/orderDeleted/<?php echo $order["id"] ?>">Delete</a>
+                        <a class="link-option" href="/order/orderCancelled/<?php echo $order["id"] ?>">Cancel</a>
                     </td>
                 </tr>
             <?php  } ?>

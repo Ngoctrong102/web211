@@ -16,7 +16,7 @@ class OrderModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
-    public function orderDeleted($id)
+    public function orderCancelled($id)
     {
         $stmt = $this->conn->prepare('DELETE FROM `product_order` WHERE `product_order`.order_id = :id');
         $stmt = $this->conn->prepare('DELETE FROM `order` WHERE `order`.id = :id');

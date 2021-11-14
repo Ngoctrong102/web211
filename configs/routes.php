@@ -46,16 +46,12 @@ $routes = array(
         "handler" => "order/renderOrderPage",
         "roles" => ["all"]
     ),
-    "order/orderedit/:num(order_id)" => array(
-        "handler" => "order/renderOrderEditPage",
-        "roles" => ["all"]
-    ),
     "order/:num(address_id)/:num(order_id)" => array(
         "handler" => "order/orderUpdated",
         "roles" => ["all"]
     ),
-    "order/orderDeleted/:num(id)" => array(
-        "handler" => "order/orderDeleted",
+    "order/orderCancelled/:num(id)" => array(
+        "handler" => "order/orderCancelled",
         "roles" => ["all"]
     ),
     "detail/:num(id)" => array(

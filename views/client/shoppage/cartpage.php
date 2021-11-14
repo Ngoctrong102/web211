@@ -74,7 +74,7 @@
 
     <div style="display: flex; margin-bottom: 50px">
         <div class="part1">
-            <h5>Select Your Address</h5>
+            <h5>Select Your Address:</h5>
             <form>
                 <select class="input input1">
                     <?php foreach ($addresses as $address) { ?>
@@ -85,7 +85,8 @@
                     <p class="orderlink">Add</p>
                 </a>
             </form>
-            <br><br>
+            <br>
+            <h5>Phone:</h5>
             <form>
                 <input readonly type="text" class="input" value="<?php echo $phonenumber["phone"] ?>">
                 <a class="linktoaccount" href="/account">
@@ -96,28 +97,19 @@
 
         <div class="part2">
             <div class="border">
-                <h5>Cart Totals</h5>
+                <h5>Cart Total</h5>
                 <br>
 
                 <p style="float: left;">Subtotal</p>
                 <p class="subtotal" style="float: right;"><?php echo $total . "-VNĐ" ?></p>
-                <br><br><br>
+                <br>
                 <hr style="color: black">
-
-                <h4 style="float: left;">Grand Total</h4>
-                <h4 style="float: right;"> $78.00</h4>
-
             </div>
             <br>
             <div style="display: flex;justify-content: space-around;">
-                <a style="text-decoration: none;" href="/cart">
-                    <p class=" khung">Update Cart</p>
-                </a>
                 <a id="order" style="text-decoration: none;">
-                    <p class="khung">Order</p>
+                    <p class="khung">Checkout</p>
                 </a>
-
-
             </div>
         </div>
     </div>

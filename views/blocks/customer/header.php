@@ -93,7 +93,7 @@
                                     </div>
                                     <hr style="width: 100%; height:0.5px; margin:0">
                                     <div id="cart-button">
-                                        <p><a href="/order"><span>Checkout</span></a></p>
+                                        <p><a href="/order"><span>View orders</span></a></p>
                                         <p><a href="/cart"><span>View cart</span></a></p>
                                     </div>
                                 </ul>
