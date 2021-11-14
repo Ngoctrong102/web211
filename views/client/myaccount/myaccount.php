@@ -23,7 +23,7 @@
                     <div class="avatar">
                         <form id="form-avatar">
                             <label for="avatar-input">
-                                <img src="<?php echo $user["avatar"]; ?>" id="avatar-img">
+                                <img src="<?php echo $user["avatar"] != "" ?  $user["avatar"] : "/public/images/default_avt.png" ?>" id="avatar-img">
                             </label>
                             <input style="visibility: hidden;" type="file" name="avatar-input" id="avatar-input">
                         </form>

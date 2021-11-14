@@ -42,7 +42,8 @@ class OrderController extends BaseController
     public function addOrder($id)
     {
         $user_id = $_SESSION["user_id"];
-        $this->order->addOrder($id,  $user_id);
+        $status = "Processing";
+        $this->order->addOrder($id,  $user_id, $status);
         $this->order->moveToPro_Order();
         $this->cart->deleteAllCart($user_id);
         header("Location: /order");

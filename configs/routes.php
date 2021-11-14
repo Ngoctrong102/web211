@@ -10,6 +10,10 @@ $routes = array(
         "handler" => "user/renderLoginForm",
         "roles" => ["all"]
     ),
+    "redirectLogin" => array(
+        "handler" => "user/redirectLogin",
+        "roles" => ["all"]
+    ),
     "register" => array(
         "handler" => "user/renderRegisterForm",
         "roles" => ["all"]
@@ -116,6 +120,18 @@ $routes = array(
     ),
     "contact" => array(
         "handler" => "customer/contact/renderPageContact",
+        "roles" => ["all"]
+    ),
+    "search" => array(
+        "handler" => "customer/search/search",
+        "roles" => ["all"]
+    ),
+    "product/comment" => array(
+        "handler" => "customer/product/addComment",
+        "roles" => ["all"]
+    ),
+    "product/loadComments" => array(
+        "handler" => "customer/product/loadComments",
         "roles" => ["all"]
     ),
 
@@ -227,6 +243,21 @@ $routes = array(
     "admin/news/delete/:num(id)" => array(
         "handler" => "admin/news/deleteNews",
         "roles" => ["all"]
-    )
-
+    ),
+    "admin/orders" => array(
+        "handler" => "admin/order/renderAllOrder",
+        "roles" => ["all"]
+    ),
+    "admin/orders/:num(id)" => array(
+        "handler" => "admin/order/renderDetail",
+        "roles" => ["all"]
+    ),
+    "admin/orders/deliver/:num(id)" => array(
+        'handler' => "admin/order/deliverOrder",
+        "roles" => ["all"]
+    ),
+    "admin/orders/cancel/:num(id)" => array(
+        'handler' => "admin/order/cancelOrder",
+        "roles" => ["all"]
+    ) 
 );
