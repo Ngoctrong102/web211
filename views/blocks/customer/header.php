@@ -13,8 +13,8 @@
                         <?php if (isset($_SESSION["user_id"])) { ?>
                             <li><a class="top_menu" href="/logout">Logout</a></li>
                         <?php } else { ?>
-                        <li><a class="top_menu" href="/login">Sign in</a></li>
-                        <li><a class="top_menu" href="/register">Register</a></li>
+                            <li><a class="top_menu" href="/login">Sign in</a></li>
+                            <li><a class="top_menu" href="/register">Register</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -55,33 +55,35 @@
                                 <a href="/cart" id="icon"><span>Shopping Cart</span><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
                                         shopping_bag</span></a>
                                 <ul id="cart-items">
-                                    <?php if (count($cartproducts) == 0) { ?>
+                                    <?php if (!isset($cartproducts) || count($cartproducts) == 0) { ?>
                                         <h5 id="empty" style="text-align: center; margin-top: 20px">Your cart is empty</h5>
                                     <?php } ?>
                                     <?php
                                     $total = 0;
-                                    foreach ($cartproducts as $cartproduct) {
-                                        $total += $cartproduct["price"] * $cartproduct["quantity"];
+                                    if (isset($cartproducts)) {
+                                        foreach ($cartproducts as $cartproduct) {
+                                            $total += $cartproduct["price"] * $cartproduct["quantity"];
                                     ?>
-                                        <li class="product-detail">
-                                            <div style="height: 70px; width: 70px" class="pro-image">
-                                                <a href="/detail/<?php echo $cartproduct["id"] ?>"><img src="<?php echo $cartproduct["thumbnails"] ?>" width="70px" height="70px" style="border: 0.1pt solid #dddddd" /> </a>
-                                            </div>
-                                            <div style="height: 70px; width: 80%" class="title-price">
-                                                <p class="pro title"><?php echo $cartproduct["name"] ?></p>
-                                                <div style="display: flex;  justify-content: space-between; height: 35px">
-                                                    <p class="pro price"><span class="count"><?php echo $cartproduct["quantity"] ?></span>
-                                                        <span class="xsign">x </span><span class="eachprice"><?php echo $cartproduct["price"] ?></span><span class="currency-unit">-VNĐ</span>
-                                                    </p>
-                                                    <p class="remove">
-                                                        <a href="/cart/productDeleted/<?php echo $cartproduct["id"]; ?>"><span class="material-icons-outlined">
-                                                                clear
-                                                            </span></a>
-                                                    </p>
+                                            <li class="product-detail">
+                                                <div style="height: 70px; width: 70px" class="pro-image">
+                                                    <a href="/detail/<?php echo $cartproduct["id"] ?>"><img src="<?php echo $cartproduct["thumbnails"] ?>" width="70px" height="70px" style="border: 0.1pt solid #dddddd" /> </a>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
+                                                <div style="height: 70px; width: 80%" class="title-price">
+                                                    <p class="pro title"><?php echo $cartproduct["name"] ?></p>
+                                                    <div style="display: flex;  justify-content: space-between; height: 35px">
+                                                        <p class="pro price"><span class="count"><?php echo $cartproduct["quantity"] ?></span>
+                                                            <span class="xsign">x </span><span class="eachprice"><?php echo $cartproduct["price"] ?></span><span class="currency-unit">-VNĐ</span>
+                                                        </p>
+                                                        <p class="remove">
+                                                            <a href="/cart/productDeleted/<?php echo $cartproduct["id"]; ?>"><span class="material-icons-outlined">
+                                                                    clear
+                                                                </span></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                    <?php }
+                                    } ?>
                                     <br>
                                     <div class="total" style="font-size: 20px">
                                         <p>Total: </p>

@@ -135,12 +135,12 @@
                           <div class='product'>
               
                             <div class='img-container'>
-                              <a href=''><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                              <a href='detail/".$newCategoryHome[$dem]['id']."'><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
               
                               <ul class='side-icons'>
-                                <a><i class='fas fas fa-cart-plus'></i></a>
-                                <a><i class='fas fa-search'></i></a>
-                                <a><i class='fas fa-heart'></i></a>
+                                <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                                <!--<a><i class='fas fa-search'></i></a>  -->
+                                <!--<a><i class='fas fa-heart'></i></a>  -->
                               </ul>
                             </div>
                             
@@ -164,12 +164,12 @@
                           <div class='product'>
               
                             <div class='img-container'>
-                              <a href=''><img src='".$newCategoryHome[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                              <a href='detail/".$newCategoryHome[$dem + $giua]['id']."'><img src='".$newCategoryHome[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
               
                               <ul class='side-icons'>
-                                <a><i class='fas fas fa-cart-plus'></i></a>
-                                <a><i class='fas fa-search'></i></a>
-                                <a><i class='fas fa-heart'></i></a>
+                                <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                                <!--<a><i class='fas fa-search'></i></a>  -->
+                                <!--<a><i class='fas fa-heart'></i></a>  -->
                               </ul>
                             </div>
                             <div class='bottom'><p>"
@@ -197,12 +197,12 @@
                           <div class='product'>
               
                             <div class='img-container'>
-                              <a href=''><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                              <a href='detail/".$newCategoryHome[$dem]['id']."'><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
               
                               <ul class='side-icons'>
-                                <a><i class='fas fas fa-cart-plus'></i></a>
-                                <a><i class='fas fa-search'></i></a>
-                                <a><i class='fas fa-heart'></i></a>
+                                <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                                <!--<a><i class='fas fa-search'></i></a>  -->
+                                <!--<a><i class='fas fa-heart'></i></a>  -->
                               </ul>
                             </div>
                             
@@ -226,12 +226,12 @@
                           <div class='product'>
               
                             <div class='img-container'>
-                              <a href=''><img src='".$newCategoryHome[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                              <a href='detail/".$newCategoryHome[$dem + $giua]['id']."'><img src='".$newCategoryHome[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
               
                               <ul class='side-icons'>
-                                <a><i class='fas fas fa-cart-plus'></i></a>
-                                <a><i class='fas fa-search'></i></a>
-                                <a><i class='fas fa-heart'></i></a>
+                                <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                                <!--<a><i class='fas fa-search'></i></a>  -->
+                                <!--<a><i class='fas fa-heart'></i></a>  -->
                               </ul>
                             </div>
                             <div class='bottom'>
@@ -256,12 +256,12 @@
                   <div class='product'>
       
                     <div class='img-container'>
-                      <a href=''><img src='".$newCategoryHome[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                      <a href='detail/".$newCategoryHome[$giua]['id']."'><img src='".$newCategoryHome[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
       
                       <ul class='side-icons'>
-                        <a><i class='fas fas fa-cart-plus'></i></a>
-                        <a><i class='fas fa-search'></i></a>
-                        <a><i class='fas fa-heart'></i></a>
+                        <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                        <!--<a><i class='fas fa-search'></i></a>  -->
+                        <!--<a><i class='fas fa-heart'></i></a>  -->
                       </ul>
                     </div>
                     
@@ -281,12 +281,12 @@
                   </div>
                   <div class='product'>      
                     <div class='img-container'>
-                      <a href=''><img src='".$newCategoryHome[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                      <a href='detail/".$newCategoryHome[$giua]['id']."'><img src='".$newCategoryHome[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
       
                       <ul class='side-icons'>
-                        <a><i class='fas fas fa-cart-plus'></i></a>
-                        <a><i class='fas fa-search'></i></a>
-                        <a><i class='fas fa-heart'></i></a>
+                        <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                        <!--<a><i class='fas fa-search'></i></a>  -->
+                        <!--<a><i class='fas fa-heart'></i></a>  -->
                       </ul>
                     </div>
                     <div class='bottom'>
@@ -329,12 +329,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           
@@ -358,12 +358,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           <div class='bottom'><p>"
@@ -391,12 +391,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           
@@ -420,12 +420,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           <div class='bottom'>
@@ -450,12 +450,12 @@
                 <div class='product'>
     
                   <div class='img-container'>
-                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <ul class='side-icons'>
-                      <a><i class='fas fas fa-cart-plus'></i></a>
-                      <a><i class='fas fa-search'></i></a>
-                      <a><i class='fas fa-heart'></i></a>
+                      <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                      <!--<a><i class='fas fa-search'></i></a>  -->
+                      <!--<a><i class='fas fa-heart'></i></a>  -->
                     </ul>
                   </div>
                   
@@ -479,12 +479,12 @@
                 <div class='product'>
     
                   <div class='img-container'>
-                    <a href=''><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[ $giua]['id']."'><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <ul class='side-icons'>
-                      <a><i class='fas fas fa-cart-plus'></i></a>
-                      <a><i class='fas fa-search'></i></a>
-                      <a><i class='fas fa-heart'></i></a>
+                      <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                      <!--<a><i class='fas fa-search'></i></a>  -->
+                      <!--<a><i class='fas fa-heart'></i></a>  -->
                     </ul>
                   </div>
                   <div class='bottom'>
@@ -531,12 +531,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           
@@ -560,12 +560,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           <div class='bottom'><p>"
@@ -593,12 +593,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           
@@ -622,12 +622,12 @@
                         <div class='product'>
             
                           <div class='img-container'>
-                            <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                            <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
             
                             <ul class='side-icons'>
-                              <a><i class='fas fas fa-cart-plus'></i></a>
-                              <a><i class='fas fa-search'></i></a>
-                              <a><i class='fas fa-heart'></i></a>
+                              <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                              <!--<a><i class='fas fa-search'></i></a>  -->
+                              <!--<a><i class='fas fa-heart'></i></a>  -->
                             </ul>
                           </div>
                           <div class='bottom'>
@@ -652,12 +652,12 @@
                 <div class='product'>
     
                   <div class='img-container'>
-                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <ul class='side-icons'>
-                      <a><i class='fas fas fa-cart-plus'></i></a>
-                      <a><i class='fas fa-search'></i></a>
-                      <a><i class='fas fa-heart'></i></a>
+                      <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                      <!--<a><i class='fas fa-search'></i></a>  -->
+                      <!--<a><i class='fas fa-heart'></i></a>  -->
                     </ul>
                   </div>
                   
@@ -681,12 +681,12 @@
                 <div class='product'>
     
                   <div class='img-container'>
-                    <a href=''><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[ $giua]['id']."'><img src='".$categoryhomeCus[ $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <ul class='side-icons'>
-                      <a><i class='fas fas fa-cart-plus'></i></a>
-                      <a><i class='fas fa-search'></i></a>
-                      <a><i class='fas fa-heart'></i></a>
+                      <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                      <!--<a><i class='fas fa-search'></i></a>  -->
+                      <!--<a><i class='fas fa-heart'></i></a>  -->
                     </ul>
                   </div>
                   <div class='bottom'>
@@ -757,12 +757,13 @@
                   <div class="swiper-slide">
                   <div class="product">
                     <div class="img-container">
-                      <a href=""><img src="<?php echo $greefarm['thumbnails'] ?>" alt=""><span class="discount">-50%</span></a>
+                      <a href="detail/<?php echo $greefarm['id'] ?>"><img src="<?php echo $greefarm['thumbnails'] ?>" alt=""><span class="discount">-50%</span></a>
       
                       <ul class="side-icons">
-                        <a><i class='fas fas fa-cart-plus'></i></a>
-                        <a><i class='fas fa-search'></i></a>
-                        <a><i class='fas fa-heart'></i></a>
+                        <!--  -->
+                        <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
+                        <!--<a><i class='fas fa-search'></i></a>  -->
+                        <!--<a><i class='fas fa-heart'></i></a>  -->
                       </ul>
                     </div>
                     <div class="bottom">
@@ -824,7 +825,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
@@ -844,7 +845,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
@@ -875,7 +876,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$dem]['id']."'><img src='".$categoryhomeCus[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
@@ -894,7 +895,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$dem + $giua]['id']."'><img src='".$categoryhomeCus[$dem + $giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
@@ -924,7 +925,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
@@ -944,7 +945,7 @@
                 <div class='product'>
     
                   <div class='img-seller'>
-                    <a href=''><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
     
                     <div class='next-img'>
                       <p>";
