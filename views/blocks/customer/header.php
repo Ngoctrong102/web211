@@ -41,9 +41,10 @@
                         </div>
                         <!--search-->
                         <div id="search">
-                            <form action="#" target="_blank">
-                                <input id="input" type="text" placeholder="Search...">
-                                <button type="submit"><span style="transform: rotate(90deg); color: white; font-size: 25px" class="material-icons-outlined">
+                            <form action="/search" method="GET">
+                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo $_GET["keyword"] ;?>">
+                                <button type="submit">
+                                    <span style="transform: rotate(90deg); color: white; font-size: 25px" class="material-icons-outlined">
                                         search
                                     </span>
                                 </button>

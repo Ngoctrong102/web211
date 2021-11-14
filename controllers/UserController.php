@@ -17,6 +17,12 @@ class UserController extends BaseController
         $this->load->view("layouts/client", "account/login", $data);
     }
 
+    public function redirectLogin()
+    {
+        $_SESSION["location"] = $_GET["location"];
+        header("Location: /login");
+    }
+
     public function renderRegisterForm()
     {
         $data["title"] = "Register";
@@ -30,6 +36,7 @@ class UserController extends BaseController
     {
         if ($_POST["password"] == $_POST['rePassword']) {
             unset($_POST["rePassword"]);
+            $_POST["avatar"] = "/public/images/default_avt.png";
             $this->user->register($_POST);
             header("Location: /login");
         }
@@ -47,7 +54,9 @@ class UserController extends BaseController
             if (password_verify($_POST["password"],$user["password"])) {
                 $_SESSION["user_id"] = $user["id"];
                 $_SESSION["role"] = $user["role"];
-                header("Location: /");
+                $location = isset($_SESSION["location"]) ? $_SESSION["location"] : "/";
+                unset($_SESSION["location"]);
+                header("Location: ".$location);
             } else {
                 $data["error"] = [
                     "password" => "Mật khẩu không đúng"

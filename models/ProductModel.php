@@ -8,10 +8,11 @@ class ProductModel extends BaseModel
 
     public function getAllProducts($pagination = null)
     {
+
         $sql = "SELECT *,product.id as id, unit.title as unit_title FROM (product JOIN unit ON product.unit_id = unit.id)";
-        if (isset($pagination)){
+        if (isset($pagination)) {
             $sql .= " LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
-        } 
+        }
         $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
@@ -26,7 +27,38 @@ class ProductModel extends BaseModel
         }
         return $products;
     }
+    public function getAllProductsShopPage($condition)
+    {
 
+        $sql = "SELECT * FROM product ";
+        if (isset($condition["categoryId"]) && $condition["categoryId"] != "") {
+            $sql .= "WHERE id IN (SELECT product_id FROM product_category WHERE category_id = " . $condition["categoryId"] . ") ";
+            if (isset($condition["q"]) && $condition["q"] != "") {
+                $sql .= "AND (name LIKE '%" . $condition["q"] . "%' OR description LIKE '%" . $condition["q"] . "%') ";
+            }
+        } else {
+            if (isset($condition["q"]) && $condition["q"] != "") {
+                $sql .= "WHERE name LIKE '%" . $condition["q"] . "%' OR description LIKE '%" . $condition["q"] . "%' ";
+            }
+        }
+
+        if (isset($condition["pagination"])) {
+            $sql .= "LIMIT " . $condition["pagination"]["size"] . " OFFSET " . ($condition["pagination"]["size"] * $condition["pagination"]["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $stmt = $this->conn->prepare("SELECT id, title FROM (product_category JOIN category ON product_category.category_id = category.id) WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $products[$i]["id"]
+            ));
+            $products[$i]["categories"] = $stmt->fetchAll();
+        }
+        return $products;
+    }
     public function insertNewProducts($product)
     {
         $product_images = $product["product_images"];
@@ -39,25 +71,27 @@ class ProductModel extends BaseModel
         if (!$result) return false;
 
         $productId = $this->conn->lastInsertId();
-
-        $imageUrls = explode(":_:_:", $product_images);
-        $values = [];
-        foreach ($imageUrls as $url) {
-            array_push($values, $productId . ",'" . $url . "'");
+        if ($product_images != "") {
+            $imageUrls = explode(":_:_:", $product_images);
+            $values = [];
+            foreach ($imageUrls as $url) {
+                array_push($values, $productId . ",'" . $url . "'");
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertImage);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertImage);
-        $result = $stmt->execute();
-
         $values = [];
-        foreach ($categories as $categoryId) {
-            array_push($values, $productId . "," . $categoryId);
+        if (sizeof($categories) > 0) {
+            foreach ($categories as $categoryId) {
+                array_push($values, $productId . "," . $categoryId);
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertCategories);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertCategories);
-        $result = $stmt->execute();
         return $result;
     }
 
@@ -168,24 +202,27 @@ class ProductModel extends BaseModel
             "id" => $id
         ));
 
-        $imageUrls = explode(":_:_:", trim($product["product_images"]));
-        $values = [];
-        foreach ($imageUrls as $url) {
-            array_push($values, $id . ",'" . $url . "'");
+        if ($product["product_images"] != '') {
+            $imageUrls = explode(":_:_:", trim($product["product_images"]));
+            $values = [];
+            foreach ($imageUrls as $url) {
+                array_push($values, $id . ",'" . $url . "'");
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertImage);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertImage = 'INSERT INTO product_image(product_id,image_url) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertImage);
-        $result = $stmt->execute();
-
-        $values = [];
-        foreach ($product["categories"] as $categoryId) {
-            array_push($values, $id . "," . $categoryId);
+        if (sizeof($product["categories"]) > 0) {
+            $values = [];
+            foreach ($product["categories"] as $categoryId) {
+                array_push($values, $id . "," . $categoryId);
+            }
+            $values = "values(" . join("),(", $values) . ")";
+            $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
+            $stmt = $this->conn->prepare($sqlInsertCategories);
+            $result = $stmt->execute();
         }
-        $values = "values(" . join("),(", $values) . ")";
-        $sqlInsertCategories = 'INSERT INTO product_category(product_id,category_id) ' . $values;
-        $stmt = $this->conn->prepare($sqlInsertCategories);
-        $result = $stmt->execute();
         return $result;
     }
 
@@ -206,7 +243,7 @@ class ProductModel extends BaseModel
     }
     public function getProductForDetail($id)
     {
-        $stmt = $this->conn->prepare("SELECT *, product.id as product_id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
+        $stmt = $this->conn->prepare("SELECT *, product.id as id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute(array(
             "id" => $id
@@ -230,6 +267,38 @@ class ProductModel extends BaseModel
         $stmt = $this->conn->prepare("SELECT * FROM (product JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
         $stmt->execute(array(
             "id" => $product_id,
+        ));
+        return $stmt->fetchAll();
+    }
+
+    public function addComment($comment)
+    {
+        $stmt = $this->conn->prepare('INSERT INTO comment_product(user_id, product_id, content, created_at) values(:user_id, :product_id, :content, :created_at)');
+        $result = $stmt->execute($comment);
+        return $result ? $this->conn->lastInsertId() : -1;
+    }
+
+    public function loadCommentsOfProduct($productId, $pagination)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_product.id AS id FROM (comment_product JOIN user ON comment_product.user_id = user.id ) WHERE comment_product.product_id = :productId ORDER BY comment_product.created_at DESC ";
+        if (isset($pagination)) {
+            $sql .= "LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("productId" => $productId));
+        return $stmt->fetchAll();
+    }
+
+    public function loadMoreCommentsOfProduct($productId, $lastCommentId)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_product.id AS id FROM (comment_product JOIN user ON comment_product.user_id = user.id ) WHERE comment_product.product_id = :productId AND  comment_product.id < :lastCommentId ORDER BY comment_product.created_at DESC ";
+        $sql .= "LIMIT 5";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "productId" => $productId,
+            "lastCommentId" => $lastCommentId
         ));
         return $stmt->fetchAll();
     }

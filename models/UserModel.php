@@ -9,7 +9,7 @@ class UserModel extends BaseModel
     {
         $registerInfo["role"] = "customer";
         $registerInfo["password"] = password_hash($registerInfo["password"], PASSWORD_BCRYPT, array('cost' => 12));
-        $stmt = $this->conn->prepare('INSERT INTO user(email,password,role,first_name,last_name) values(:email,:password,:role,:firstName,:lastName)');
+        $stmt = $this->conn->prepare('INSERT INTO user(email,password,role,first_name,last_name,avatar) values(:email,:password,:role,:firstName,:lastName,:avatar)');
         return $stmt->execute($registerInfo);
     }
     public function findUserById($id)

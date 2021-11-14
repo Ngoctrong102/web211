@@ -16,10 +16,20 @@ class NewsController extends BaseController
             "css/customer/shoppage/toprate.css",
             "css/customer/shoppage/tagsproduct.css",
             "css/customer/commons/pagination.css",
-            "css/customer/news/card.css"
+            "css/customer/news/card.css",
+            "css/customer/shoppage/filter.css",
         ];
-
-        $data["list_news"] = $this->news->getAllNews();
+        $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
+        $condition = array(
+            "q" => $_GET["q"],
+            "pagination" => array(
+                "size" => 9,
+                "page" => $_GET["page"] - 1
+            )
+        );
+        $data["list_news"] = $this->news->getAllNews($condition);
+        unset($condition["pagination"]);
+        $data["number_news"] = sizeof($this->news->getAllNews($condition));
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/news/list_news", $data);
     }
@@ -42,12 +52,11 @@ class NewsController extends BaseController
         <link rel="stylesheet" href="/plugins/ckeditor/sample/styles.css">
         ';
         $data["news"] = $this->news->getNewsById($id);
-        $this->load->model("commentNews");
         $pagination = array(
             "page" => 0,
             "size" => 5
         );
-        $data["comments"] = $this->commentNews->loadCommentsOfNews($id, $pagination);
+        $data["comments"] = $this->news->loadCommentsOfNews($id, $pagination);
         $this->load->model("user");
         $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
@@ -82,10 +91,8 @@ class NewsController extends BaseController
     public function loadComments()
     {
         $newsId = $_GET["newsId"];
-        unset($_GET["newsId"]);
-        $pagination = $_GET;
-        $this->load->model("commentNews");
-        $response["comments"] = $this->commentNews->loadCommentsOfNews($newsId, $pagination);
+        $lastCommentId = $_GET["lastCommentId"];
+        $response["comments"] = $this->news->loadMoreCommentsOfNews($newsId, $lastCommentId);
         echo json_encode($response);
     }
 }
