@@ -1,0 +1,14 @@
+.buttonDetailContact a{
+    text-decoration: none;
+    color: #fff;
+}
+.buttonDetailContact{
+    padding: 5px 25px;
+    border-radius: 5px;
+    background-color: #1b2c3f;
+    float: right;
+}
+
+.buttonDetailContact:hover{
+    background-color: #283e57;
+}

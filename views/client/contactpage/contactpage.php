@@ -59,32 +59,32 @@
                 <div class="titleContact">
                     <span>Tell Us Your Message</span>
                 </div>
-                <form action="post" class="formContact">
+                <form action="contact/addnewcontact" method="POST" class="formContact" name="formContact" onsubmit="return validateFormContact()">
                     <div class="inputform">
                         <div class="nametext">
-                            <span>Your Name</span> 
+                            <span>Your Name *</span> <span id="spanNameCon"></span>
                         </div>
-                        <input type="text">
+                        <input type="text" name="name">
                     </div>
                     <div class="inputform">
                         <div class="nametext">
-                            <span>Your Email</span>
+                            <span>Your Email *</span> <span id="spanEmailCon"></span>
                         </div>
-                        <input type="text">
+                        <input type="text" name="email">
                     </div>
                     <div class="inputform">
                         <div class="nametext">
-                            <span>Title</span>
+                            <span>Title *</span> <span id="spanTitleCon"></span>
                         </div>  
-                        <input type="text">
+                        <input type="text" name="title">
                     </div>
                     <div class="inputMess">
                         <div class="nametext">
-                            <span>Your Message</span> 
+                            <span>Your Message *</span> <span id="spanMessCon"></span>
                         </div>
-                        <textarea name="messContact" id="messContact" cols="30" rows="8"></textarea>
+                        <textarea  id="messContact" cols="30" rows="8" name="message"></textarea>
                     </div>
-                    <button>Send</button>
+                    <button type="submit" id="submitFormContact">Send</button>
                 </form>
             </div>
             <div class="row3">
@@ -92,3 +92,48 @@
             </div>
         </div>
     </div> 
+
+<script>
+
+function validateFormContact() {
+  let name = document.forms["formContact"]["name"].value;
+  let email = document.forms["formContact"]["email"].value;
+  let title = document.forms["formContact"]["title"].value;
+  let message = document.forms["formContact"]["message"].value;
+  let dem = 0;
+  if (name == "") {
+    var errName = document.getElementById("spanNameCon");
+    errName.textContent = " Name not null please!";
+    dem++;
+  }
+  if (email == "") {
+    var errEmail = document.getElementById("spanEmailCon");
+    errEmail.textContent = " Email not null please!";
+    dem++;
+  }
+  else if(!validateEmail(email)){
+    var errEmail = document.getElementById("spanEmailCon");
+    errEmail.textContent = " Type email sth@sth.sth";
+    dem++;
+  }
+  if (title == "") {
+    var errTitle = document.getElementById("spanTitleCon");
+    errTitle.textContent = " Title not null please!";
+    dem++;
+  }
+  if (message == "") {
+    var errMess = document.getElementById("spanMessCon");
+    errMess.textContent = " Message not null please!";
+    dem++;
+  }
+  if(dem != 0){
+      return false;
+  }
+}
+
+function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+</script>
