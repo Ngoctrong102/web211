@@ -2,18 +2,21 @@ $(".load-more-btn").click(function(e) {
     e.preventDefault();
     let currentPage = $("#comments").data("page");
     let newsId = $("#comments").data("news-id");
-    let size = 5;
+    let lastCommentId = $("#comments").data("last-comment");
     $.ajax({
         type: "GET",
         url: "/news/loadComments",
         data: {
             newsId,
-            page: currentPage + 1,
-            size
+            lastCommentId
         },
         dataType: "json",
         success: function(response) {
             if (response.comments) {
+                if (response.comments.length < 5) {
+                    $(".load-more-btn").remove();
+                }
+                $("#comments").data("last-comment", response.comments.at(-1).id);
                 for (const comment of response.comments) {
                     renderComment(comment);
                 }

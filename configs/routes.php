@@ -10,6 +10,10 @@ $routes = array(
         "handler" => "user/renderLoginForm",
         "roles" => ["all"]
     ),
+    "redirectLogin" => array(
+        "handler" => "user/redirectLogin",
+        "roles" => ["all"]
+    ),
     "register" => array(
         "handler" => "user/renderRegisterForm",
         "roles" => ["all"]
@@ -124,6 +128,18 @@ $routes = array(
     ),
     "contact/addnewcontact" => array(
         "handler" => "customer/contact/Addnewcontact",
+        "roles" => ["all"]
+    ),
+    "search" => array(
+        "handler" => "customer/search/search",
+        "roles" => ["all"]
+    ),
+    "product/comment" => array(
+        "handler" => "customer/product/addComment",
+        "roles" => ["all"]
+    ),
+    "product/loadComments" => array(
+        "handler" => "customer/product/loadComments",
         "roles" => ["all"]
     ),
 

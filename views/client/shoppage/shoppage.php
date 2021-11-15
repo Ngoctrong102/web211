@@ -22,21 +22,18 @@
                 <div class="checkbox-filter">
                     <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
                     <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bánh mỳ</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
-                </div>
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bread</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
+                        <?php foreach ($categories as $category) {
+                            $href = "/shop";
+                            if ($category["id"] != isset($_GET["category"])? $_GET["category"]:"") {
+                                $href .= "?category=" . $category["id"] . "&page=1";
+                            }
+                        ?>
+                            <li>
+                                <a href="<?php echo $href; ?>" <?php echo $category["id"] == $_GET["category"] ? 'class="active"' : ""; ?>>
+                                    <i class="far fa-<?php echo $category["id"] == $_GET["category"] ? 'check-' : ""; ?>square"></i><?php echo $category["title"]; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="toprate">
@@ -123,7 +120,11 @@
                                 <option value="created-ascending">Date, old to new</option>
                             </select>
                         </div>
-                        <p class="result-show-message">Showing 1 - 9 of 33 result</p>
+                        <form class="search" action="/shop" method="GET">
+                            <input type="text" name="category" value="<?php echo $_GET["category"]; ?>" style="visibility: hidden; width:0px; margin:0px !important;">
+                            <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo $_GET["q"]; ?>">
+                            <button><i class="fas fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div class="grid-products row grid" style="margin: 0px;">
@@ -131,13 +132,13 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 p-0">
                             <div class="card-product">
                                 <div class="image">
-                                    <a href="/detail/<?php echo $product["id"]?>">
+                                    <a href="/detail/<?php echo $product["id"] ?>">
                                         <?php if ($product["quantity"] == 0) { ?>
                                             <span class="badge">Soldout</span>
                                         <?php } ?>
                                         <img class="mini_img" src="<?php echo $product["thumbnails"]; ?>" alt="11. Product with video">
                                     </a>
-                                    <div class="product-hover-icons">
+                                    <!-- <div class="product-hover-icons">
                                         <a class="cart-disable cart_btn" data-tooltip="Add to cart">
                                             <span class="icon">
                                                 <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="-21 -22 75 75" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -162,15 +163,15 @@
                                                 </svg>
                                             </span>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="product-content">
                                     <div class="product-categories">
-                                        <?php echo join(", ", array_map(function ($category){
-                                            return '<a href="/">'.$category["title"].'</a>';
-                                        },$product["categories"]) ); ?>
+                                        <?php echo join(", ", array_map(function ($category) {
+                                            return '<a href="/">' . $category["title"] . '</a>';
+                                        }, $product["categories"])); ?>
                                     </div>
-                                    <h3 class="product-title"><a href="#">11. Đậu cô que</a></h3>
+                                    <h3 class="product-title"><a href="/detail/<?php echo $product["id"] ?>"><?php echo $product["name"] ?></a></h3>
                                     <div class="price-box">
                                         <span class="price" data-currency-usd="$39.00"><?php echo $product["price"] ?>đ</span>
                                         <span class="main-price" data-currency-usd="$39.00">$39.00</span>
@@ -183,20 +184,15 @@
                 </div>
                 <div class="pagination-container">
                     <ul>
-                        <li class="disabled prev">
-                            <a><i class="fas fa-chevron-left"></i></a>
+                        <li class="<?php echo $_GET["page"] == 1 ? "disabled" : ""; ?> prev">
+                            <a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
                         </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li>
-                            <a href="/collections/all?page=2" title="">2</a>
-                        </li>
-                        <li>
-                            <a href="/collections/all?page=3" title="">3</a>
-                        </li>
-                        <li>
-                            <a href="/collections/all?page=4" title="">4</a>
-                        </li>
-                        <li class="next"><a href="/collections/all?page=2" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
+                        <?php 
+                        $num_pages = ceil(floatval($number_products) / 9);
+                        for ($i = 0; $i < $num_pages; $i++) { ?>
+                            <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
+                        <?php } ?>
+                        <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next"><a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
             </div>

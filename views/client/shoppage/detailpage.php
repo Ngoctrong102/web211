@@ -278,3 +278,119 @@
         </div>
     </div>-->
 </div>
+
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="comments-wrapper">
+                <?php
+                $comments = array_reverse($comments);
+                ?>
+                <?php if (sizeof($comments) >= 5) { ?>
+                    <button class="load-more-btn" id="load-more-comment-btn">Load more</button>
+                <?php } ?>
+                <div id="comments" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-comment="<?php echo sizeof($comments) > 0 ? $comments[0]["id"] : -1; ?>">
+                    <?php
+                    foreach ($comments as $comment) {
+                    ?>
+                        <div class="comment">
+                            <div class="avatar">
+                                <img src="<?php echo $comment["avatar"]; ?>" alt="">
+                            </div>
+                            <div class="body-comment">
+                                <h5><b><?php echo $comment["first_name"] . " " . $comment["last_name"]; ?></b></h5>
+                                <small><?php echo $comment["created_at"]; ?></small>
+                                <p class="content" style="padding: 0px;"><?php echo $comment["content"]; ?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="<?php echo $user["avatar"]; ?>" alt="">
+                        </div>
+                        <div class="body-comment">
+                            <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
+                            <form id="form-comment" class="form-comment" data-product-id="<?php echo $product["id"]; ?>">
+                                <textarea name="content" id="input-comment" rows="2"></textarea>
+                                <button>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="comment">
+                        <a href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>">Login to comment</a>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="comments-wrapper">
+                <?php
+                $rates = array_reverse($rates);
+                ?>
+                <?php if (sizeof($rates) >= 5) { ?>
+                    <button class="load-more-btn">Load more</button>
+                <?php } ?>
+                <div id="rate" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-comment="<?php echo sizeof($rates) > 0 ? $rates[0]["id"] : -1; ?>">
+                    <?php
+                    foreach ($rates as $rate) {
+                    ?>
+                        <div class="comment">
+                            <div class="avatar">
+                                <img src="<?php echo $rate["avatar"]; ?>" alt="">
+                            </div>
+                            <div class="body-comment">
+                                <h5><b><?php echo $rate["first_name"] . " " . $rate["last_name"]; ?></b></h5>
+                                <div class="rateit" data-rateit-ispreset="true" data-rateit-value="3.6"></div>
+                                <small><?php echo $rate["created_at"]; ?></small>
+                                <p class="content" style="padding: 0px;"><?php echo $rate["content"]; ?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="<?php echo $user["avatar"]; ?>" alt="">
+                        </div>
+                        <div class="body-comment">
+                            <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
+                            <form id="form-rate" class="form-comment" data-product-id="<?php echo $product["id"]; ?>">
+                                <div class="rateit" id="rate-input" data-rateit-ispreset="true" data-rateit-value="5"></div>
+                                <textarea name="content" id="input-comment" rows="2"></textarea>
+                                <button>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="comment">
+                        <a href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>">Login to comment</a>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template id="template-comment">
+    <div class="comment">
+        <div class="avatar">
+            <img src="/upload/images/shin.jpg" alt="">
+        </div>
+        <div class="body-comment">
+            <h5><b>Username</b></h5>
+            <small>20:38 20/10/2021</small>
+            <p class="content">Nội dung comment</p>
+        </div>
+    </div>
+</template>

@@ -5,9 +5,16 @@ class NewsModel extends BaseModel
     {
         parent::__construct();
     }
-    public function getAllNews()
+    public function getAllNews($condition = array())
     {
-        $stmt = $this->conn->prepare("SELECT * FROM news");
+        $sql = "SELECT * FROM news ";
+        if (isset($condition["q"])) {
+            $sql .= "WHERE title LIKE '%" . $condition["q"] . "%' ";
+        }
+        if (isset($condition["pagination"])) {
+            $sql .= "LIMIT " . $condition["pagination"]["size"] . " OFFSET " . ($condition["pagination"]["size"] * $condition["pagination"]["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -48,6 +55,29 @@ class NewsModel extends BaseModel
         $stmt = $this->conn->prepare('INSERT INTO comment_news(user_id, news_id, content, created_at) values(:user_id, :news_id, :content, :created_at)');
         $result = $stmt->execute($comment);
         return $result ? $this->conn->lastInsertId() : -1;
+    }
+    public function loadCommentsOfNews($newsId, $pagination)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_news.id AS id FROM (comment_news JOIN user ON comment_news.user_id = user.id ) WHERE comment_news.news_id = :newsId ORDER BY comment_news.created_at DESC ";
+        if (isset($pagination)) {
+            $sql .= "LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("newsId" => $newsId));
+        return $stmt->fetchAll();
+    }
+    public function loadMoreCommentsOfNews($newsId, $lastCommentId)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,comment_news.id AS id FROM (comment_news JOIN user ON comment_news.user_id = user.id ) WHERE comment_news.news_id = :newsId AND  comment_news.id < :lastCommentId ORDER BY comment_news.created_at DESC ";
+        $sql .= "LIMIT 5";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "newsId" => $newsId,
+            "lastCommentId" => $lastCommentId
+        ));
+        return $stmt->fetchAll();
     }
     public function get6News()
     {

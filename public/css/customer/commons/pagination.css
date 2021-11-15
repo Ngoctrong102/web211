@@ -49,3 +49,11 @@
     font-size: 12px;
     color: white;
 }
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.disabled a {
+    pointer-events: none;
+}
