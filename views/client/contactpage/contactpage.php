@@ -129,6 +129,9 @@ function validateFormContact() {
   if(dem != 0){
       return false;
   }
+  else{
+      alert("successful");
+  }
 }
 
 function validateEmail(email) 

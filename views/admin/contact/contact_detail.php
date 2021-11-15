@@ -12,27 +12,26 @@
         <div class="wrapper-title">
             <h4 class="title">Contact #<?php echo $contact["id"]; ?></h4>
         </div>
-        <h5 class="title">Informations</h5>
-        <table id="datatable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Title</th>
-                    <th>Message</th>
-                </tr>
-            </thead>
-            <tbody>    
-                    <tr>
-                        <td><?php echo $contact["id"]; ?></td>
-                        <td><?php echo $contact["name"]; ?></td>
-                        <td><?php echo $contact["email"]; ?></td>
-                        <td><?php echo $contact["title"]; ?></td>
-                        <td><?php echo $contact["message"]; ?></td>
-                    </tr>
-            </tbody>
-        </table>
+        <div class="noidung1">
+            <div class="chude1"><span class="titleh5">Tin nhắn mới từ:</span> </div>
+            <div class="noidungchude1"><span class="spancontantD"><?php echo $contact["name"]; ?></span></div>
+        </div> <br>
+        <div class="noidung1">
+            <div class="chude1"><span  class="titleh5">Email liên lạc:</span> </div>
+            <div class="noidungchude1"><span class="spancontantD"> <?php echo $contact["email"]; ?></span></div>
+        </div> <br>
+        <div class="noidung1">
+            <div class="chude1"> <span class="titleh5">Chủ đề:</span> </div>
+            <div class="noidungchude1"><span class="spancontantD"><?php echo $contact["title"]; ?></span></div>
+        </div> <br>
+        <div class="noidung1">
+            <div class="chude2"> <span class="titleh5">Nội dung tin nhắn:</span> </div>
+            <div class="noidungchude2"><span class="spancontantD"><?php echo $contact["message"]; ?></span></div>
+        </div> <br>
+        
+        
+       
+    
         
         <button class="buttonDetailContact"><a href="/admin/contact">Back</a></button>
               
