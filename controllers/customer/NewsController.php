@@ -10,6 +10,7 @@ class NewsController extends BaseController
 
     public function renderAllNews()
     {
+        $data["title"] = "News";
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/shoppage/checkbox-filter.css",
@@ -21,12 +22,15 @@ class NewsController extends BaseController
         ];
         $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
         $condition = array(
-            "q" => $_GET["q"],
             "pagination" => array(
                 "size" => 9,
                 "page" => $_GET["page"] - 1
             )
         );
+        if (isset($_GET["q"])) {
+
+            $condition["q"] = $_GET["q"];
+        }
         $data["list_news"] = $this->news->getAllNews($condition);
         unset($condition["pagination"]);
         $data["number_news"] = sizeof($this->news->getAllNews($condition));

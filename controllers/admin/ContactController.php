@@ -29,7 +29,15 @@ class ContactController extends BaseController
     }
     public function LoadDetailPage($id)
     { 
-        $this->contact->LoadDetailPageById($id);
-        header("Location: /admin/contact");
+
+
+        $data["title"] = "Contact detail";
+        $data["nav"] = "contact";
+        $data["cssFiles"] = [
+            "css/admin/contact/detail.css"
+        ];
+        $data["contact"] = $this->contact->getContactDetail($id);
+        
+        $this->load->view("layouts/admin", "admin/contact/contact_detail", $data);
     }
 }

@@ -24,13 +24,13 @@
                     <ul class="product-categories">
                         <?php foreach ($categories as $category) {
                             $href = "/shop";
-                            if ($category["id"] != isset($_GET["category"])? $_GET["category"]:"") {
+                            if (isset($_GET["category"]) && $category["id"] != $_GET["category"]) {
                                 $href .= "?category=" . $category["id"] . "&page=1";
                             }
                         ?>
                             <li>
-                                <a href="<?php echo $href; ?>" <?php echo $category["id"] == $_GET["category"] ? 'class="active"' : ""; ?>>
-                                    <i class="far fa-<?php echo $category["id"] == $_GET["category"] ? 'check-' : ""; ?>square"></i><?php echo $category["title"]; ?>
+                                <a href="<?php echo $href; ?>" <?php echo isset($_GET["category"]) && $category["id"] == $_GET["category"] ? 'class="active"' : ""; ?>>
+                                    <i class="far fa-<?php echo isset($_GET["category"]) && $category["id"] == $_GET["category"] ? 'check-' : ""; ?>square"></i><?php echo $category["title"]; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -121,8 +121,8 @@
                             </select>
                         </div>
                         <form class="search" action="/shop" method="GET">
-                            <input type="text" name="category" value="<?php echo $_GET["category"]; ?>" style="visibility: hidden; width:0px; margin:0px !important;">
-                            <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo $_GET["q"]; ?>">
+                            <input type="text" name="category" value="<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>" style="visibility: hidden; width:0px; margin:0px !important;">
+                            <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>">
                             <button><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -185,14 +185,14 @@
                 <div class="pagination-container">
                     <ul>
                         <li class="<?php echo $_GET["page"] == 1 ? "disabled" : ""; ?> prev">
-                            <a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
+                            <a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
                         </li>
                         <?php 
                         $num_pages = ceil(floatval($number_products) / 9);
                         for ($i = 0; $i < $num_pages; $i++) { ?>
-                            <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
+                            <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
                         <?php } ?>
-                        <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next"><a href="/shop?category=<?php echo $_GET["category"];?>&q=<?php echo $_GET["q"];?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
+                        <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -29,4 +29,15 @@ class ContactModel extends BaseModel
             "id" => $id
         ));
     }
+
+    public function getContactDetail($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM contact WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("id" => $id));
+        $rows = $stmt->fetchAll();
+        if (isset($rows[0])) {
+            return $rows[0];
+        } else return null;
+    }
 }

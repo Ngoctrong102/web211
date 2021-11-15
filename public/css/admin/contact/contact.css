@@ -20,4 +20,42 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 } */ 
+.contactTable{
+    width: 100%;
+}
+.pName p{
+    width: 160px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+ 
+    word-wrap: normal;
+    white-space: nowrap;
+}
 
+.messageJust1line p{
+    width: 400px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+ 
+    word-wrap: normal;
+    white-space: nowrap;
+    
+}
+
+.titleJust1line p{
+    width: 200px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+ 
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.pEmail p{
+    width: 150px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+ 
+    word-wrap: normal;
+    white-space: nowrap;
+}

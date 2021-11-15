@@ -24,19 +24,19 @@
             </thead>
             <tbody>
                 <?php foreach ($contacts as $contact) { ?>
-                    <tr>
-                        <td style=" width: 5% ;"><?php echo $contact["id"]; ?></td>
-                        <td style=""><?php echo $contact["name"]; ?></td>
-                        <td style=""><?php echo $contact["email"]; ?></td>
-                        <td class="titleJust1line" style=""><?php echo $contact["title"]; ?></td>
-                        <td class="messageJust1line" style="" ><?php echo $contact["message"]; ?></td>
+                    <tr class="contactTable">
+                        <td style=" width:5% ;"><?php echo $contact["id"]; ?></td>
+                        <td class="pName"><p><?php echo $contact["name"]; ?></p></td>
+                        <td class="pEmail"><p><?php echo $contact["email"]; ?></p></td>
+                        <td class="titleJust1line" ><p><?php echo $contact["title"]; ?></p></td>
+                        <td class="messageJust1line" ><p><?php echo $contact["message"]; ?></p></td>
                         <td style="text-align: center;">
                             <div class="btn-group" style="border: 1px solid #1b2c3f; border-radius: .26rem">
                                 <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     Action
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="">Detail</a></li>
+                                    <li><a class="dropdown-item" href="/admin/contact/detail/<?php echo $contact["id"]; ?>">Detail</a></li>
                                     <li><a class="dropdown-item" href="/admin/contact/delete/<?php echo $contact["id"]; ?>">Delete</a></li>
                                 </ul>
                             </div>

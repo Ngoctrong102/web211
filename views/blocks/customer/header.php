@@ -42,7 +42,7 @@
                         <!--search-->
                         <div id="search">
                             <form action="/search" method="GET">
-                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php  echo isset($_GET["keyword"])?$_GET["keyword"]:"" ;?>">
+                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : "" ;?>">
                                 <button type="submit">
                                     <span style="transform: rotate(90deg); color: white; font-size: 25px" class="material-icons-outlined">
                                         search
