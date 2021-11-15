@@ -126,6 +126,10 @@ $routes = array(
         "handler" => "customer/contact/renderPageContact",
         "roles" => ["all"]
     ),
+    "contact/addnewcontact" => array(
+        "handler" => "customer/contact/Addnewcontact",
+        "roles" => ["all"]
+    ),
     "search" => array(
         "handler" => "customer/search/search",
         "roles" => ["all"]
@@ -263,5 +267,17 @@ $routes = array(
     "admin/orders/cancel/:num(id)" => array(
         'handler' => "admin/order/cancelOrder",
         "roles" => ["all"]
-    ) 
+    ),
+    "admin/contact" => array(
+        "handler" => "admin/contact/renderContact",
+        "roles" => ["all"]
+    ),
+    "admin/contact/delete/:num(id)" => array(
+        "handler" => "admin/contact/deleteContact",
+        "roles" => ["all"]
+    ),
+    "admin/contact/detail/:num(id)" => array(
+        "handler" => "admin/contact/LoadDetailPage",
+        "roles" => ["all"]
+    ),
 );
