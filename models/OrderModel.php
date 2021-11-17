@@ -5,7 +5,19 @@ class OrderModel extends BaseModel
     {
         parent::__construct();
     }
-    public function getOrderInfo($user_id)
+    public function getOrderInfo($user_id, $id)
+    {
+        $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status 
+        FROM (`order` JOIN address ON `order`.user_id = address.user_id AND `order`.address_id=address.id JOIN user ON `order`.user_id=user.id) 
+        WHERE `order`.user_id = :id AND `order`.id=:orderId ORDER BY created_at DESC");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "id" => $user_id,
+            "orderId" => $id
+        ));
+        return $stmt->fetchAll();
+    }
+    public function getAllOrderInfo($user_id)
     {
         $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status 
         FROM (`order` JOIN address ON `order`.user_id = address.user_id AND `order`.address_id=address.id JOIN user ON `order`.user_id=user.id) 
@@ -16,19 +28,12 @@ class OrderModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
-    public function orderCancelled($id)
+    public function orderCancelled($id, $status)
     {
-        $stmt = $this->conn->prepare('DELETE FROM `product_order` WHERE `product_order`.order_id = :id');
-        $stmt = $this->conn->prepare('DELETE FROM `order` WHERE `order`.id = :id');
+        $stmt = $this->conn->prepare('UPDATE `order` SET `order`.status = :status WHERE `order`.id = :id');
         return $stmt->execute(array(
-            "id" => $id
-        ));
-    }
-    public function product_orderDeleted($id)
-    {
-        $stmt = $this->conn->prepare('DELETE FROM `product_order` WHERE `product_order`.order_id = :id');
-        return $stmt->execute(array(
-            "id" => $id
+            "id" => $id,
+            "status" => $status
         ));
     }
     public function addOrder($id, $user_id, $status)

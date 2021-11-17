@@ -43,7 +43,7 @@
             <p><?php echo $product["description"] ?></p>
 
 
-            <div style="width:200px;display: flex; justify-content: space-around;">
+            <!--  <div style="width:200px;display: flex; justify-content: space-around;">
 
                 <p>Size:</p>
                 <p id="m">m</p>
@@ -165,24 +165,28 @@
                     document.getElementById("nau").style.border = "none";
                     document.getElementById("vang").style.border = "none";
                 }
-            </script>
+            </script> -->
 
 
-            <br><br>
+
 
             <form id="qt">
                 <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
-                <button class="addbutton" data-product-id="<?php echo $product["product_id"]; ?>">
-                    <span><i style="color: white" class="fa fa-shopping-cart mr-10"></i></span><span style="color: white">ADD TO CART</span>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <button class="addbutton" data-product-id="<?php echo $product["id"]; ?>">
+                        <span><i style="color: white" class="fa fa-shopping-cart mr-10"></i></span><span style="color: white">ADD TO CART</span>
 
-                </button>
+                    </button>
+                <?php } else { ?>
+                    <a style="text-decoration: none" href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>"> <span><i style="color: red;margin:0" class="fa fa-shopping-cart mr-10"></i></span><span style="color: red">LOGIN FIRST</span></a>
+                <?php } ?>
             </form>
-            <br><br>
+            <br>
 
-            <a href="" class="category">
+            <!--  <a href="" class="category">
                 <i class="far fa-heart">Add to wishlist</i>
-            </a>
-            <br><br>
+            </a> 
+            <br><br> -->
 
             <a href="" style="text-decoration: none;">
                 <p class="buy">Buy it now</p>

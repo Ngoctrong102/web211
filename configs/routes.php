@@ -38,24 +38,24 @@ $routes = array(
         "handler" => "cart/ProductDeleted",
         "roles" => ["all"]
     ),
-    "orderproduct" => array(
-        "handler" => "order/renderOrderProductPage",
+    "orderproduct/:num(id)" => array(
+        "handler" => "customer/order/renderOrderProductPage",
         "roles" => ["all"]
     ),
     "order/:num(id)" => array(
-        "handler" => "order/addOrder",
+        "handler" => "customer/order/addOrder",
         "roles" => ["all"]
     ),
     "order" => array(
-        "handler" => "order/renderOrderPage",
+        "handler" => "customer/order/renderOrderPage",
         "roles" => ["all"]
     ),
     "order/:num(address_id)/:num(order_id)" => array(
-        "handler" => "order/orderUpdated",
+        "handler" => "customer/order/orderUpdated",
         "roles" => ["all"]
     ),
     "order/orderCancelled/:num(id)" => array(
-        "handler" => "order/orderCancelled",
+        "handler" => "customer/order/orderCancelled",
         "roles" => ["all"]
     ),
     "detail/:num(id)" => array(

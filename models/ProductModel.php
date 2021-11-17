@@ -243,7 +243,7 @@ class ProductModel extends BaseModel
     }
     public function getProductForDetail($id)
     {
-        $stmt = $this->conn->prepare("SELECT *, product.id as id FROM (product JOIN unit ON product.unit_id = unit.id JOIN product_image ON product.id = product_image.product_id LEFT JOIN product_cart ON product.id=product_cart.product_id) WHERE product.id = :id");
+        $stmt = $this->conn->prepare("SELECT * FROM product WHERE product.id = :id");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute(array(
             "id" => $id

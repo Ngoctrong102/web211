@@ -15,12 +15,12 @@ class OrderController extends BaseController
             "css/customer/order/order.css",
         ];
         $user_id = $_SESSION["user_id"];
-        $data["orders"] = $this->order->getOrderInfo($user_id);
+        $data["orders"] = $this->order->getAllOrderInfo($user_id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/orderpage", $data);
     }
 
-    public function renderOrderProductPage()
+    public function renderOrderProductPage($id)
     {
         $data["title"] = "Your Order Products";
         $data["cssFiles"] = [
@@ -28,15 +28,15 @@ class OrderController extends BaseController
             "css/customer/order/orderproduct.css",
         ];
         $user_id = $_SESSION["user_id"];
-        $data["orders"] = $this->order->getOrderInfo($user_id);
+        $data["orders"] = $this->order->getOrderInfo($user_id, $id);
         $data["orderproducts"] = $this->order->getAllProducts_order();
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/orderproductpage", $data);
     }
     public function orderCancelled($id)
     {
-        $this->order->product_orderDeleted($id);
-        $this->order->orderCancelled($id);
+        $status = "Canceled";
+        $this->order->orderCancelled($id, $status);
         header("Location: /order");
     }
     public function addOrder($id)

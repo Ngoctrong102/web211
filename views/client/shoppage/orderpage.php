@@ -35,8 +35,7 @@
                     <td class="orderAddress"><?php echo $order["address"] ?></td>
                     <td class="orderDate"><?php echo $order["created_at"] ?></td>
                     <th><span class="status <?php echo strtolower($order["status"]); ?>"><?php echo $order["status"]; ?></span></th>
-                    <td><a class="link-option" href="/orderproduct">Detail</a>
-                        <a class="link-option" href="">Checkout</a>
+                    <td><a class="link-option" href="/orderproduct/<?php echo $order["id"] ?>">Detail</a>
                         <a class="link-option" href="/order/orderCancelled/<?php echo $order["id"] ?>">Cancel</a>
                     </td>
                 </tr>
