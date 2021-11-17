@@ -302,4 +302,30 @@ class ProductModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
+
+    public function loadRatesOfProduct($productId, $pagination)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,rate,rate_product.id AS id FROM (rate_product JOIN user ON rate_product.user_id = user.id ) WHERE rate_product.product_id = :productId ORDER BY rate_product.created_at DESC ";
+        if (isset($pagination)) {
+            $sql .= "LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array("productId" => $productId));
+        return $stmt->fetchAll();
+    }
+
+    public function addRate($rate)
+    {
+        $stmt = $this->conn->prepare('INSERT INTO rate_product(user_id, product_id, content,rate, created_at) values(:user_id, :product_id, :content,:rate, :created_at)');
+        $result = $stmt->execute($rate);
+        if ($result) {
+            $stmt = $this->conn->prepare('update product set rating = (rating * product.num_rate + :rate)/(num_rate+1), num_rate = num_rate + 1 where product.id = :productId');
+            $result = $stmt->execute(array(
+                "rate" => $rate["rate"],
+                "productId" => $rate["product_id"]
+            ));
+            return $this->conn->lastInsertId();
+        } else return -1;
+    }
 }

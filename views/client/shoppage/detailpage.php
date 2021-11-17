@@ -341,7 +341,7 @@
                 <?php if (sizeof($rates) >= 5) { ?>
                     <button class="load-more-btn">Load more</button>
                 <?php } ?>
-                <div id="rate" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-comment="<?php echo sizeof($rates) > 0 ? $rates[0]["id"] : -1; ?>">
+                <div id="rates" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-comment="<?php echo sizeof($rates) > 0 ? $rates[0]["id"] : -1; ?>">
                     <?php
                     foreach ($rates as $rate) {
                     ?>
@@ -349,6 +349,7 @@
                             <div class="avatar">
                                 <img src="<?php echo $rate["avatar"]; ?>" alt="">
                             </div>
+                            <div class="rateit" data-rateit-ispreset="false" data-rateit-value="<?php echo $rate["rate"]; ?>" data-rateit-readonly="true"></div>
                             <div class="body-comment">
                                 <h5><b><?php echo $rate["first_name"] . " " . $rate["last_name"]; ?></b></h5>
                                 <div class="rateit" data-rateit-ispreset="true" data-rateit-value="3.6"></div>
@@ -366,8 +367,10 @@
                         <div class="body-comment">
                             <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
                             <form id="form-rate" class="form-comment" data-product-id="<?php echo $product["id"]; ?>">
-                                <div class="rateit" id="rate-input" data-rateit-ispreset="true" data-rateit-value="5"></div>
-                                <textarea name="content" id="input-comment" rows="2"></textarea>
+                                <div style="width:100%">
+                                    <div class="rateit" id="rate-input" data-rateit-ispreset="false" data-rateit-resetable="false" data-rateit-value="5"></div>
+                                </div>
+                                <textarea name="content" id="input-rate" rows="2"></textarea>
                                 <button>Submit</button>
                             </form>
                         </div>
@@ -387,6 +390,20 @@
         <div class="avatar">
             <img src="/upload/images/shin.jpg" alt="">
         </div>
+        <div class="body-comment">
+            <h5><b>Username</b></h5>
+            <small>20:38 20/10/2021</small>
+            <p class="content">Nội dung comment</p>
+        </div>
+    </div>
+</template>
+
+<template id="template-rate">
+    <div class="comment">
+        <div class="avatar">
+            <img src="/upload/images/shin.jpg" alt="">
+        </div>
+        <div class="rateit" data-rateit-ispreset="false" data-rateit-readonly="true"></div>
         <div class="body-comment">
             <h5><b>Username</b></h5>
             <small>20:38 20/10/2021</small>
