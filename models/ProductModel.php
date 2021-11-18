@@ -250,7 +250,14 @@ class ProductModel extends BaseModel
         ));
         $rows = $stmt->fetchAll();
         if (isset($rows[0])) {
-            return $rows[0];
+            $product = $rows[0];
+            $stmt = $this->conn->prepare("SELECT image_url FROM product_image WHERE product_id = :productId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "productId" => $product["id"]
+            ));
+            $product["images"] = $stmt->fetchAll();
+            return $product;
         } else return null;
     }
     public function addToCart($user_id, $product_id, $quantity)
@@ -269,6 +276,17 @@ class ProductModel extends BaseModel
             "id" => $product_id,
         ));
         return $stmt->fetchAll();
+    }
+    public function checkInStock($product_id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM product WHERE product.id = :id");
+        $stmt->execute(array(
+            "id" => $product_id,
+        ));
+        $rows = $stmt->fetchAll();
+        if (isset($rows[0])) {
+            return $rows[0];
+        } else return null;
     }
 
     public function addComment($comment)

@@ -77,8 +77,12 @@
             <h5>Select Your Address:</h5>
             <form>
                 <select class="input input1">
-                    <?php foreach ($addresses as $address) { ?>
-                        <option class="option" value="<?php echo $address["id"] ?>"><?php echo $address["address"] ?></option>
+                    <?php if (isset($_SESSION["user_id"])) {
+                        foreach ($addresses as $address) { ?>
+                            <option class="option" value="<?php echo $address["id"] ?>"><?php echo $address["address"] ?></option>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <option class="option" value="Please Login">Please Login</option>
                     <?php } ?>
                 </select>
                 <a class="linktoaccount" href="/account">
@@ -88,7 +92,11 @@
             <br>
             <h5>Phone:</h5>
             <form>
-                <input readonly type="text" class="input" value="<?php echo $phonenumber["phone"] ?>">
+                <input readonly type="text" class="input" value="<?php if (isset($_SESSION["user_id"])) {
+                                                                        echo $phonenumber["phone"];
+                                                                    } else {
+                                                                        echo "Please Login";
+                                                                    } ?>">
                 <a class="linktoaccount" href="/account">
                     <p class="orderlink">Change</p>
                 </a>

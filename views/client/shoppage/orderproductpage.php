@@ -63,7 +63,7 @@
     <div style="display: flex;justify-content: space-between; width: 100%;margin-bottom: 50px; padding: 10px">
         <div style="background-color: #dedede;width: 60%;padding: 10px 30px;height: 175px; border-right: 1pt solid #fff">
             <?php foreach ($orders as $order) { ?>
-                <p class="info" style="font-weight: bolder">Full name:&nbsp;&nbsp;&nbsp;<span><?php echo ($order["first_name"] . $order["last_name"]) ?></span></p>
+                <p class="info" style="font-weight: bolder">Full name:&nbsp;&nbsp;&nbsp;<span><?php echo ($order["first_name"] . " " . $order["last_name"]) ?></span></p>
                 <p class="info" style="font-weight: bolder">Address:&nbsp;&nbsp;&nbsp;<span><?php echo $order["address"] ?></span></p>
                 <p class="info" style="font-weight: bolder">Phone:&nbsp;&nbsp;&nbsp;<span><?php echo $order["phone"] ?></span></p>
                 <p class="info" style="font-weight: bolder">Date:&nbsp;&nbsp;&nbsp;<span><?php echo $order["created_at"] ?></span></p>

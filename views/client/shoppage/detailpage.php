@@ -15,23 +15,29 @@
         </ul>
     </div>
 </div>
-<div class="container">
+<div style="background-color: white;margin-bottom:20px" class="container">
     <div class="content" style="display: flex;">
         <div class="column1">
-            <img src="<?php echo $product["thumbnails"] ?>" alt="vegetable" width="500px" height="500px">
+            <div class="image-cover">
+                <img id="main-image" src="<?php echo $product["thumbnails"] ?>" alt="vegetable" width="100%" height="500px">
+            </div>
+
+            <div class="slide-cover">
+                <div class="turn-left"><i class="fa fa-angle-left" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
+                <div class="cover-image-content">
+                    <div class="image-content">
+                        <?php foreach ($product["images"] as $image) { ?>
+                            <div class="each-image">
+                                <img class="sub-image" alt="" src="<?php echo $image["image_url"] ?>">
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+                <div class="turn-right"><i class="fa fa-angle-right" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
 
 
-
-
-
-
-
-
-
-
-
-
-
+            </div>
 
 
         </div>
@@ -42,7 +48,10 @@
             <p style="color:rgb(112,177,0);font-size:200%"><?php echo $product["price"] ?>VNĐ</p>
             <p><?php echo $product["description"] ?></p>
 
-
+            <br>
+            <div class="quantity-instock">
+                <p style="font-size: 120%"><span style="font-weight: bolder">In Stock: </span><?php echo $product["quantity"] . " " . "item(s)" ?></p>
+            </div>
             <!--  <div style="width:200px;display: flex; justify-content: space-around;">
 
                 <p>Size:</p>
@@ -118,7 +127,7 @@
 
                 function changColor() {
                     document.getElementById("vang").style.border = "1px solid black";
-                    document.getElementById("vang").style.padding = "3px 3px ";
+                    document.getElementById("van";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -128,7 +137,7 @@
 
                 function cchangColor() {
                     document.getElementById("xam").style.border = "1px solid black";
-                    document.getElementById("xam").style.padding = "3px 3px ";
+                    document.getElementById("xa";
 
                     document.getElementById("vang").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -138,7 +147,7 @@
 
                 function ccchangColor() {
                     document.getElementById("xanh").style.border = "1px solid black";
-                    document.getElementById("xanh").style.padding = "3px 3px ";
+                    document.getElementById("xan";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("vang").style.border = "none";
@@ -148,7 +157,7 @@
 
                 function cccchangColor() {
                     document.getElementById("nau").style.border = "1px solid black";
-                    document.getElementById("nau").style.padding = "3px 3px ";
+                    document.getElementById("na";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -158,7 +167,7 @@
 
                 function ccccchangColor() {
                     document.getElementById("tim").style.border = "1px solid black";
-                    document.getElementById("tim").style.padding = "3px 3px ";
+                    document.getElementById("ti";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -205,82 +214,6 @@
 
 
 
-
-    <!--<div class="content">
-        <div class="col1">
-            <div class="major-image">
-                <img style="width: 510px;height: 510px" src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/02_1024x1024.png?v=1543646109">
-            </div>
-            <div class="minor-image">
-                slide here
-            </div>
-        </div>
-        <div class="col2">
-            <h2>Pro name</h2>
-            <p class="product-rating">
-                <span class="stars">
-                    <span class="material-icons-outlined">
-                     star_outline
-                     </span>
-                     <span class="material-icons-outlined">
-                     star_outline
-                     </span>
-                      <span class="material-icons-outlined">
-                      star_outline
-                      </span><span class="material-icons-outlined">
-                      star_outline
-                       </span><span class="material-icons-outlined">
-                        star_outline
-                        </span><span class="rating-caption">No reviews</span>
-                </span>
-              </p>
-              <h2 class="pro-price">80</h2>
-                <p class="pro-description">It is a long established fact that a reader will be distracted by the readable 
-                    content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less 
-                    normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                </p>
-                <p class="pro-unit"></p>
-                <div class="cart-button">
-                        <div class="quantity-selector">
-                            <input type="text" value="1" name="quantity">
-                            <a href="#" class="inc qty-btn">+</a><a href="#" class="dec qty-btn">-</a>
-                        </div>
-                        <div class="add-to-cart-btn">
-  
-                            <button type="submit" id="AddToCart" class="meow_btn">
-                                <i class="fa fa-shopping-cart mr-10"></i><span class="cart-title" id="AddToCartText">Add to cart</span>
-                            </button>
-                        </div>
-                 </div>
-                 <div class="wishlist">
-                     <a class="same-action" href="/account/login" data-tooltip="Add to wishlist">
-                     <span class="material-icons-outlined">favorite_border</span>
-                     <span class="add_wish">Add to wishlist</span></a>
-                </div>
-                <div class="buy-button">
-                    <button class="buy-btn" type="button">Buy it now</button>
-                </div>
-                <div class="single-product-category mb-20">
-                     <h3>Categories:
-                        <span><a href="/collections/beans">Beans</a>, 
-                             <a href="/collections/bread">Bread</a>, 
-                             <a href="/collections/fast-foods">Fast Foods</a>, 
-                             <a href="/collections/featured">Featured</a>, 
-                             <a href="/collections/fish-meats">Fish &amp; Meats</a>
-                        </span>
-                    </h3>
-                </div>
-
-                <div class="social-share-buttons">
-                    <h3>Share:</h3>
-                    <ul class="detail-info">
-                       <li><a class="fb" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                       <li><a class="tw" target="_blank" href="#"><i class="fa fa-twitter"></i></a></li>
-    
-                    </ul>
-                </div>
-        </div>
-    </div>-->
 </div>
 
 <div class="container">
@@ -398,3 +331,14 @@
         </div>
     </div>
 </template>
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="color: white; background-color: red;">
+            <strong class="me-auto" style="color: white;">Error</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>

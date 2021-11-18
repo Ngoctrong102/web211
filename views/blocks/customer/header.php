@@ -42,7 +42,7 @@
                         <!--search-->
                         <div id="search">
                             <form action="/search" method="GET">
-                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : "" ;?>">
+                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : ""; ?>">
                                 <button type="submit">
                                     <span style="transform: rotate(90deg); color: white; font-size: 25px" class="material-icons-outlined">
                                         search
@@ -61,7 +61,7 @@
                                     <?php } ?>
                                     <?php
                                     $total = 0;
-                                    if (isset($cartproducts)) {
+                                    if (isset($cartproducts) && isset($_SESSION["user_id"])) {
                                         foreach ($cartproducts as $cartproduct) {
                                             $total += $cartproduct["price"] * $cartproduct["quantity"];
                                     ?>
@@ -92,8 +92,12 @@
                                     </div>
                                     <hr style="width: 100%; height:0.5px; margin:0">
                                     <div id="cart-button">
-                                        <p><a href="/order"><span>View orders</span></a></p>
-                                        <p><a href="/cart"><span>View cart</span></a></p>
+                                        <p><a href="/order" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>View orders</span></a></p>
+                                        <p><a href="/cart" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>View cart</span></a></p>
                                     </div>
                                 </ul>
                                 <br>
