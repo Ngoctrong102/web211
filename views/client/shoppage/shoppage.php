@@ -24,7 +24,7 @@
                     <ul class="product-categories">
                         <?php foreach ($categories as $category) {
                             $href = "/shop";
-                            if (isset($_GET["category"]) && $category["id"] != $_GET["category"]) {
+                            if (!isset($_GET["category"]) || $category["id"] != $_GET["category"]) {
                                 $href .= "?category=" . $category["id"] . "&page=1";
                             }
                         ?>
@@ -77,13 +77,17 @@
                 </div>
                 <div class="filter">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <form class="search d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center" action="/shop" method="GET">
+                        <form id="filter-form" class="search d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center" action="/shop" method="GET">
                             <div class="d-flex align-items-center mb-xs-10">
                                 <p style="margin-right: 10px;">Sort by</p>
-                                <select name="SortBy" id="sortby">
-                                    <option value="none">None</option>
-                                    <option value="rate">Rate</option>
-                                    <option value="price">Price</option>
+                                <select name="sort" id="sortby">
+                                    <option value="none" <?php echo isset($_GET["sort"]) && $_GET["sort"] == 'none' ? "selected" : ""; ?>>None</option>
+                                    <option value="rating" <?php echo isset($_GET["sort"]) && $_GET["sort"] == 'rating' ? "selected" : ""; ?>>Rating</option>
+                                    <option value="price" <?php echo isset($_GET["sort"]) && $_GET["sort"] == 'price' ? "selected" : ""; ?>>Price</option>
+                                </select>
+                                <select name="order" id="order">
+                                    <option value="desc" <?php echo isset($_GET["order"]) && $_GET["order"] == 'desc' ? "selected" : ""; ?>>Descending</option>
+                                    <option value="asc" <?php echo isset($_GET["order"]) && $_GET["order"] == 'asc' ? "selected" : ""; ?>>Ascending</option>
                                 </select>
                             </div>
                             <div>
@@ -139,6 +143,9 @@
                                         }, $product["categories"])); ?>
                                     </div>
                                     <h3 class="product-title"><a href="/detail/<?php echo $product["id"] ?>"><?php echo $product["name"] ?></a></h3>
+                                    <div style="width:100%;" class="d-flex justify-content-center">
+                                        <div class="rateit" id="rate-input" data-rateit-readonly="true" data-rateit-ispreset="false" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"] ?>"></div>
+                                    </div>
                                     <div class="price-box">
                                         <span class="price" data-currency-usd="$39.00"><?php echo $product["price"] ?>đ</span>
                                         <span class="main-price" data-currency-usd="$39.00">$39.00</span>

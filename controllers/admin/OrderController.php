@@ -51,6 +51,10 @@ class OrderController extends BaseController {
     {
         $status = "Canceled";
         $this->order->updateStatus($id, $status);
+        $orderproducts = $this->order->getAllProducts_order($id);
+        foreach ($orderproducts as $orderproduct) {
+            $this->order->incProductQuantity($orderproduct);
+        }
         header("Location: /admin/orders");
     }
 }
