@@ -3,7 +3,11 @@
         <div class="container">
             <div id="header-row">
                 <div id="currency">
-                    Welcome!
+                    <?php if (isset($_SESSION["user_id"])) { ?>
+                        Welcome!
+                    <?php } else { ?>
+                        Please sign in!
+                    <?php } ?>
                 </div>
 
 
@@ -53,11 +57,13 @@
                         <!--cart-->
                         <div id="cart">
                             <div id="hover-objects">
-                                <a href="/cart" id="icon"><span>Shopping Cart</span><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
+                                <a href="/cart" id="icon" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>Shopping Cart</span><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
                                         shopping_bag</span></a>
                                 <ul id="cart-items">
-                                    <?php if (!isset($cartproducts) || count($cartproducts) == 0) { ?>
-                                        <h5 id="empty" style="text-align: center; margin-top: 20px">Your cart is empty</h5>
+                                    <?php if (!isset($cartproducts) || count($cartproducts) == 0 || !isset($_SESSION["user_id"])) { ?>
+                                        <p id="empty" style="font-size:20px;text-align: center; margin-top: 20px">Your cart is empty</p>
                                     <?php } ?>
                                     <?php
                                     $total = 0;

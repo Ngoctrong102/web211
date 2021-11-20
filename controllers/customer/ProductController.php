@@ -66,6 +66,7 @@ class ProductController extends BaseController
             "js/customer/product/rate.js",
             "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
+        $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $pagination = array(
@@ -87,7 +88,8 @@ class ProductController extends BaseController
         $product_id = $data["product_id"];
         $user_id = $_SESSION["user_id"];
         $quantity_in_stock = $this->product->checkInStock($product_id);
-        if ($quantity <= $quantity_in_stock["quantity"]) {
+        $quantity_in_cart = $this->product->checkQuantityCart($product_id, $user_id);
+        if (($quantity + $quantity_in_cart["quantity"]) <= $quantity_in_stock["quantity"]) {
 
 
             $success = $this->product->addToCart($user_id, $product_id, $quantity);

@@ -11,6 +11,8 @@ class ProductController extends BaseController
 
     public function renderAllProducts()
     {
+        $data["title"] = "Products";
+
         $data["nav"] = "products";
 
         $data["jsFiles"] = ["js/admin/datatable.js"];

@@ -15,7 +15,7 @@
         </ul>
     </div>
 </div>
-<div style="background-color: white;margin-bottom:20px" class="container">
+<div class="container">
     <div class="content" style="display: flex;">
         <div class="column1">
             <div class="image-cover">
@@ -45,7 +45,7 @@
         <div class="column2">
             <h1 id="product_name_detailpage"><?php echo $product["name"] ?></h1>
             <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">No views</i>
-            <p style="color:rgb(112,177,0);font-size:200%"><?php echo $product["price"] ?>VNĐ</p>
+            <p style="color:rgb(112,177,0);font-size:200%"><?php echo $product["price"] ?>VNĐ<?php echo "/" . $product["unit"]["title"] ?></p>
             <p><?php echo $product["description"] ?></p>
 
             <br>
@@ -213,7 +213,53 @@
     </div>
 
 
+    <!-- san pham lien quan-->
+    <div class="relative">
+        <div style="background-color: #ddd;height: 40px;"></div>
+        <div class="absolute">
+            <p style="color:white">RELATED PRODUCT</p>
+        </div>
+        <br><br>
+        <div class="box">
+            <?php for ($count = 0; $count < 3 && $count < sizeof($relatedproducts); $count++) { ?>
+                <div class="img">
+                    <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="float: left;"><img width="160px" height="160px" src="<?php echo $relatedproducts[$count]["thumbnails"] ?>" alt="product">
+                    </a>
+                    <div class="info">
+                        <p style="text-align:center"><?php echo $relatedproducts[$count]["name"] ?></p>
+                        <p style="color: rgb(112,177,0);font-size:18px"><?php echo $relatedproducts[$count]["price"] . "VNĐ/" . $relatedproducts[$count]["title"] ?></p>
+                        <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="text-decoration: none;">
+                            <p class="re-view">View Detail</p>
+                        </a>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <br><br>
+        <?php if (sizeof($relatedproducts) > 3) { ?>
+            <div class="box">
+                <?php
+                for ($count = 3; $count < 6; $count++) { ?>
+                    <div class="img">
+                        <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="float: left;"><img width="160px" height="160px" src="<?php echo $relatedproducts[$count]["thumbnails"] ?>" alt="product">
+                        </a>
+                        <div class="info">
+                            <p style="text-align:center"><?php echo $relatedproducts[$count]["name"] ?></p>
+                            <p style="color: rgb(112,177,0);font-size:18px"><?php echo $relatedproducts[$count]["price"] . "VNĐ/" . $relatedproducts[$count]["title"] ?></p>
+                            <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="text-decoration: none;">
+                                <p class="re-view">View Detail</p>
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
 
+            </div>
+        <?php } ?>
+
+        <!-- san pham lien quan -->
+
+
+    </div>
 </div>
 
 <div class="container">
@@ -318,7 +364,6 @@
         </div>
     </div>
 </div>
-
 <template id="template-comment">
     <div class="comment">
         <div class="avatar">

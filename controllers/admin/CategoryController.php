@@ -9,6 +9,8 @@ class CategoryController extends BaseController
 
     public function renderAllCategories()
     {
+        $data["title"] = "Categories";
+
         $data["nav"] = "categories";
 
         $data["jsFiles"] = [

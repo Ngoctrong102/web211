@@ -257,6 +257,16 @@ class ProductModel extends BaseModel
                 "productId" => $product["id"]
             ));
             $product["images"] = $stmt->fetchAll();
+
+            $stmt = $this->conn->prepare("SELECT title FROM unit WHERE unit.id = :unitId");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute(array(
+                "unitId" => $product["unit_id"]
+            ));
+            $rows = $stmt->fetchAll();
+            if (isset($rows[0])) {
+                $product["unit"] = $rows[0];
+            }
             return $product;
         } else return null;
     }
@@ -277,11 +287,32 @@ class ProductModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
+    public function getRelatedProduct($id)
+    {
+        $stmt = $this->conn->prepare("SELECT *,product.id as re_productId FROM product JOIN unit ON product.unit_id=unit.id WHERE product.id IN (SELECT product_id FROM product_category WHERE category_id IN (SELECT category_id FROM product_category WHERE product_category.product_id = :id) AND product_id!=:proId) LIMIT 6");
+        $stmt->execute(array(
+            "proId" => $id,
+            "id" => $id
+        ));
+        return $stmt->fetchAll();
+    }
     public function checkInStock($product_id)
     {
         $stmt = $this->conn->prepare("SELECT * FROM product WHERE product.id = :id");
         $stmt->execute(array(
             "id" => $product_id,
+        ));
+        $rows = $stmt->fetchAll();
+        if (isset($rows[0])) {
+            return $rows[0];
+        } else return null;
+    }
+    public function checkQuantityCart($product_id, $user_id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM product_cart WHERE product_cart.product_id = :id AND product_cart.user_id=:userId");
+        $stmt->execute(array(
+            "id" => $product_id,
+            "userId" => $user_id
         ));
         $rows = $stmt->fetchAll();
         if (isset($rows[0])) {

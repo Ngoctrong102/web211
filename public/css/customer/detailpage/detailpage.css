@@ -9,12 +9,14 @@ body {
 .column1 {
   width: 50%;
   padding: 10px;
+  box-shadow: -2px 2px 5px 1px;
 }
 
 .column2 {
-  padding: 10px;
+  padding: 30px 10px 10px 20px;
   width: 50%;
   font-family: sans-serif;
+  box-shadow: 5px 5px 20px -5px;
 }
 
 .buy {
@@ -150,4 +152,56 @@ form#qt {
   position: absolute;
   margin-left: 11px;
   overflow: hidden;
+}
+/*san pham lien quan*/
+.relative {
+  border: 1px solid #ccc;
+  height: auto;
+  width: 1000px;
+  position: relative;
+  margin: 0 auto;
+  background-color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px 0 rgb(75 74 74 / 20%), 0 2px 10px 0 rgb(59 59 59 / 19%);
+}
+
+.absolute {
+  border: 1px solid rgb(112, 177, 0);
+  border-radius: 0px 10px 0px 0px;
+  background-color: rgb(112, 177, 0);
+  position: absolute;
+  left: -20px;
+  top: -22px;
+  color: white;
+  text-align: center;
+  padding: 5px 15px;
+}
+
+.img {
+  border: 1px solid rgb(112, 177, 0);
+  width: 32%;
+  height: 180px;
+  padding: 10px 10px;
+  margin: 0 1% 0 1%;
+  display: flex;
+}
+
+.info {
+  line-height: 30px;
+  width: 49%;
+  padding-left: 10px;
+}
+
+.box {
+  display: flex;
+  justify-content: start;
+}
+.re-view {
+  color: white;
+  text-align: center;
+  background-color: #70b100;
+  border: 1pt solid #70b100;
+}
+.re-view:hover {
+  opacity: 0.8;
 }
