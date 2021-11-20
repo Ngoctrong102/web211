@@ -94,7 +94,6 @@
     </div> 
 
 <script>
-
 function validateFormContact() {
   let name = document.forms["formContact"]["name"].value;
   let email = document.forms["formContact"]["email"].value;
@@ -128,6 +127,9 @@ function validateFormContact() {
   }
   if(dem != 0){
       return false;
+  }
+  else{
+      alert("successful");
   }
 }
 
