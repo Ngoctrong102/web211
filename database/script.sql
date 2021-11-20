@@ -16,6 +16,16 @@ create table comment_news
     created_at timestamp default CURRENT_TIMESTAMP null
 );
 
+create table contact
+(
+    id      int auto_increment
+        primary key,
+    name    varchar(255)  null,
+    email   varchar(255)  null,
+    title   varchar(255)  null,
+    message varchar(3000) null
+);
+
 create table news
 (
     id          int auto_increment
@@ -25,6 +35,16 @@ create table news
     content     text                                null,
     description varchar(255)                        null,
     created_at  timestamp default CURRENT_TIMESTAMP null
+);
+
+create table `order`
+(
+    id         int auto_increment
+        primary key,
+    user_id    int                                          not null,
+    address_id int                                          not null,
+    status     enum ('Processing', 'Canceled', 'Delivered') null,
+    created_at timestamp default CURRENT_TIMESTAMP          not null on update CURRENT_TIMESTAMP
 );
 
 create table unit
@@ -38,13 +58,14 @@ create table product
 (
     id          int auto_increment
         primary key,
-    name        varchar(256)  not null,
-    thumbnails  varchar(256)  not null,
-    rating      int default 0 not null,
-    description text          not null,
-    unit_id     int           not null,
-    price       int           not null,
-    quantity    int           not null,
+    name        varchar(256)    not null,
+    thumbnails  varchar(256)    not null,
+    rating      float default 0 not null,
+    description text            not null,
+    unit_id     int             not null,
+    price       int             not null,
+    quantity    int             not null,
+    num_rate    int   default 0 null,
     constraint fk_product_unit_id
         foreign key (unit_id) references unit (id)
 );
@@ -68,6 +89,22 @@ create table product_image
     image_url  varchar(256) not null,
     constraint fk_product_image_product_id
         foreign key (product_id) references product (id)
+);
+
+create table product_order
+(
+    order_id   int not null,
+    product_id int not null,
+    quantity   int not null,
+    unit_id    int not null,
+    price      int not null,
+    primary key (order_id, product_id),
+    constraint fk_product_order_order_id
+        foreign key (order_id) references `order` (id),
+    constraint fk_product_order_product_id
+        foreign key (product_id) references product (id),
+    constraint fk_product_order_unit_id
+        foreign key (unit_id) references unit (id)
 );
 
 create table user
@@ -95,16 +132,17 @@ create table address
         foreign key (user_id) references user (id)
 );
 
-create table `order`
+create table comment_product
 (
     id         int auto_increment
         primary key,
-    user_id    int       not null,
-    address_id int       not null,
-    created_at timestamp not null,
-    constraint fk_order_address_id
-        foreign key (address_id) references address (id),
-    constraint fk_order_user_id
+    user_id    int                                 null,
+    product_id int                                 null,
+    content    varchar(255)                        null,
+    created_at timestamp default CURRENT_TIMESTAMP null,
+    constraint comment_product_product_id_fk
+        foreign key (product_id) references product (id),
+    constraint comment_product_user_id_fk
         foreign key (user_id) references user (id)
 );
 
@@ -120,20 +158,19 @@ create table product_cart
         foreign key (user_id) references user (id)
 );
 
-create table product_order
+create table rate_product
 (
-    order_id   int not null,
-    product_id int not null,
-    quantity   int not null,
-    unit_id    int not null,
-    price      int not null,
-    primary key (order_id, product_id),
-    constraint fk_product_order_order_id
-        foreign key (order_id) references `order` (id),
-    constraint fk_product_order_product_id
+    id         int auto_increment
+        primary key,
+    user_id    int                                 null,
+    product_id int                                 null,
+    rate       int                                 not null,
+    content    varchar(255)                        null,
+    created_at timestamp default CURRENT_TIMESTAMP null,
+    constraint rate_product_product_id_fk
         foreign key (product_id) references product (id),
-    constraint fk_product_order_unit_id
-        foreign key (unit_id) references unit (id)
+    constraint rate_product_user_id_fk
+        foreign key (user_id) references user (id)
 );
 
 

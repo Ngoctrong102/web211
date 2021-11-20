@@ -1,67 +1,72 @@
-$('#rate-input').rateit({ max: 5, step: 2 });
-$("#form-comment").submit(function(e) {
+$('#rate-input').rateit({ max: 5, step: 1 });
+$("#form-rate").submit(function(e) {
     e.preventDefault();
-    let productId = $("#form-comment").data("productId");
-    let content = $("#input-comment").val();
+    let productId = $("#form-rate").data("productId");
+    let content = $("#input-rate").val();
+    let rate = $('#rate-input').rateit("value");
     $.ajax({
         type: "POST",
-        url: `/product/comment`,
+        url: `/product/rate`,
         data: {
             productId,
-            content
+            content,
+            rate
         },
         dataType: "json",
         success: function(response) {
             if (response.success) {
-                $("#input-comment").val("");
-                let template = document.getElementById("template-comment");
+                $("#input-rate").val("");
+                let template = document.getElementById("template-rate");
                 let newCommentEle = template.content.cloneNode(true);
-                $(newCommentEle.querySelector(".avatar img")).attr("src", response.comment.avatar);
-                $(newCommentEle.querySelector(".body-comment h5 b")).text(response.comment.username);
-                $(newCommentEle.querySelector(".body-comment small")).text(response.comment.created_at);
-                $(newCommentEle.querySelector(".body-comment .content")).text(response.comment.content);
-                $("#comments").append(newCommentEle);
+                $(newCommentEle.querySelector(".avatar img")).attr("src", response.rate.avatar);
+                $(newCommentEle.querySelector(".rateit")).data("rateitValue", response.rate.rate);
+                $(newCommentEle.querySelector(".body-comment h5 b")).text(response.rate.username);
+                $(newCommentEle.querySelector(".body-comment small")).text(response.rate.created_at);
+                $(newCommentEle.querySelector(".body-comment .content")).text(response.rate.content);
+                $("#rates").append(newCommentEle);
+                $('.rateit').rateit();
             }
         }
     });
 });
 
-$("#load-more-comment-btn").click(function(e) {
+$("#load-more-rate-btn").click(function(e) {
     e.preventDefault();
-    let currentPage = $("#comments").data("page");
-    let productId = $("#comments").data("product-id");
-    let lastCommentId = $("#comments").data("last-comment");
+    let currentPage = $("#rates").data("page");
+    let productId = $("#rates").data("product-id");
+    let lastRateId = $("#rates").data("last-rate");
     $.ajax({
         type: "GET",
-        url: "/product/loadComments",
+        url: "/product/loadRates",
         data: {
             productId,
-            lastCommentId
+            lastRateId
         },
         dataType: "json",
         success: function(response) {
-            if (response.comments) {
-                if (response.comments.length < 5) {
-                    $("#load-more-comment-btn").remove();
+            if (response.rates) {
+                if (response.rates.length < 5) {
+                    $("#load-more-rate-btn").remove();
                 }
-                $("#comments").data("last-comment", response.comments.at(-1).id);
-                for (const comment of response.comments) {
-                    renderComment(comment);
+                $("#rates").data("last-rate", response.rates.at(-1).id);
+                for (const rate of response.rates) {
+                    renderComment(rate);
                 }
-                $("#comments").data("page", currentPage + 1);
+                $("#rates").data("page", currentPage + 1);
+                $('.rateit').rateit();
             }
         }
     });
 });
 
 
-function renderComment(comment) {
-    $("#input-comment").val("");
-    let template = document.getElementById("template-comment");
+function renderComment(rate) {
+    let template = document.getElementById("template-rate");
     let newCommentEle = template.content.cloneNode(true);
-    $(newCommentEle.querySelector(".avatar img")).attr("src", comment.avatar);
-    $(newCommentEle.querySelector(".body-comment h5 b")).text(comment.first_name + " " + comment.last_name);
-    $(newCommentEle.querySelector(".body-comment small")).text(comment.created_at);
-    $(newCommentEle.querySelector(".body-comment .content")).text(comment.content);
-    $("#comments").prepend(newCommentEle);
+    $(newCommentEle.querySelector(".avatar img")).attr("src", rate.avatar);
+    $(newCommentEle.querySelector(".body-rate h5 b")).text(rate.first_name + " " + rate.last_name);
+    $(newCommentEle.querySelector(".rateit")).data("rateitValue", rate.rate);
+    $(newCommentEle.querySelector(".body-rate small")).text(rate.created_at);
+    $(newCommentEle.querySelector(".body-rate .content")).text(rate.content);
+    $("#rates").prepend(newCommentEle);
 }

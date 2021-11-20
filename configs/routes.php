@@ -138,6 +138,14 @@ $routes = array(
         "handler" => "customer/product/loadComments",
         "roles" => ["all"]
     ),
+    "product/rate" => array(
+        "handler" => "customer/product/addRate",
+        "roles" => ["all"]
+    ),
+    "product/loadRates" => array(
+        "handler" => "customer/product/loadRates",
+        "roles" => ["all"]
+    ),
 
     // admin
     "admin" => array(

@@ -46,6 +46,7 @@ class ProductController extends BaseController
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         unset($condition["pagination"]);
         $data["number_products"] = sizeof($this->product->getAllProductsShopPage($condition));
+        $data["top_ratings"] = $this->product->getTopRating(array());
         $this->load->model("category");
         $data["categories"] = $this->category->getAllCategories();
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
@@ -61,10 +62,10 @@ class ProductController extends BaseController
             "libs/rateit.js-master/scripts/rateit.css",
         ];
         $data["jsFiles"] = [
+            "libs/rateit.js-master/scripts/jquery.rateit.js",
             "js/customer/detailpage/detailpage.js",
             "js/customer/product/comment.js",
             "js/customer/product/rate.js",
-            "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
         $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
@@ -74,7 +75,7 @@ class ProductController extends BaseController
             "size" => 5
         );
         $data["comments"] = $this->product->loadCommentsOfProduct($id, $pagination);
-
+        $data["rates"] = $this->product->loadRatesOfProduct($id, $pagination);
         $this->load->model("user");
         if (isset($_SESSION["user_id"])) {
             $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
@@ -138,6 +139,40 @@ class ProductController extends BaseController
         $productId = $_GET["productId"];
         $lastCommentId = $_GET["lastCommentId"];
         $response["comments"] = $this->product->loadMoreCommentsOfProduct($productId, $lastCommentId);
+        echo json_encode($response);
+    }
+
+    public function addRate()
+    {
+        $userId = $_SESSION["user_id"];
+        $now = (new DateTime())->format('Y-m-d H:i:s');
+        $rate = [
+            "user_id" => $userId,
+            "product_id" => $_POST["productId"],
+            "rate" => $_POST["rate"],
+            "content" => $_POST["content"],
+            "created_at" => $now
+        ];
+        $this->product->addRate($rate);
+        $this->load->model("user");
+        $user = $this->user->findUserById($userId);
+
+        $rate["avatar"] = $user["avatar"];
+        $rate["username"] = $user["first_name"] . " " . $user["last_name"];
+        $rate["created_at"] = $now;
+
+        $response = [
+            "success" => true,
+            "rate" => $rate
+        ];
+        echo json_encode($response);
+    }
+
+    public function loadRates()
+    {
+        $productId = $_GET["productId"];
+        $lastRateId = $_GET["lastRateId"];
+        $response["rates"] = $this->product->loadMoreRatesOfProduct($productId, $lastRateId);
         echo json_encode($response);
     }
 }
