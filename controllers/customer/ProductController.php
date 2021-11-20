@@ -66,6 +66,7 @@ class ProductController extends BaseController
             "js/customer/product/rate.js",
             "libs/rateit.js-master/scripts/jquery.rateit.js"
         ];
+        $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $pagination = array(
@@ -75,8 +76,9 @@ class ProductController extends BaseController
         $data["comments"] = $this->product->loadCommentsOfProduct($id, $pagination);
 
         $this->load->model("user");
-        $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
-
+        if (isset($_SESSION["user_id"])) {
+            $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
+        }
         $this->load->view("layouts/client", "client/shoppage/detailpage", $data);
     }
     public function addToCart()
@@ -85,14 +87,25 @@ class ProductController extends BaseController
         $quantity = $data["quantity"];
         $product_id = $data["product_id"];
         $user_id = $_SESSION["user_id"];
-        $success = $this->product->addToCart($user_id, $product_id, $quantity);
-        $current_product = $this->product->getCurrentProduct($product_id);
-        $response = [
-            "success" => $success,
-            "productinfo" => $current_product
-        ];
+        $quantity_in_stock = $this->product->checkInStock($product_id);
+        $quantity_in_cart = $this->product->checkQuantityCart($product_id, $user_id);
+        if (($quantity + $quantity_in_cart["quantity"]) <= $quantity_in_stock["quantity"]) {
 
-        echo json_encode($response);
+
+            $success = $this->product->addToCart($user_id, $product_id, $quantity);
+            $current_product = $this->product->getCurrentProduct($product_id);
+            $response = [
+                "success" => $success,
+                "productinfo" => $current_product
+            ];
+            echo json_encode($response);
+        } else {
+            $response = [
+                "success" => false,
+                "error" => "Sorry, we do not have enough item in stock"
+            ];
+            echo json_encode($response);
+        }
     }
 
     public function addComment()

@@ -15,7 +15,7 @@
         </ul>
     </div>
 </div>
-<!--cart-->
+
 <div class="container">
     <div id="cart-section">
         <form>
@@ -28,10 +28,13 @@
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
                             <th class="pro-total">Total</th>
-                            <th class="pro-remove">Remove</th>
                         </tr>
                     </thead>
-                    <?php foreach ($orderproducts as $orderproduct) { ?>
+                    <?php
+                    $ordertotal = 0;
+                    foreach ($orderproducts as $orderproduct) {
+                        $ordertotal += $orderproduct["price"] * $orderproduct["quantity"];
+                    ?>
 
 
                         <tbody>
@@ -41,18 +44,11 @@
                                 <td class="pro-price"><span class="price"><?php echo $orderproduct["price"] ?></span></td>
                                 <td class="pro-quantity">
                                     <div class="product-quantity">
-                                        <input type="text" value="<?php echo $orderproduct["quantity"] ?>" name="quantity">
-                                        <div><a style="cursor: pointer" class="inc-btn"><span class="inc" data-product-id="<?php echo $orderproduct["id"]; ?>">+</span></a>
-                                            <a style="cursor: pointer" class="dec-btn"><span class="dec" data-product-id="<?php echo $orderproduct["id"]; ?>">-</span></a>
-                                        </div>
+                                        <input readonly type="text" value="x<?php echo $orderproduct["quantity"] ?>" name="quantity">
                                     </div>
                                 </td>
                                 <td class="pro-total"><span class="total"><?php echo $orderproduct["price"] * $orderproduct["quantity"] ?></span></td>
-                                <td class="pro-remove"><a href="/cart/productDeleted/<?php echo $orderproduct["id"]; ?>"><span class="material-icons-outlined">
-                                            delete_forever
-                                        </span>
-                                    </a>
-                                </td>
+
                             </tr>
                         </tbody>
                     <?php } ?>
@@ -60,7 +56,30 @@
                 <?php if (count($orderproducts) == 0) { ?>
                     <h5 id="empty" style="text-align: center; margin-top: 20px">Empty</h5>
                 <?php } ?>
+
             </div>
         </form>
     </div>
+    <div style="display: flex;justify-content: space-between; width: 100%;margin-bottom: 50px; padding: 10px">
+        <div style="background-color: #dedede;width: 60%;padding: 10px 30px;height: 175px; border-right: 1pt solid #fff">
+            <?php foreach ($orders as $order) { ?>
+                <p class="info" style="font-weight: bolder">Full name:&nbsp;&nbsp;&nbsp;<span><?php echo ($order["first_name"] . " " . $order["last_name"]) ?></span></p>
+                <p class="info" style="font-weight: bolder">Address:&nbsp;&nbsp;&nbsp;<span><?php echo $order["address"] ?></span></p>
+                <p class="info" style="font-weight: bolder">Phone:&nbsp;&nbsp;&nbsp;<span><?php echo $order["phone"] ?></span></p>
+                <p class="info" style="font-weight: bolder">Date:&nbsp;&nbsp;&nbsp;<span><?php echo $order["created_at"] ?></span></p>
+            <?php  } ?>
+        </div>
+        <div style="height: 175px;background-color: #dedede;padding: 30px; width: 40%">
+            <h5>Order Total</h5>
+            <br>
+
+            <div style="height: 30px;display: flex; justify-content: space-between">
+                <p>Subtotal</p>
+                <p><?php echo $ordertotal . "-VNĐ" ?></p>
+
+            </div>
+            <hr style="color: black">
+        </div>
+    </div>
+
 </div>

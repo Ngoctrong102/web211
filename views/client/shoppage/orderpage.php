@@ -27,21 +27,26 @@
                 <th class="row-title">Status</th>
                 <th style="padding-left: 50px" class="row-title">Option</th>
             </tr>
-            <?php foreach ($orders as $order) { ?>
-                <tr>
-                    <td class="orderId"><?php echo $order["id"] ?></td>
-                    <td class="orderName"><?php echo ($order["first_name"] . ' ' . $order["last_name"]) ?></td>
-                    <td class="orderPhone"><?php echo $order["phone"] ?></td>
-                    <td class="orderAddress"><?php echo $order["address"] ?></td>
-                    <td class="orderDate"><?php echo $order["created_at"] ?></td>
-                    <th><span class="status <?php echo strtolower($order["status"]);?>"><?php echo $order["status"];?></span></th>
-                    <td><a class="link-option" href="/orderproduct">Detail</a>
-                        <a class="link-option" href="/order/orderedit/<?php echo $order["id"] ?>">Edit</a>
-                        <a class="link-option" href="/order/orderDeleted/<?php echo $order["id"] ?>">Delete</a>
-                    </td>
-                </tr>
-            <?php  } ?>
+            <?php if (isset($_SESSION["user_id"])) {
+                foreach ($orders as $order) { ?>
+                    <tr>
+                        <td class="orderId"><?php echo $order["id"] ?></td>
+                        <td class="orderName"><?php echo ($order["first_name"] . ' ' . $order["last_name"]) ?></td>
+                        <td class="orderPhone"><?php echo $order["phone"] ?></td>
+                        <td class="orderAddress"><?php echo $order["address"] ?></td>
+                        <td class="orderDate"><?php echo $order["created_at"] ?></td>
+                        <th><span class="status <?php echo strtolower($order["status"]); ?>"><?php echo $order["status"]; ?></span></th>
+                        <td><a class="link-option" href="/orderproduct/<?php echo $order["id"] ?>">Detail</a>
+                            <?php if ($order["status"] != "Canceled" && $order["status"] != "Delivered") { ?>
+                                <a class="link-option" href="/order/orderCancelled/<?php echo $order["id"] ?>">Cancel</a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php  } ?>
         </table>
-
+        <?php if ($orders == null) { ?>
+            <h5 style="text-align: center;margin-top: 20px"><?php echo "Empty"; ?></h5>
+        <?php } ?>
+    <?php  } ?>
     </div>
 </div>
