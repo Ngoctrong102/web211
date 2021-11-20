@@ -25,7 +25,8 @@ class ProductController extends BaseController
 
         ];
         $data["jsFiles"] = [
-            "libs/rateit.js-master/scripts/jquery.rateit.js"
+            "libs/rateit.js-master/scripts/jquery.rateit.js",
+            "js/customer/shoppage/filter.js"
         ];
         $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
         $condition = array(
@@ -36,12 +37,16 @@ class ProductController extends BaseController
         );
 
         if (isset($_GET["category"])) {
-
             $condition["categoryId"] = $_GET["category"];
         }
         if (isset($_GET["q"])) {
-
             $condition["q"] = $_GET["q"];
+        }
+        if (isset($_GET["sort"])) {
+            $condition["sort"] = $_GET["sort"];
+        }
+        if (isset($_GET["order"])) {
+            $condition["order"] = $_GET["order"];
         }
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         unset($condition["pagination"]);
