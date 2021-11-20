@@ -147,3 +147,7 @@
     border-bottom: #ddd 1px solid;
     margin-bottom: 50px;
 }
+
+#spanNameCon,#spanEmailCon,#spanTitleCon,#spanMessCon{
+    color: rgb(238, 56, 56);
+}

@@ -18,20 +18,26 @@
 <div class="container">
     <div class="content" style="display: flex;">
         <div class="column1">
-            <img src="<?php echo $product["thumbnails"] ?>" alt="vegetable" width="500px" height="500px">
+            <div class="image-cover">
+                <img id="main-image" src="<?php echo $product["thumbnails"] ?>" alt="vegetable" width="100%" height="500px">
+            </div>
+
+            <div class="slide-cover">
+                <div class="turn-left"><i class="fa fa-angle-left" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
+                <div class="cover-image-content">
+                    <div class="image-content">
+                        <?php foreach ($product["images"] as $image) { ?>
+                            <div class="each-image">
+                                <img class="sub-image" alt="" src="<?php echo $image["image_url"] ?>">
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+                <div class="turn-right"><i class="fa fa-angle-right" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
 
 
-
-
-
-
-
-
-
-
-
-
-
+            </div>
 
 
         </div>
@@ -50,8 +56,11 @@
             <p style="color:rgb(112,177,0);font-size:200%"><?php echo $product["price"] ?>VNĐ</p>
             <p><?php echo $product["description"] ?></p>
 
-
-            <div style="width:200px;display: flex; justify-content: space-around;">
+            <br>
+            <div class="quantity-instock">
+                <p style="font-size: 120%"><span style="font-weight: bolder">In Stock: </span><?php echo $product["quantity"] . " " . "item(s)" ?></p>
+            </div>
+            <!--  <div style="width:200px;display: flex; justify-content: space-around;">
 
                 <p>Size:</p>
                 <p id="m">m</p>
@@ -126,7 +135,7 @@
 
                 function changColor() {
                     document.getElementById("vang").style.border = "1px solid black";
-                    document.getElementById("vang").style.padding = "3px 3px ";
+                    document.getElementById("van";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -136,7 +145,7 @@
 
                 function cchangColor() {
                     document.getElementById("xam").style.border = "1px solid black";
-                    document.getElementById("xam").style.padding = "3px 3px ";
+                    document.getElementById("xa";
 
                     document.getElementById("vang").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -146,7 +155,7 @@
 
                 function ccchangColor() {
                     document.getElementById("xanh").style.border = "1px solid black";
-                    document.getElementById("xanh").style.padding = "3px 3px ";
+                    document.getElementById("xan";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("vang").style.border = "none";
@@ -156,7 +165,7 @@
 
                 function cccchangColor() {
                     document.getElementById("nau").style.border = "1px solid black";
-                    document.getElementById("nau").style.padding = "3px 3px ";
+                    document.getElementById("na";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
@@ -166,31 +175,35 @@
 
                 function ccccchangColor() {
                     document.getElementById("tim").style.border = "1px solid black";
-                    document.getElementById("tim").style.padding = "3px 3px ";
+                    document.getElementById("ti";
 
                     document.getElementById("xam").style.border = "none";
                     document.getElementById("xanh").style.border = "none";
                     document.getElementById("nau").style.border = "none";
                     document.getElementById("vang").style.border = "none";
                 }
-            </script>
+            </script> -->
 
 
-            <br><br>
+
 
             <form id="qt">
                 <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
-                <button class="addbutton" data-product-id="<?php echo $product["product_id"]; ?>">
-                    <span><i style="color: white" class="fa fa-shopping-cart mr-10"></i></span><span style="color: white">ADD TO CART</span>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <button class="addbutton" data-product-id="<?php echo $product["id"]; ?>">
+                        <span><i style="color: white" class="fa fa-shopping-cart mr-10"></i></span><span style="color: white">ADD TO CART</span>
 
-                </button>
+                    </button>
+                <?php } else { ?>
+                    <a style="text-decoration: none" href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>"> <span><i style="color: red;margin:0" class="fa fa-shopping-cart mr-10"></i></span><span style="color: red">LOGIN FIRST</span></a>
+                <?php } ?>
             </form>
-            <br><br>
+            <br>
 
-            <a href="" class="category">
+            <!--  <a href="" class="category">
                 <i class="far fa-heart">Add to wishlist</i>
-            </a>
-            <br><br>
+            </a> 
+            <br><br> -->
 
             <a href="" style="text-decoration: none;">
                 <p class="buy">Buy it now</p>
@@ -208,83 +221,53 @@
     </div>
 
 
-
-
-    <!--<div class="content">
-        <div class="col1">
-            <div class="major-image">
-                <img style="width: 510px;height: 510px" src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/02_1024x1024.png?v=1543646109">
-            </div>
-            <div class="minor-image">
-                slide here
-            </div>
+    <!-- san pham lien quan-->
+    <div class="relative">
+        <div style="background-color: #ddd;height: 40px;"></div>
+        <div class="absolute">
+            <p style="color:white">RELATED PRODUCT</p>
         </div>
-        <div class="col2">
-            <h2>Pro name</h2>
-            <p class="product-rating">
-                <span class="stars">
-                    <span class="material-icons-outlined">
-                     star_outline
-                     </span>
-                     <span class="material-icons-outlined">
-                     star_outline
-                     </span>
-                      <span class="material-icons-outlined">
-                      star_outline
-                      </span><span class="material-icons-outlined">
-                      star_outline
-                       </span><span class="material-icons-outlined">
-                        star_outline
-                        </span><span class="rating-caption">No reviews</span>
-                </span>
-              </p>
-              <h2 class="pro-price">80</h2>
-                <p class="pro-description">It is a long established fact that a reader will be distracted by the readable 
-                    content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less 
-                    normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                </p>
-                <p class="pro-unit"></p>
-                <div class="cart-button">
-                        <div class="quantity-selector">
-                            <input type="text" value="1" name="quantity">
-                            <a href="#" class="inc qty-btn">+</a><a href="#" class="dec qty-btn">-</a>
-                        </div>
-                        <div class="add-to-cart-btn">
-  
-                            <button type="submit" id="AddToCart" class="meow_btn">
-                                <i class="fa fa-shopping-cart mr-10"></i><span class="cart-title" id="AddToCartText">Add to cart</span>
-                            </button>
-                        </div>
-                 </div>
-                 <div class="wishlist">
-                     <a class="same-action" href="/account/login" data-tooltip="Add to wishlist">
-                     <span class="material-icons-outlined">favorite_border</span>
-                     <span class="add_wish">Add to wishlist</span></a>
+        <br><br>
+        <div class="box">
+            <?php for ($count = 0; $count < 3 && $count < sizeof($relatedproducts); $count++) { ?>
+                <div class="img">
+                    <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="float: left;"><img width="160px" height="160px" src="<?php echo $relatedproducts[$count]["thumbnails"] ?>" alt="product">
+                    </a>
+                    <div class="info">
+                        <p style="text-align:center"><?php echo $relatedproducts[$count]["name"] ?></p>
+                        <p style="color: rgb(112,177,0);font-size:18px"><?php echo $relatedproducts[$count]["price"] . "VNĐ/" . $relatedproducts[$count]["title"] ?></p>
+                        <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="text-decoration: none;">
+                            <p class="re-view">View Detail</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="buy-button">
-                    <button class="buy-btn" type="button">Buy it now</button>
-                </div>
-                <div class="single-product-category mb-20">
-                     <h3>Categories:
-                        <span><a href="/collections/beans">Beans</a>, 
-                             <a href="/collections/bread">Bread</a>, 
-                             <a href="/collections/fast-foods">Fast Foods</a>, 
-                             <a href="/collections/featured">Featured</a>, 
-                             <a href="/collections/fish-meats">Fish &amp; Meats</a>
-                        </span>
-                    </h3>
-                </div>
-
-                <div class="social-share-buttons">
-                    <h3>Share:</h3>
-                    <ul class="detail-info">
-                       <li><a class="fb" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                       <li><a class="tw" target="_blank" href="#"><i class="fa fa-twitter"></i></a></li>
-    
-                    </ul>
-                </div>
+            <?php } ?>
         </div>
-    </div>-->
+        <br><br>
+        <?php if (sizeof($relatedproducts) > 3) { ?>
+            <div class="box">
+                <?php
+                for ($count = 3; $count < 6; $count++) { ?>
+                    <div class="img">
+                        <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="float: left;"><img width="160px" height="160px" src="<?php echo $relatedproducts[$count]["thumbnails"] ?>" alt="product">
+                        </a>
+                        <div class="info">
+                            <p style="text-align:center"><?php echo $relatedproducts[$count]["name"] ?></p>
+                            <p style="color: rgb(112,177,0);font-size:18px"><?php echo $relatedproducts[$count]["price"] . "VNĐ/" . $relatedproducts[$count]["title"] ?></p>
+                            <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="text-decoration: none;">
+                                <p class="re-view">View Detail</p>
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
+
+            </div>
+        <?php } ?>
+
+        <!-- san pham lien quan -->
+
+
+    </div>
 </div>
 
 <div class="container">
@@ -391,7 +374,6 @@
         </div>
     </div>
 </div>
-
 <template id="template-comment">
     <div class="comment">
         <div class="avatar">

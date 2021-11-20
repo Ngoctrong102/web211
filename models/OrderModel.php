@@ -5,7 +5,19 @@ class OrderModel extends BaseModel
     {
         parent::__construct();
     }
-    public function getOrderInfo($user_id)
+    public function getOrderInfo($user_id, $id)
+    {
+        $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status 
+        FROM (`order` JOIN address ON `order`.user_id = address.user_id AND `order`.address_id=address.id JOIN user ON `order`.user_id=user.id) 
+        WHERE `order`.user_id = :id AND `order`.id=:orderId ORDER BY created_at DESC");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "id" => $user_id,
+            "orderId" => $id
+        ));
+        return $stmt->fetchAll();
+    }
+    public function getAllOrderInfo($user_id)
     {
         $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status 
         FROM (`order` JOIN address ON `order`.user_id = address.user_id AND `order`.address_id=address.id JOIN user ON `order`.user_id=user.id) 
@@ -16,28 +28,38 @@ class OrderModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
-    public function orderDeleted($id)
+    public function orderCancelled($id, $status)
     {
-        $stmt = $this->conn->prepare('DELETE FROM `product_order` WHERE `product_order`.order_id = :id');
-        $stmt = $this->conn->prepare('DELETE FROM `order` WHERE `order`.id = :id');
+        $stmt = $this->conn->prepare('UPDATE `order` SET `order`.status = :status WHERE `order`.id = :id');
         return $stmt->execute(array(
-            "id" => $id
-        ));
-    }
-    public function product_orderDeleted($id)
-    {
-        $stmt = $this->conn->prepare('DELETE FROM `product_order` WHERE `product_order`.order_id = :id');
-        return $stmt->execute(array(
-            "id" => $id
+            "id" => $id,
+            "status" => $status
         ));
     }
     public function addOrder($id, $user_id, $status)
     {
         $stmt = $this->conn->prepare("INSERT INTO `order`(user_id, address_id, status) VALUES(:user_id, :address_id, :status) ON DUPLICATE KEY UPDATE address_id = :address_id");
-        return $stmt->execute(array(
+        $result = $stmt->execute(array(
             "user_id" => $user_id,
             "address_id" => $id,
             "status" => $status
+        ));
+        return $result ? $this->conn->lastInsertId() : -1;
+    }
+    public function decProductQuantity($cartproduct)
+    {
+        $stmt = $this->conn->prepare("UPDATE product SET quantity= quantity - :quantity WHERE product.id=:id");
+        $stmt->execute(array(
+            "quantity" => $cartproduct["quantity"],
+            "id" => $cartproduct["id"]
+        ));
+    }
+    public function incProductQuantity($orderproduct)
+    {
+        $stmt = $this->conn->prepare("UPDATE product SET quantity= quantity + :quantity WHERE product.id=:id");
+        $stmt->execute(array(
+            "quantity" => $orderproduct["quantity"],
+            "id" => $orderproduct["id"]
         ));
     }
     public function orderUpdated($address_id, $order_id)
@@ -48,16 +70,25 @@ class OrderModel extends BaseModel
             "address_id" => $address_id
         ));
     }
-    public function  moveToPro_Order()
+    public function  moveToPro_Order($cartproduct, $orderId)
     {
-        $stmt = $this->conn->prepare('INSERT INTO product_order (order_id, product_id, quantity, unit_id, price) SELECT `order`.id, product_id, product_cart.quantity, unit_id, price FROM product_cart JOIN `order` ON product_cart.user_id=`order`.user_id JOIN product ON product_cart.product_id=product.id');
-        $stmt->execute();
+        $stmt = $this->conn->prepare('INSERT INTO product_order (order_id, product_id,quantity, unit_id, price) VALUES(:orderId,:productId,:quantity,:unitId,:price)');
+        $stmt->execute(array(
+            "orderId" => $orderId,
+            "productId" => $cartproduct["id"],
+            "quantity" => $cartproduct["quantity"],
+            "unitId" => $cartproduct["unit_id"],
+            "price" => $cartproduct["price"]
+
+        ));
     }
-    public function getAllProducts_order()
+    public function getAllProducts_order($id)
     {
-        $stmt = $this->conn->prepare("SELECT product.id, product.name, product.thumbnails, product.price, product_order.quantity FROM (product JOIN product_order ON product.id = product_order.product_id)");
+        $stmt = $this->conn->prepare("SELECT product.id, product.name, product.thumbnails, product.price, product_order.quantity FROM (product JOIN product_order ON product.id = product_order.product_id) WHERE product_order.order_id=:id");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute();
+        $stmt->execute(array(
+            "id" => $id
+        ));
         return $stmt->fetchAll();
     }
 

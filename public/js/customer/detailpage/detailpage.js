@@ -1,8 +1,3 @@
-/*$("#quantity").bind("keyup mouseup", function () {
-  let quanity = $("#quantity").val();
-  $("#quantity").val(quanity);
-});*/
-
 $(".addbutton").click(function (e) {
   e.preventDefault();
   let quantity = parseInt($("#quantity").val());
@@ -83,7 +78,49 @@ $(".addbutton").click(function (e) {
             }
           });
         }
+      } else {
+        var toastLiveExample = document.getElementById("liveToast");
+        $("#liveToast .toast-body").text(response.error);
+        var toast = new bootstrap.Toast(toastLiveExample);
+        toast.show();
       }
     },
   });
+});
+
+//slide
+var pos = -175;
+var time = 1;
+var elenum = $(".each-image");
+$(".fa.fa-angle-right").click(function (e) {
+  e.preventDefault();
+  if (elenum.length >= 3) {
+    $(".image-content").css({
+      transform: "translate3d(" + pos * time + "px" + ",0px, 0px)",
+      "transition-duration": "0.5s",
+    });
+    if (time < elenum.length - 1) {
+      time = time + 1;
+    }
+  }
+});
+$(".fa.fa-angle-left").click(function (e) {
+  e.preventDefault();
+  if (time > 1) {
+    $(".image-content").css({
+      transform:
+        "translate3d(" + -(pos - pos * (time - 1)) + "px" + ",0px, 0px)",
+      "transition-duration": "0.5s",
+    });
+    time = time - 1;
+  }
+});
+var oldurl = $("#main-image").attr("src");
+$(".sub-image").click(function (e) {
+  e.preventDefault();
+  url = $(e.currentTarget).attr("src");
+  $("#main-image").attr("src", url);
+});
+$("#main-image").click(function () {
+  $("#main-image").attr("src", oldurl);
 });

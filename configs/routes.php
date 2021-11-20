@@ -38,28 +38,24 @@ $routes = array(
         "handler" => "cart/ProductDeleted",
         "roles" => ["all"]
     ),
-    "orderproduct" => array(
-        "handler" => "order/renderOrderProductPage",
+    "orderproduct/:num(id)" => array(
+        "handler" => "customer/order/renderOrderProductPage",
         "roles" => ["all"]
     ),
     "order/:num(id)" => array(
-        "handler" => "order/addOrder",
+        "handler" => "customer/order/addOrder",
         "roles" => ["all"]
     ),
     "order" => array(
-        "handler" => "order/renderOrderPage",
-        "roles" => ["all"]
-    ),
-    "order/orderedit/:num(order_id)" => array(
-        "handler" => "order/renderOrderEditPage",
+        "handler" => "customer/order/renderOrderPage",
         "roles" => ["all"]
     ),
     "order/:num(address_id)/:num(order_id)" => array(
-        "handler" => "order/orderUpdated",
+        "handler" => "customer/order/orderUpdated",
         "roles" => ["all"]
     ),
-    "order/orderDeleted/:num(id)" => array(
-        "handler" => "order/orderDeleted",
+    "order/orderCancelled/:num(id)" => array(
+        "handler" => "customer/order/orderCancelled",
         "roles" => ["all"]
     ),
     "detail/:num(id)" => array(
@@ -124,6 +120,10 @@ $routes = array(
     ),
     "contact" => array(
         "handler" => "customer/contact/renderPageContact",
+        "roles" => ["all"]
+    ),
+    "contact/addnewcontact" => array(
+        "handler" => "customer/contact/Addnewcontact",
         "roles" => ["all"]
     ),
     "search" => array(
@@ -271,5 +271,17 @@ $routes = array(
     "admin/orders/cancel/:num(id)" => array(
         'handler' => "admin/order/cancelOrder",
         "roles" => ["all"]
-    ) 
+    ),
+    "admin/contact" => array(
+        "handler" => "admin/contact/renderContact",
+        "roles" => ["all"]
+    ),
+    "admin/contact/delete/:num(id)" => array(
+        "handler" => "admin/contact/deleteContact",
+        "roles" => ["all"]
+    ),
+    "admin/contact/detail/:num(id)" => array(
+        "handler" => "admin/contact/LoadDetailPage",
+        "roles" => ["all"]
+    ),
 );

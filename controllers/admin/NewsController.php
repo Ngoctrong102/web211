@@ -8,8 +8,10 @@ class NewsController extends BaseController
     }
     public function renderAllNews()
     {
+        $data["title"] = "News";
+
         $data["nav"] = "news";
-        
+
         $data["jsFiles"] = ["js/admin/datatable.js"];
 
         $data["specialCss"] = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
@@ -24,7 +26,7 @@ class NewsController extends BaseController
     }
     public function renderAddPage()
     {
-        $data["nav"] = "news";  
+        $data["nav"] = "news";
 
         $data["cssFiles"] = [
             "css/admin/form.css",
@@ -47,7 +49,7 @@ class NewsController extends BaseController
     }
     public function renderEditPage($id)
     {
-        $data["nav"] = "news";  
+        $data["nav"] = "news";
 
         $data["cssFiles"] = [
             "css/admin/form.css",

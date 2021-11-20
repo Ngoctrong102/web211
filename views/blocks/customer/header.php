@@ -3,7 +3,11 @@
         <div class="container">
             <div id="header-row">
                 <div id="currency">
-                    Welcome!
+                    <?php if (isset($_SESSION["user_id"])) { ?>
+                        Welcome!
+                    <?php } else { ?>
+                        Please sign in!
+                    <?php } ?>
                 </div>
 
 
@@ -42,7 +46,7 @@
                         <!--search-->
                         <div id="search">
                             <form action="/search" method="GET">
-                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : "" ;?>">
+                                <input id="input" name="keyword" type="text" placeholder="Search..." value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : ""; ?>">
                                 <button type="submit">
                                     <span style="transform: rotate(90deg); color: white; font-size: 25px" class="material-icons-outlined">
                                         search
@@ -53,15 +57,17 @@
                         <!--cart-->
                         <div id="cart">
                             <div id="hover-objects">
-                                <a href="/cart" id="icon"><span>Shopping Cart</span><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
+                                <a href="/cart" id="icon" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>Shopping Cart</span><span class="material-icons-outlined" style="padding: 0 10px; width: 60px; height: 60px; font-size: 50px; margin: auto">
                                         shopping_bag</span></a>
                                 <ul id="cart-items">
-                                    <?php if (!isset($cartproducts) || count($cartproducts) == 0) { ?>
-                                        <h5 id="empty" style="text-align: center; margin-top: 20px">Your cart is empty</h5>
+                                    <?php if (!isset($cartproducts) || count($cartproducts) == 0 || !isset($_SESSION["user_id"])) { ?>
+                                        <p id="empty" style="font-size:20px;text-align: center; margin-top: 20px">Your cart is empty</p>
                                     <?php } ?>
                                     <?php
                                     $total = 0;
-                                    if (isset($cartproducts)) {
+                                    if (isset($cartproducts) && isset($_SESSION["user_id"])) {
                                         foreach ($cartproducts as $cartproduct) {
                                             $total += $cartproduct["price"] * $cartproduct["quantity"];
                                     ?>
@@ -92,8 +98,12 @@
                                     </div>
                                     <hr style="width: 100%; height:0.5px; margin:0">
                                     <div id="cart-button">
-                                        <p><a href="/order"><span>Checkout</span></a></p>
-                                        <p><a href="/cart"><span>View cart</span></a></p>
+                                        <p><a href="/order" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>View orders</span></a></p>
+                                        <p><a href="/cart" style="<?php if (!isset($_SESSION["user_id"])) {
+                                                                        echo "pointer-events: none";
+                                                                    } ?>"><span>View cart</span></a></p>
                                     </div>
                                 </ul>
                                 <br>

@@ -91,6 +91,16 @@
                 <li><a class="link_name" href="#">News</a></li>
             </ul>
         </li>
+        <li class="<?php echo isset($nav) && $nav == "contact" ? "active" : "" ?>">
+            <a href="/admin/contact">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Contact</span>
+            </a>
+
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Contact</a></li>
+            </ul>
+        </li>
 
 
     </ul>

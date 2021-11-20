@@ -13,9 +13,11 @@ class CartController extends BaseController
             "css/customer/commons/breadcum.css",
             "css/customer/cart/cart.css",
         ];
-        $user_id = $_SESSION["user_id"];
-        $data["addresses"] = $this->cart->getAddresses($user_id);
-        $data["phonenumber"] = $this->cart->getPhoneNumber($user_id);
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["addresses"] = $this->cart->getAddresses($user_id);
+            $data["phonenumber"] = $this->cart->getPhoneNumber($user_id);
+        }
         $data["jsFiles"] = ["js/customer/cart/cart.js"];
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/cartpage", $data);

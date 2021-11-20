@@ -9,6 +9,8 @@ class UnitController extends BaseController
 
     public function renderAllUnits()
     {
+        $data["title"] = "Units";
+
         $data["nav"] = "units";
 
         $data["jsFiles"] = [

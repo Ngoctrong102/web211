@@ -1,5 +1,5 @@
 div#cart-section {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 table#table {
   margin: 0;
@@ -53,10 +53,7 @@ td.pro-image a img {
   text-align: center;
 }
 td.pro-quantity div.product-quantity {
-  display: flex;
-  justify-content: space-between;
   height: auto;
-  border: 1pt solid #666;
   width: fit-content;
   padding: 0;
 }
