@@ -38,7 +38,15 @@
 
         <div class="column2">
             <h1 id="product_name_detailpage"><?php echo $product["name"] ?></h1>
-            <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">No views</i>
+            <div>
+                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
+                <span>
+                    <?php echo $product["rating"]; ?>
+                </span>
+                <span>
+                    (<?php echo $product["num_rate"]; ?>)
+                </span>
+            </div>
             <p style="color:rgb(112,177,0);font-size:200%"><?php echo $product["price"] ?>VNĐ</p>
             <p><?php echo $product["description"] ?></p>
 
@@ -282,10 +290,10 @@
 <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Comment</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Rating</button>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -339,9 +347,9 @@
                 $rates = array_reverse($rates);
                 ?>
                 <?php if (sizeof($rates) >= 5) { ?>
-                    <button class="load-more-btn">Load more</button>
+                    <button class="load-more-btn" id="load-more-rate-btn">Load more</button>
                 <?php } ?>
-                <div id="rates" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-comment="<?php echo sizeof($rates) > 0 ? $rates[0]["id"] : -1; ?>">
+                <div id="rates" data-page="0" data-product-id="<?php echo $product["id"]; ?>" data-last-rate="<?php echo sizeof($rates) > 0 ? $rates[0]["id"] : -1; ?>">
                     <?php
                     foreach ($rates as $rate) {
                     ?>
@@ -349,10 +357,9 @@
                             <div class="avatar">
                                 <img src="<?php echo $rate["avatar"]; ?>" alt="">
                             </div>
-                            <div class="rateit" data-rateit-ispreset="false" data-rateit-value="<?php echo $rate["rate"]; ?>" data-rateit-readonly="true"></div>
                             <div class="body-comment">
                                 <h5><b><?php echo $rate["first_name"] . " " . $rate["last_name"]; ?></b></h5>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-value="3.6"></div>
+                                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $rate["rate"]; ?>"></div>
                                 <small><?php echo $rate["created_at"]; ?></small>
                                 <p class="content" style="padding: 0px;"><?php echo $rate["content"]; ?></p>
                             </div>
@@ -377,7 +384,7 @@
                     </div>
                 <?php } else { ?>
                     <div class="comment">
-                        <a href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>">Login to comment</a>
+                        <a href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>">Login to rate</a>
                     </div>
                 <?php } ?>
             </div>
@@ -403,9 +410,9 @@
         <div class="avatar">
             <img src="/upload/images/shin.jpg" alt="">
         </div>
-        <div class="rateit" data-rateit-ispreset="false" data-rateit-readonly="true"></div>
-        <div class="body-comment">
+        <div class="body-rate">
             <h5><b>Username</b></h5>
+            <div class="rateit" data-rateit-ispreset="false" data-rateit-readonly="true"></div>
             <small>20:38 20/10/2021</small>
             <p class="content">Nội dung comment</p>
         </div>

@@ -46,6 +46,7 @@ class ProductController extends BaseController
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         unset($condition["pagination"]);
         $data["number_products"] = sizeof($this->product->getAllProductsShopPage($condition));
+        $data["top_ratings"] = $this->product->getTopRating(array());
         $this->load->model("category");
         $data["categories"] = $this->category->getAllCategories();
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
@@ -151,6 +152,14 @@ class ProductController extends BaseController
             "success" => true,
             "rate" => $rate
         ];
+        echo json_encode($response);
+    }
+
+    public function loadRates()
+    {
+        $productId = $_GET["productId"];
+        $lastRateId = $_GET["lastRateId"];
+        $response["rates"] = $this->product->loadMoreRatesOfProduct($productId, $lastRateId);
         echo json_encode($response);
     }
 }

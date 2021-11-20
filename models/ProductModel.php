@@ -328,4 +328,32 @@ class ProductModel extends BaseModel
             return $this->conn->lastInsertId();
         } else return -1;
     }
+
+    public function loadMoreRatesOfProduct($productId, $lastRateId)
+    {
+        $sql = "SELECT avatar,content,created_at,first_name, last_name,rate_product.id AS id, rate FROM (rate_product JOIN user ON rate_product.user_id = user.id ) WHERE rate_product.product_id = :productId AND  rate_product.id < :lastRateId ORDER BY rate_product.created_at DESC ";
+        $sql .= "LIMIT 5";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "productId" => $productId,
+            "lastRateId" => $lastRateId
+        ));
+        return $stmt->fetchAll();
+    }
+
+    public function getTopRating($condition)
+    {
+        $sql = "SELECT * FROM product ORDER BY rating DESC ";
+        if (isset($condition["pagination"])) {
+            $pagination = $condition["pagination"];
+            $sql .= "LIMIT " . $pagination["size"] . " OFFSET " . ($pagination["size"] * $pagination["page"]);
+        } else {
+            $sql .= "LIMIT 3";
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

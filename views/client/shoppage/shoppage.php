@@ -37,57 +37,27 @@
                     </ul>
                 </div>
                 <div class="toprate">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
+                    <h3 class="sidebar-title">Top rating</h3>
                     <div class="top-rated-product-container">
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
+                        <?php foreach ($top_ratings as $product) { ?>
+                            <div class="single-top-rated-product">
+                                <div class="image">
+                                    <a href="/detail/<?php echo $product["id"]; ?>">
+                                        <img src="<?php echo $product["thumbnails"]; ?>" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <p><a href="#"><?php echo $product["name"]; ?></a></p>
+                                    <p>
+                                    <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
+                                    </p>
+                                    <p class="product-price">
+                                        <span class="price" data-currency-usd="$40.00"><?php echo $product["price"]; ?></span>
+                                        <!-- <span class="main-price" data-currency-usd="$85.00">$85.00</span> -->
+                                    </p>
+                                </div>
                             </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                    <span class="main-price" data-currency-usd="$85.00">$85.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="tags-product">
@@ -106,24 +76,21 @@
                     <img src="/public/images/shop-banner.jpg" alt="">
                 </div>
                 <div class="filter">
-                    <div class="col-lg-12 col-md-12 col-sm-12 d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center">
-                        <div class="d-flex align-items-center mb-xs-10">
-                            <p style="margin-right: 10px;">Sort by</p>
-                            <select name="SortBy" id="SortBy">
-                                <option value="manual">Featured</option>
-                                <option value="best-selling">Best Selling</option>
-                                <option value="title-ascending">Alphabetically, A-Z</option>
-                                <option value="title-descending">Alphabetically, Z-A</option>
-                                <option value="price-ascending">Price, low to high</option>
-                                <option value="price-descending">Price, high to low</option>
-                                <option value="created-descending">Date, new to old</option>
-                                <option value="created-ascending">Date, old to new</option>
-                            </select>
-                        </div>
-                        <form class="search" action="/shop" method="GET">
-                            <input type="text" name="category" value="<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>" style="visibility: hidden; width:0px; margin:0px !important;">
-                            <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>">
-                            <button><i class="fas fa-search"></i></button>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <form class="search d-flex flex-column flex-sm-row justify-content-between align-items-left align-items-sm-center" action="/shop" method="GET">
+                            <div class="d-flex align-items-center mb-xs-10">
+                                <p style="margin-right: 10px;">Sort by</p>
+                                <select name="SortBy" id="sortby">
+                                    <option value="none">None</option>
+                                    <option value="rate">Rate</option>
+                                    <option value="price">Price</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="text" name="category" value="<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>" style="visibility: hidden; width:0px; margin:0px !important;">
+                                <input type="text" name="q" placeholder="Enter to search ..." value="<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>">
+                                <button><i class="fas fa-search"></i></button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -185,14 +152,14 @@
                 <div class="pagination-container">
                     <ul>
                         <li class="<?php echo $_GET["page"] == 1 ? "disabled" : ""; ?> prev">
-                            <a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
+                            <a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $_GET["page"] - 1; ?>"><i class="fas fa-chevron-left"></i></a>
                         </li>
-                        <?php 
+                        <?php
                         $num_pages = ceil(floatval($number_products) / 9);
                         for ($i = 0; $i < $num_pages; $i++) { ?>
-                            <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
+                            <li class="<?php echo $_GET["page"] == $i + 1 ? "active" : ""; ?>"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
                         <?php } ?>
-                        <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : "";?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : "";?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
+                        <li class="<?php echo $_GET["page"] == $num_pages ? "disabled" : ""; ?> next"><a href="/shop?category=<?php echo isset($_GET["category"]) ? $_GET["category"] : ""; ?>&q=<?php echo isset($_GET["q"]) ? $_GET["q"] : ""; ?>&page=<?php echo $_GET["page"] + 1; ?>" title="Next »"><i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -34,13 +34,13 @@ $("#load-more-rate-btn").click(function(e) {
     e.preventDefault();
     let currentPage = $("#rates").data("page");
     let productId = $("#rates").data("product-id");
-    let lastCommentId = $("#rates").data("last-rate");
+    let lastRateId = $("#rates").data("last-rate");
     $.ajax({
         type: "GET",
-        url: "/product/loadComments",
+        url: "/product/loadRates",
         data: {
             productId,
-            lastCommentId
+            lastRateId
         },
         dataType: "json",
         success: function(response) {
@@ -53,6 +53,7 @@ $("#load-more-rate-btn").click(function(e) {
                     renderComment(rate);
                 }
                 $("#rates").data("page", currentPage + 1);
+                $('.rateit').rateit();
             }
         }
     });
@@ -60,11 +61,11 @@ $("#load-more-rate-btn").click(function(e) {
 
 
 function renderComment(rate) {
-    $("#input-rate").val("");
     let template = document.getElementById("template-rate");
     let newCommentEle = template.content.cloneNode(true);
     $(newCommentEle.querySelector(".avatar img")).attr("src", rate.avatar);
     $(newCommentEle.querySelector(".body-rate h5 b")).text(rate.first_name + " " + rate.last_name);
+    $(newCommentEle.querySelector(".rateit")).data("rateitValue", rate.rate);
     $(newCommentEle.querySelector(".body-rate small")).text(rate.created_at);
     $(newCommentEle.querySelector(".body-rate .content")).text(rate.content);
     $("#rates").prepend(newCommentEle);
