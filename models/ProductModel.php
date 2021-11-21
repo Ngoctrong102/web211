@@ -296,6 +296,14 @@ class ProductModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
+    public function getAllProductCategory($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM category WHERE category.id IN (SELECT category_id FROM product_category WHERE product_id =:proId)");
+        $stmt->execute(array(
+            "proId" => $id,
+        ));
+        return $stmt->fetchAll();
+    }
     public function checkInStock($product_id)
     {
         $stmt = $this->conn->prepare("SELECT * FROM product WHERE product.id = :id");

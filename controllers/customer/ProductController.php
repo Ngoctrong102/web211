@@ -69,6 +69,7 @@ class ProductController extends BaseController
         ];
         $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
+        $data["categories"] = $this->product->getAllProductCategory($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $pagination = array(
             "page" => 0,
