@@ -12,26 +12,49 @@
 
 
                 <div id="header-top-menu">
-                    <ul>
+                    <ul class="user-menu">
                         <?php if (isset($_SESSION["user_id"])) { ?>
                             <li id="noti-item" data-user-id="<?php echo $_SESSION["user_id"]; ?>" class="position-relative">
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;padding: 2px; border-radius: 20px; width: 14px">
                                     1
                                 </span>
-                                <a class="top_menu" href="/account">Notification</a>
-                                <ul>
-                                    <li>
-                                        <a href="/viewNoti/1">
-                                            noti 1
+                                <a class="top_menu">Notification</a>
+                                <ul class="notices">
+                                    <li class="allread">
+                                        <p style="color: white">Mark all as read</p>
+                                        <span class="material-icons-outlined">done</span>
+                                    </li>
+                                    <li class="link-notice">
+                                        <a style="height: 80px" href="/viewNoti/1">
+                                            <p>Date:</p>
+                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
+                                        </a>
+                                    </li>
+                                    <li class="link-notice">
+                                        <a style="height: 80px" href="/viewNoti/1">
+                                            <p>Date:</p>
+                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
+                                        </a>
+                                    </li>
+                                    <li class="link-notice">
+                                        <a style="height: 80px" href="/viewNoti/1">
+                                            <p>Date:</p>
+                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
+                                        </a>
+                                    </li>
+                                    <li class="link-notice">
+                                        <a style="height: 80px" href="/viewNoti/1">
+                                            <p>Date:</p>
+                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="top_menu" href="/account">My Account</a></li>
-                            <li><a class="top_menu" href="/logout">Logout</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/account">My Account</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/logout">Logout</a></li>
                         <?php } else { ?>
-                            <li><a class="top_menu" href="/login">Sign in</a></li>
-                            <li><a class="top_menu" href="/register">Register</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/login">Sign in</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/register">Register</a></li>
                         <?php } ?>
                     </ul>
                 </div>

@@ -157,7 +157,6 @@ form#qt {
 .relative {
   border: 1px solid #ccc;
   height: auto;
-  width: 1000px;
   position: relative;
   margin: 0 auto;
   background-color: white;
