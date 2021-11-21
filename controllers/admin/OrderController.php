@@ -1,6 +1,8 @@
-<?php 
-class OrderController extends BaseController {
-    public function __construct() {
+<?php
+class OrderController extends BaseController
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model("order");
     }
@@ -10,7 +12,10 @@ class OrderController extends BaseController {
         $data["title"] = "Order";
         $data["nav"] = "orders";
 
-        $data["jsFiles"] = ["js/admin/orders/datatable.js"];
+        $data["jsFiles"] = [
+            "js/admin/orders/datatable.js",
+            "js/admin/orders/update.js",
+        ];
         $data["cssFiles"] = [
             "css/admin/orders/status.css"
         ];
@@ -21,9 +26,9 @@ class OrderController extends BaseController {
         $data["specialJs"] = '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>';
-        
+
         $data["orders"] = $this->order->getAllOrder();
-        
+
         $this->load->view("layouts/admin", "admin/order/list_order", $data);
     }
 
@@ -35,22 +40,57 @@ class OrderController extends BaseController {
             "css/admin/orders/detail.css",
             "css/admin/orders/status.css"
         ];
+        $data["jsFiles"] = [
+            "js/admin/orders/update.js",
+        ];
         $data["order"] = $this->order->getOrderDetail($id);
-        
+
         $this->load->view("layouts/admin", "admin/order/view_order", $data);
     }
 
     public function deliverOrder($id)
     {
         $status = "Delivered";
-        $this->order->updateStatus($id, $status);
+        $note = $_POST["note"];
+        $order = $this->order->getOrderDetail($id);
+        if ($order["status"] == "Processing") {
+            $this->order->updateStatus($id, $status, $note);
+            $this->load->model("notification");
+            $notification = array(
+                "url" => "/orderproduct/".$order["id"],
+                "content" => "Đơn hàng #".$order["id"]." của bạn đã được chuyển đi",
+            );
+            $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $this->sendData($_SESSION["user_id"],"notification",$notification);
+        } else {
+            $_SESSION["error"] = "You can't update a " . $order["status"] . " order!";
+        }
         header("Location: /admin/orders");
     }
 
     public function cancelOrder($id)
     {
         $status = "Canceled";
-        $this->order->updateStatus($id, $status);
+        $note = $_POST["note"];
+        $order = $this->order->getOrderDetail($id);
+        if ($order["status"] == "Processing") {
+            $this->order->updateStatus($id, $status, $note);
+            $orderproducts = $this->order->getAllProducts_order($id);
+            foreach ($orderproducts as $orderproduct) {
+                $this->order->incProductQuantity($orderproduct);
+            }
+            $this->load->model("notification");
+            $notification = array(
+                "url" => "/orderproduct/".$order["id"],
+                "content" => "Đơn hàng #".$order["id"]." của bạn đã bị hủy",
+            );
+
+            $notiId = $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $notification["url"] = "/viewNoti/".$notiId;
+            $this->sendData($_SESSION["user_id"],"notification",$notification);
+        } else {
+            $_SESSION["error"] = "You can't update a " . $order["status"] . " order!";
+        }
         header("Location: /admin/orders");
     }
 }

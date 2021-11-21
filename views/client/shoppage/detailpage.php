@@ -45,7 +45,7 @@
         <div class="column2">
             <h1 id="product_name_detailpage"><?php echo $product["name"] ?></h1>
             <div>
-                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
+                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
                 <span>
                     <?php echo $product["rating"]; ?>
                 </span>
@@ -350,7 +350,7 @@
                             </div>
                             <div class="body-comment">
                                 <h5><b><?php echo $rate["first_name"] . " " . $rate["last_name"]; ?></b></h5>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $rate["rate"]; ?>"></div>
+                                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-readonly="true" data-rateit-value="<?php echo $rate["rate"]; ?>"></div>
                                 <small><?php echo $rate["created_at"]; ?></small>
                                 <p class="content" style="padding: 0px;"><?php echo $rate["content"]; ?></p>
                             </div>
@@ -400,7 +400,7 @@
         <div class="avatar">
             <img src="/upload/images/shin.jpg" alt="">
         </div>
-        <div class="body-rate">
+        <div class="body-comment">
             <h5><b>Username</b></h5>
             <div class="rateit" data-rateit-ispreset="false" data-rateit-readonly="true"></div>
             <small>20:38 20/10/2021</small>

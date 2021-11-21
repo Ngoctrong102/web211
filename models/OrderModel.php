@@ -7,7 +7,7 @@ class OrderModel extends BaseModel
     }
     public function getOrderInfo($user_id, $id)
     {
-        $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status 
+        $stmt = $this->conn->prepare("SELECT `order`.id, address.address, user.first_name, user.last_name, user.phone, created_at, status, note 
         FROM (`order` JOIN address ON `order`.user_id = address.user_id AND `order`.address_id=address.id JOIN user ON `order`.user_id=user.id) 
         WHERE `order`.user_id = :id AND `order`.id=:orderId ORDER BY created_at DESC");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -116,12 +116,13 @@ class OrderModel extends BaseModel
         } else return null;
     }
 
-    public function updateStatus($id, $status)
+    public function updateStatus($id, $status, $note)
     {
-        $stmt = $this->conn->prepare('UPDATE `order` SET status = :status WHERE id = :id');
+        $stmt = $this->conn->prepare('UPDATE `order` SET status = :status, note = :note, created_at = created_at WHERE id = :id');
         return $stmt->execute(array(
             "id" => $id,
-            "status" => $status
+            "status" => $status,
+            "note" => $note
         ));
     }
 }

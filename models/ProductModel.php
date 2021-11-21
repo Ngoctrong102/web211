@@ -29,7 +29,6 @@ class ProductModel extends BaseModel
     }
     public function getAllProductsShopPage($condition)
     {
-
         $sql = "SELECT * FROM product ";
         if (isset($condition["categoryId"]) && $condition["categoryId"] != "") {
             $sql .= "WHERE id IN (SELECT product_id FROM product_category WHERE category_id = " . $condition["categoryId"] . ") ";
@@ -41,7 +40,9 @@ class ProductModel extends BaseModel
                 $sql .= "WHERE name LIKE '%" . $condition["q"] . "%' OR description LIKE '%" . $condition["q"] . "%' ";
             }
         }
-
+        if (isset($condition["sort"]) && $condition["sort"] != 'none'){
+            $sql .= "ORDER BY ". $condition["sort"] ." ". $condition["order"] . " ";
+        }
         if (isset($condition["pagination"])) {
             $sql .= "LIMIT " . $condition["pagination"]["size"] . " OFFSET " . ($condition["pagination"]["size"] * $condition["pagination"]["page"]);
         }

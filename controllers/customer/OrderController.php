@@ -28,6 +28,7 @@ class OrderController extends BaseController
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/order/orderproduct.css",
+            "css/customer/order/status.css",
         ];
         $user_id = $_SESSION["user_id"];
         $data["orders"] = $this->order->getOrderInfo($user_id, $id);

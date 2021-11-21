@@ -13,8 +13,21 @@
 
                 <div id="header-top-menu">
                     <ul>
-                        <li><a class="top_menu" href="/account">My Account</a></li>
                         <?php if (isset($_SESSION["user_id"])) { ?>
+                            <li id="noti-item" data-user-id="<?php echo $_SESSION["user_id"]; ?>" class="position-relative">
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;padding: 2px; border-radius: 20px; width: 14px">
+                                    1
+                                </span>
+                                <a class="top_menu" href="/account">Notification</a>
+                                <ul>
+                                    <li>
+                                        <a href="/viewNoti/1">
+                                            noti 1
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="top_menu" href="/account">My Account</a></li>
                             <li><a class="top_menu" href="/logout">Logout</a></li>
                         <?php } else { ?>
                             <li><a class="top_menu" href="/login">Sign in</a></li>
