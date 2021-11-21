@@ -26,6 +26,14 @@ $routes = array(
         "handler" => "user/login",
         "roles" => ["all"]
     ),
+    "verify" => array(
+        "handler" => "user/renderVerifyForm",
+        "roles" => ["all"]
+    ),
+    "user/verify" => array(
+        "handler" => "user/verify",
+        "roles" => ["all"]
+    ),
     "cart" => array(
         "handler" => "cart/renderShoppingCart",
         "roles" => ["all"]
@@ -144,6 +152,10 @@ $routes = array(
     ),
     "product/loadRates" => array(
         "handler" => "customer/product/loadRates",
+        "roles" => ["all"]
+    ),
+    "viewNoti/:num(id)" => array(
+        "handler" => "customer/notification/viewNoti",
         "roles" => ["all"]
     ),
 

@@ -36,6 +36,17 @@
 </head>
 
 <body>
+    <?php if (isset($_SESSION["error"])) { ?>
+        <div class="toast align-items-center text-white bg-danger border-0 position-fixed top-0 end-0 p-3 m-3" style="z-index: 1000;" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast" data-show="<?php echo isset($_SESSION["error"]); ?>">
+            <div class="d-flex">
+                <div class="toast-body text-white">
+                    <?php echo $_SESSION["error"]; ?>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php unset($_SESSION["error"]);
+    } ?>
     <div class="app-wrapper">
         <div class="nav-bar-wrapper">
             <?php include SITE_PATH . "views/blocks/admin/nav_bar.php" ?>
@@ -72,6 +83,13 @@
         }
     }
     ?>
+    <script>
+        var toastLiveExample = document.getElementById("liveToast");
+        var toast = new bootstrap.Toast(toastLiveExample);
+        if (toastLiveExample.dataset.show) {
+            toast.show();
+        }
+    </script>
 </body>
 
 
