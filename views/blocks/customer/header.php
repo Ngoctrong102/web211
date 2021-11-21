@@ -115,23 +115,27 @@
 
                     <div id="cover-right-bottom">
                         <ul>
-                            <li><a href="/">HOME<i class="fa fa-chevron-down"></i></a>
-                                <ul class="direction">
+                            <li><a href="/">HOME
+                                </a>
+                                <!--<ul class="direction">
                                     <li><a href="#">Home 1</a></li>
                                     <li><a href="#">Home 2</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li><a href="/shop">SHOP<i class="fa fa-chevron-down"></i></a>
-                                <ul class="direction">
+                            <li><a href="/shop">SHOP
+                                </a>
+                                <!--<ul class="direction">
                                     <li><a href="/shop">Shop 1</a></li>
                                     <li><a href="/shop">Shop 2</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li><a href="#">PAGES<i class="fa fa-chevron-down"></i></a>
+                            <!--<li><a href="#">PAGES
+                                    <i class="fa fa-chevron-down"></i>
+                                </a>
                                 <ul class="direction">
                                     <li><a href="#">Col 1</a></li>
                                     <li><a href="#">Account</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
                             <li><a href="/news">BLOG</a></li>
                             <li><a href="/contact">CONTACT</a></li>

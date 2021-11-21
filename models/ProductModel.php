@@ -369,7 +369,7 @@ class ProductModel extends BaseModel
         $stmt = $this->conn->prepare('INSERT INTO rate_product(user_id, product_id, content,rate, created_at) values(:user_id, :product_id, :content,:rate, :created_at)');
         $result = $stmt->execute($rate);
         if ($result) {
-            $stmt = $this->conn->prepare('update product set rating = (rating * product.num_rate + :rate)/(num_rate+1), num_rate = num_rate + 1 where product.id = :productId');
+            $stmt = $this->conn->prepare('UPDATE product set rating = (rating * product.num_rate + :rate)/(num_rate+1), num_rate = num_rate + 1 where product.id = :productId');
             $result = $stmt->execute(array(
                 "rate" => $rate["rate"],
                 "productId" => $rate["product_id"]

@@ -23,8 +23,8 @@
 
 <div class="container">
     <div class="shoppage">
-        <div class="row">
-            <div class="col-3">
+        <!-- <div class="row"> -->
+        <!--  <div class="col-3">
                 <div class="checkbox-filter">
                     <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
                     <ul class="product-categories">
@@ -109,65 +109,143 @@
                         <li><a href="#">Eggs</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-9">
-                <div class="news-content">
-                    <div class="title">
-                        <h4><?php echo $news["title"]; ?></h4>
-                        <small><b>Posted on: </b><?php echo $news["created_at"]; ?></small>
-                    </div>
-                    <hr>
-                    <img class="thumbnails" src="<?php echo $news["thumbnails"]; ?>" alt="">
-                    <div class="body">
-                        <?php echo $news["content"]; ?>
-                    </div>
-                    <hr>
+            </div> -->
+        <div style="position: relative; z-index: -1; width: 100%; margin: 0 auto;" class="col-9">
+            <div class="news-content">
+                <div class="title">
+                    <h4><?php echo $news["title"]; ?></h4>
+                    <small><b>Posted on: </b><?php echo $news["created_at"]; ?></small>
                 </div>
-                <div class="comments-wrapper">
-                    <?php
-                    $comments = array_reverse($comments);
-                    ?>
-                    <h4>Comments</h4>
-                    <?php if (sizeof($comments) >= 5) { ?>
-                        <button class="load-more-btn">Load more</button>
-                    <?php } ?>
-                    <div id="comments" data-page="0" data-news-id="<?php echo $news["id"]; ?>" data-last-comment="<?php echo sizeof($comments) > 0 ? $comments[0]["id"] : -1; ?>">
-                        <?php
-                        foreach ($comments as $comment) {
-                        ?>
-                            <div class="comment">
-                                <div class="avatar">
-                                    <img src="<?php echo $comment["avatar"]; ?>" alt="">
-                                </div>
-                                <div class="body-comment">
-                                    <h5><b><?php echo $comment["first_name"] . " " . $comment["last_name"]; ?></b></h5>
-                                    <small><?php echo $comment["created_at"]; ?></small>
-                                    <p class="content"><?php echo $comment["content"]; ?></p>
-                                </div>
-                            </div>
-                        <?php } ?>
+                <hr>
+                <div style="width: 60%; margin: 0 auto;">
+                    <img style="border: 3pt solid #70b100;" class=" thumbnails" src="<?php echo $news["thumbnails"]; ?>" alt="">
+                </div>
+                <div class="body">
+                    <?php echo $news["content"]; ?>
+                </div>
+                <hr>
+            </div>
+
+            <!-- bai viet gan day -->
+
+            <div class="relative">
+                <div style="background-color: #ddd;height: 40px;"></div>
+                <div class="absolute">
+                    <p style="color: white">RECENT NEWS</p>
+                </div>
+                <br><br>
+                <div class="box">
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/02_compact.png?v=1543646109" alt="rau">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">Rau</p>
+                            <p>Rau cải thìa</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">5000 VNĐ</p>
+                        </div>
                     </div>
-                    <?php if (isset($_SESSION["user_id"])) { ?>
+
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/4_compact.jpg?v=1543646232" alt="đào">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">trái cây</p>
+                            <p>Trái đào</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">20000 VNĐ</p>
+                        </div>
+                    </div>
+
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/07_0f6ed2cc-a2ac-46f2-8e7a-99aa0565ad5b_compact.png?v=1543646261" alt="cà chua">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">rau, trái cây</p>
+                            <p>Cà chua</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">7000 VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="box">
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/04_17d81612-1d1d-418d-896c-4c8fcffcd697_compact.png?v=1543646268" alt="ớt chuông">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">rau, trái cây</p>
+                            <p>Ớt chuông</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">12000 VNĐ</p>
+                        </div>
+                    </div>
+
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/3_9d8a1620-e8a8-40f0-85f2-8cf52894a123_compact.jpg?v=1543646131" alt="táo">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">trái cây</p>
+                            <p>Trái táo</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">21000 VNĐ</p>
+                        </div>
+                    </div>
+
+                    <div class="img">
+                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/2_07348f8d-b65f-47e0-b414-859dfc198c9a_compact.jpg?v=1543646159" alt="bơ">
+                        </a>
+                        <div class="info">
+                            <p style="color:#aaa">trái cây</p>
+                            <p>Trái bơ</p>
+                            <p style="color: rgb(112,177,0);font-size:20px">15000 VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- bai viet gan day-->
+            <div class="comments-wrapper">
+                <?php
+                $comments = array_reverse($comments);
+                ?>
+                <h4>Comments</h4>
+                <?php if (sizeof($comments) >= 5) { ?>
+                    <button class="load-more-btn">Load more</button>
+                <?php } ?>
+                <div id="comments" data-page="0" data-news-id="<?php echo $news["id"]; ?>" data-last-comment="<?php echo sizeof($comments) > 0 ? $comments[0]["id"] : -1; ?>">
+                    <?php
+                    foreach ($comments as $comment) {
+                    ?>
                         <div class="comment">
                             <div class="avatar">
-                                <img src="<?php echo $user["avatar"]; ?>" alt="">
+                                <img src="<?php echo $comment["avatar"]; ?>" alt="">
                             </div>
                             <div class="body-comment">
-                                <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
-                                <form id="form-comment" class="form-comment" data-news-id="<?php echo $news["id"]; ?>">
-                                    <textarea name="content" id="input-comment" rows="2"></textarea>
-                                    <button>Submit</button>
-                                </form>
+                                <h5><b><?php echo $comment["first_name"] . " " . $comment["last_name"]; ?></b></h5>
+                                <small><?php echo $comment["created_at"]; ?></small>
+                                <p class="content"><?php echo $comment["content"]; ?></p>
                             </div>
-                        </div>
-                    <?php } else { ?>
-                        <div class="comment">
-                            <a href="/redirectLogin?location=/news/<?php echo $news["id"]; ?>">Login to comment</a>
                         </div>
                     <?php } ?>
                 </div>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="<?php echo $user["avatar"]; ?>" alt="">
+                        </div>
+                        <div class="body-comment">
+                            <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
+                            <form id="form-comment" class="form-comment" data-news-id="<?php echo $news["id"]; ?>">
+                                <textarea name="content" id="input-comment" rows="2"></textarea>
+                                <button>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="comment">
+                        <a href="/redirectLogin?location=/news/<?php echo $news["id"]; ?>">Login to comment</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
+        <!-- </div> -->
     </div>
 </div>
 

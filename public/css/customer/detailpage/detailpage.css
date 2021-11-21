@@ -197,11 +197,11 @@ form#qt {
   justify-content: start;
 }
 .re-view {
-  color: white;
+  color: black;
   text-align: center;
-  background-color: #70b100;
   border: 1pt solid #70b100;
 }
 .re-view:hover {
-  opacity: 0.8;
+  background-color: #70b100;
+  color: white;
 }

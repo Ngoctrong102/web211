@@ -32,6 +32,8 @@ class UnitController extends BaseController
 
     public function renderAddPage()
     {
+        $data["title"] = "Add Units";
+
         $data["nav"] = "units";
 
         $data["cssFiles"] = [
@@ -51,6 +53,8 @@ class UnitController extends BaseController
 
     public function renderEditPage($id)
     {
+        $data["title"] = "Edit Units";
+
         $data["nav"] = "units";
 
         $data["cssFiles"] = [

@@ -5,13 +5,13 @@
     </div>
     <ul class="nav-links">
         <li class="<?php echo isset($nav) && $nav == "dashboard" ? "active" : "" ?>">
-            <a href="#">
+            <a href="/admin">
                 <i class='bx bx-grid-alt'></i>
                 <span class="link_name">Dashboard</span>
             </a>
 
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">Dashboard</a></li>
+                <li><a class="link_name" href="admin">Dashboard</a></li>
             </ul>
         </li>
 

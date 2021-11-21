@@ -40,6 +40,8 @@ class NewsController extends BaseController
 
     public function renderNewsDetails($id)
     {
+        $data["title"] = "New Detail";
+
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/shoppage/checkbox-filter.css",
@@ -62,7 +64,9 @@ class NewsController extends BaseController
         );
         $data["comments"] = $this->news->loadCommentsOfNews($id, $pagination);
         $this->load->model("user");
-        $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
+        if (isset($_SESSION["user_id"])) {
+            $data["user"] = $this->user->findUserById($_SESSION["user_id"]);
+        }
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/news/news_details", $data);
     }

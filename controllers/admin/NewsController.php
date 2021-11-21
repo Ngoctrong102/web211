@@ -26,6 +26,7 @@ class NewsController extends BaseController
     }
     public function renderAddPage()
     {
+        $data["title"] = "Add News";
         $data["nav"] = "news";
 
         $data["cssFiles"] = [
@@ -49,6 +50,7 @@ class NewsController extends BaseController
     }
     public function renderEditPage($id)
     {
+        $data["title"] = "Edit News";
         $data["nav"] = "news";
 
         $data["cssFiles"] = [

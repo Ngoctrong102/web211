@@ -32,6 +32,8 @@ class CategoryController extends BaseController
 
     public function renderAddPage()
     {
+        $data["title"] = "Add Categories";
+
         $data["nav"] = "categories";
 
         $data["cssFiles"] = [
@@ -57,6 +59,8 @@ class CategoryController extends BaseController
 
     public function renderEditPage($id)
     {
+        $data["title"] = "Edit Categories";
+
         $data["nav"] = "categories";
 
         $data["cssFiles"] = [
