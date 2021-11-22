@@ -158,7 +158,18 @@ $routes = array(
         "handler" => "customer/notification/viewNoti",
         "roles" => ["all"]
     ),
-
+    "notification/markViewAll" => array(
+        "handler" => "customer/notification/markViewAll",
+        "roles" => ["all"]
+    ),
+    "notification/getNumberUnread" => array(
+        "handler" => "customer/notification/getNumberUnread",
+        "roles" => ["all"]
+    ),
+    "notification/viewAll" => array(
+        "handler" => "customer/notification/viewAll",
+        "roles" => ["all"]
+    ),
     // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
