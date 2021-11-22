@@ -86,4 +86,13 @@ class NewsModel extends BaseModel
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function getRecentNews($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM news WHERE news.id < :id ORDER BY news.id LIMIT 3");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute(array(
+            "id" => $id
+        ));
+        return $stmt->fetchAll();
+    }
 }

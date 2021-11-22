@@ -6,6 +6,7 @@ class ProductController extends BaseController
         parent::__construct();
         $this->load->model("cart");
         $this->load->model("product");
+        $this->load->model("notification");
     }
 
     public function renderHomeShop()
@@ -54,6 +55,10 @@ class ProductController extends BaseController
         $data["top_ratings"] = $this->product->getTopRating(array());
         $this->load->model("category");
         $data["categories"] = $this->category->getAllCategories();
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }
@@ -74,11 +79,16 @@ class ProductController extends BaseController
         ];
         $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
+        $data["categories"] = $this->product->getAllProductCategory($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $pagination = array(
             "page" => 0,
             "size" => 5
         );
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["comments"] = $this->product->loadCommentsOfProduct($id, $pagination);
         $data["rates"] = $this->product->loadRatesOfProduct($id, $pagination);
         $this->load->model("user");

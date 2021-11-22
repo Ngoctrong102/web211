@@ -7,6 +7,7 @@ class AccountController extends BaseController
         $this->load->model("user");
         $this->load->model("address");
         $this->load->model("cart");
+        $this->load->model("notification");
     }
 
     public function renderAccountPage()
@@ -25,7 +26,10 @@ class AccountController extends BaseController
             "js/customer/myaccount/avatar.js"
         ];
         $data["title"] = "My Account";
-
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $user = $this->user->findUserById($_SESSION["user_id"]);
         $user["addresses"] = $this->address->findAllAddressOfUser($_SESSION["user_id"]);

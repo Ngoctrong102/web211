@@ -23,149 +23,93 @@
 
 <div class="container">
     <div class="shoppage">
-        <div class="row">
-            <div class="col-3">
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bánh mỳ</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
+
+        <div style="position: relative; width: 100%; margin: 0 auto;" class="col-9">
+            <div class="news-content">
+                <div class="title">
+                    <h4><?php echo $news["title"]; ?></h4>
+                    <small><b>Posted on: </b><?php echo $news["created_at"]; ?></small>
                 </div>
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bread</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
+                <hr>
+                <div style="width: 60%; margin: 0 auto;">
+                    <img style="border: 3pt solid #70b100;" class=" thumbnails" src="<?php echo $news["thumbnails"]; ?>" alt="">
                 </div>
-                <div class="toprate">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <div class="top-rated-product-container">
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                    <span class="main-price" data-currency-usd="$85.00">$85.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="body">
+                    <?php echo $news["content"]; ?>
                 </div>
-                <div class="tags-product">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="tags">
-                        <li><a href="#" class="active">Beans</a></li>
-                        <li><a href="#">Birds</a></li>
-                        <li><a href="#">Bread</a></li>
-                        <li><a href="#">Deal Products</a></li>
-                        <li><a href="#">Eggs</a></li>
-                    </ul>
-                </div>
+                <hr>
             </div>
-            <div class="col-9">
-                <div class="news-content">
-                    <div class="title">
-                        <h4><?php echo $news["title"]; ?></h4>
-                        <small><b>Posted on: </b><?php echo $news["created_at"]; ?></small>
+
+            <!-- bai viet gan day -->
+            <?php if (sizeof($recentnews) != 0) { ?>
+                <div class="relative">
+                    <div style="background-color: #ddd;height: 40px;"></div>
+                    <div class="absolute">
+                        <p style="color: white">RECENT NEWS</p>
                     </div>
-                    <hr>
-                    <img class="thumbnails" src="<?php echo $news["thumbnails"]; ?>" alt="">
-                    <div class="body">
-                        <?php echo $news["content"]; ?>
-                    </div>
-                    <hr>
-                </div>
-                <div class="comments-wrapper">
-                    <?php
-                    $comments = array_reverse($comments);
-                    ?>
-                    <h4>Comments</h4>
-                    <?php if (sizeof($comments) >= 5) { ?>
-                        <button class="load-more-btn">Load more</button>
-                    <?php } ?>
-                    <div id="comments" data-page="0" data-news-id="<?php echo $news["id"]; ?>" data-last-comment="<?php echo sizeof($comments) > 0 ? $comments[0]["id"] : -1; ?>">
-                        <?php
-                        foreach ($comments as $comment) {
-                        ?>
-                            <div class="comment">
-                                <div class="avatar">
-                                    <img src="<?php echo $comment["avatar"]; ?>" alt="">
-                                </div>
-                                <div class="body-comment">
-                                    <h5><b><?php echo $comment["first_name"] . " " . $comment["last_name"]; ?></b></h5>
-                                    <small><?php echo $comment["created_at"]; ?></small>
-                                    <p class="content"><?php echo $comment["content"]; ?></p>
+                    <br>
+                    <div class="box">
+                        <?php foreach ($recentnews as $recentnew) { ?>
+                            <div class="card">
+                                <img src="<?php echo $recentnew["thumbnails"]; ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title"><?php echo $recentnew["title"]; ?></h4>
+                                    <small><b>Posted on: </b><?php echo substr($recentnew["created_at"], 0, 10); ?></small>
+                                    <hr>
+                                    <p class="card-text"><?php echo $recentnew["description"]; ?></p>
+                                    <a href="/news/<?php echo $recentnew["id"] ?>" class="btn">Continue</a>
                                 </div>
                             </div>
                         <?php } ?>
                     </div>
-                    <?php if (isset($_SESSION["user_id"])) { ?>
+                    <br>
+
+                </div>
+            <?php } ?>
+
+            <!-- bai viet gan day-->
+            <div class="comments-wrapper">
+                <?php
+                $comments = array_reverse($comments);
+                ?>
+                <h4>Comments</h4>
+                <?php if (sizeof($comments) >= 5) { ?>
+                    <button class="load-more-btn">Load more</button>
+                <?php } ?>
+                <div id="comments" data-page="0" data-news-id="<?php echo $news["id"]; ?>" data-last-comment="<?php echo sizeof($comments) > 0 ? $comments[0]["id"] : -1; ?>">
+                    <?php
+                    foreach ($comments as $comment) {
+                    ?>
                         <div class="comment">
                             <div class="avatar">
-                                <img src="<?php echo $user["avatar"]; ?>" alt="">
+                                <img src="<?php echo $comment["avatar"]; ?>" alt="">
                             </div>
                             <div class="body-comment">
-                                <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
-                                <form id="form-comment" class="form-comment" data-news-id="<?php echo $news["id"]; ?>">
-                                    <textarea name="content" id="input-comment" rows="2"></textarea>
-                                    <button>Submit</button>
-                                </form>
+                                <h5><b><?php echo $comment["first_name"] . " " . $comment["last_name"]; ?></b></h5>
+                                <small><?php echo $comment["created_at"]; ?></small>
+                                <p class="content"><?php echo $comment["content"]; ?></p>
                             </div>
-                        </div>
-                    <?php } else { ?>
-                        <div class="comment">
-                            <a href="/redirectLogin?location=/news/<?php echo $news["id"]; ?>">Login to comment</a>
                         </div>
                     <?php } ?>
                 </div>
+                <?php if (isset($_SESSION["user_id"])) { ?>
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="<?php echo $user["avatar"]; ?>" alt="">
+                        </div>
+                        <div class="body-comment">
+                            <h5><b><?php echo $user["first_name"] . " " . $user["last_name"]; ?></b></h5>
+                            <form id="form-comment" class="form-comment" data-news-id="<?php echo $news["id"]; ?>">
+                                <textarea name="content" id="input-comment" rows="2"></textarea>
+                                <button>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="comment">
+                        <a href="/redirectLogin?location=/news/<?php echo $news["id"]; ?>">Login to comment</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

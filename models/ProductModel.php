@@ -297,6 +297,14 @@ class ProductModel extends BaseModel
         ));
         return $stmt->fetchAll();
     }
+    public function getAllProductCategory($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM category WHERE category.id IN (SELECT category_id FROM product_category WHERE product_id =:proId)");
+        $stmt->execute(array(
+            "proId" => $id,
+        ));
+        return $stmt->fetchAll();
+    }
     public function checkInStock($product_id)
     {
         $stmt = $this->conn->prepare("SELECT * FROM product WHERE product.id = :id");
@@ -370,7 +378,7 @@ class ProductModel extends BaseModel
         $stmt = $this->conn->prepare('INSERT INTO rate_product(user_id, product_id, content,rate, created_at) values(:user_id, :product_id, :content,:rate, :created_at)');
         $result = $stmt->execute($rate);
         if ($result) {
-            $stmt = $this->conn->prepare('update product set rating = (rating * product.num_rate + :rate)/(num_rate+1), num_rate = num_rate + 1 where product.id = :productId');
+            $stmt = $this->conn->prepare('UPDATE product set rating = (rating * product.num_rate + :rate)/(num_rate+1), num_rate = num_rate + 1 where product.id = :productId');
             $result = $stmt->execute(array(
                 "rate" => $rate["rate"],
                 "productId" => $rate["product_id"]
