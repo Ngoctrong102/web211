@@ -23,94 +23,8 @@
 
 <div class="container">
     <div class="shoppage">
-        <!-- <div class="row"> -->
-        <!--  <div class="col-3">
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bánh mỳ</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
-                </div>
-                <div class="checkbox-filter">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="product-categories">
-                        <li><a href="#" class="active"><i class="far fa-check-square"></i>Beans</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Birds</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Bread</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Deal Products</a></li>
-                        <li><a href="#"><i class="far fa-square"></i>Eggs</a></li>
-                    </ul>
-                </div>
-                <div class="toprate">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <div class="top-rated-product-container">
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                    <span class="main-price" data-currency-usd="$85.00">$85.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-top-rated-product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="//cdn.shopify.com/s/files/1/0049/8407/8400/products/03_e4e8c045-f356-4963-b02f-0b8eacfc58bd_large.png?v=1544513368" class="img-fluid" alt="3. Variable product">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p><a href="#">3. Variable product</a></p>
-                                <p>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-value="3.6"></div>
-                                </p>
-                                <p class="product-price">
-                                    <span class="price" data-currency-usd="$40.00">$40.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags-product">
-                    <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
-                    <ul class="tags">
-                        <li><a href="#" class="active">Beans</a></li>
-                        <li><a href="#">Birds</a></li>
-                        <li><a href="#">Bread</a></li>
-                        <li><a href="#">Deal Products</a></li>
-                        <li><a href="#">Eggs</a></li>
-                    </ul>
-                </div>
-            </div> -->
-        <div style="position: relative; z-index: -1; width: 100%; margin: 0 auto;" class="col-9">
+
+        <div style="position: relative; width: 100%; margin: 0 auto;" class="col-9">
             <div class="news-content">
                 <div class="title">
                     <h4><?php echo $news["title"]; ?></h4>
@@ -127,78 +41,31 @@
             </div>
 
             <!-- bai viet gan day -->
+            <?php if (sizeof($recentnews) != 0) { ?>
+                <div class="relative">
+                    <div style="background-color: #ddd;height: 40px;"></div>
+                    <div class="absolute">
+                        <p style="color: white">RECENT NEWS</p>
+                    </div>
+                    <br>
+                    <div class="box">
+                        <?php foreach ($recentnews as $recentnew) { ?>
+                            <div class="card">
+                                <img src="<?php echo $recentnew["thumbnails"]; ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title"><?php echo $recentnew["title"]; ?></h4>
+                                    <small><b>Posted on: </b><?php echo substr($recentnew["created_at"], 0, 10); ?></small>
+                                    <hr>
+                                    <p class="card-text"><?php echo $recentnew["description"]; ?></p>
+                                    <a href="/news/<?php echo $recentnew["id"] ?>" class="btn">Continue</a>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <br>
 
-            <div class="relative">
-                <div style="background-color: #ddd;height: 40px;"></div>
-                <div class="absolute">
-                    <p style="color: white">RECENT NEWS</p>
                 </div>
-                <br><br>
-                <div class="box">
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/02_compact.png?v=1543646109" alt="rau">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">Rau</p>
-                            <p>Rau cải thìa</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">5000 VNĐ</p>
-                        </div>
-                    </div>
-
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/4_compact.jpg?v=1543646232" alt="đào">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">trái cây</p>
-                            <p>Trái đào</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">20000 VNĐ</p>
-                        </div>
-                    </div>
-
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/07_0f6ed2cc-a2ac-46f2-8e7a-99aa0565ad5b_compact.png?v=1543646261" alt="cà chua">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">rau, trái cây</p>
-                            <p>Cà chua</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">7000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="box">
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/04_17d81612-1d1d-418d-896c-4c8fcffcd697_compact.png?v=1543646268" alt="ớt chuông">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">rau, trái cây</p>
-                            <p>Ớt chuông</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">12000 VNĐ</p>
-                        </div>
-                    </div>
-
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/3_9d8a1620-e8a8-40f0-85f2-8cf52894a123_compact.jpg?v=1543646131" alt="táo">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">trái cây</p>
-                            <p>Trái táo</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">21000 VNĐ</p>
-                        </div>
-                    </div>
-
-                    <div class="img">
-                        <a href="" style="float: left;"><img src="https://cdn.shopify.com/s/files/1/0049/8407/8400/products/2_07348f8d-b65f-47e0-b414-859dfc198c9a_compact.jpg?v=1543646159" alt="bơ">
-                        </a>
-                        <div class="info">
-                            <p style="color:#aaa">trái cây</p>
-                            <p>Trái bơ</p>
-                            <p style="color: rgb(112,177,0);font-size:20px">15000 VNĐ</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <?php } ?>
 
             <!-- bai viet gan day-->
             <div class="comments-wrapper">
@@ -245,7 +112,6 @@
                 <?php } ?>
             </div>
         </div>
-        <!-- </div> -->
     </div>
 </div>
 

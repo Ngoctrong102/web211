@@ -1,9 +1,12 @@
 <?php
-class SearchController extends BaseController {
-    public function __construct() {
+class SearchController extends BaseController
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model("product");
         $this->load->model("news");
+        $this->load->model("notification");
     }
 
     public function search()
@@ -24,6 +27,10 @@ class SearchController extends BaseController {
                 "page" => 0
             )
         );
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         $data["list_news"] = $this->news->getAllNews($condition);
         $this->load->view("layouts/client", "client/search/search_result", $data);

@@ -5,6 +5,7 @@ class CartController extends BaseController
     {
         parent::__construct();
         $this->load->model("cart");
+        $this->load->model("notification");
     }
     public function renderShoppingCart()
     {
@@ -17,6 +18,10 @@ class CartController extends BaseController
             $user_id = $_SESSION["user_id"];
             $data["addresses"] = $this->cart->getAddresses($user_id);
             $data["phonenumber"] = $this->cart->getPhoneNumber($user_id);
+        }
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
         }
         $data["jsFiles"] = ["js/customer/cart/cart.js"];
         $data["cartproducts"] = $this->cart->getAllProducts_cart();

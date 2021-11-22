@@ -6,6 +6,7 @@ class NewsController extends BaseController
         parent::__construct();
         $this->load->model("news");
         $this->load->model("cart");
+        $this->load->model("notification");
     }
 
     public function renderAllNews()
@@ -31,6 +32,10 @@ class NewsController extends BaseController
 
             $condition["q"] = $_GET["q"];
         }
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["list_news"] = $this->news->getAllNews($condition);
         unset($condition["pagination"]);
         $data["number_news"] = sizeof($this->news->getAllNews($condition));
@@ -54,6 +59,10 @@ class NewsController extends BaseController
             "js/customer/news/comment.js",
             "js/customer/news/load_more.js"
         ];
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["specialCss"] = '
         <link rel="stylesheet" href="/plugins/ckeditor/sample/styles.css">
         ';
@@ -62,6 +71,7 @@ class NewsController extends BaseController
             "page" => 0,
             "size" => 5
         );
+        $data["recentnews"] = $this->news->getRecentNews($id);
         $data["comments"] = $this->news->loadCommentsOfNews($id, $pagination);
         $this->load->model("user");
         if (isset($_SESSION["user_id"])) {

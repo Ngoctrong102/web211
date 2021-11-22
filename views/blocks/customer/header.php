@@ -21,33 +21,17 @@
                                 <a class="top_menu">Notification</a>
                                 <ul class="notices">
                                     <li class="allread">
-                                        <p style="color: white">Mark all as read</p>
+                                        <p style="color: white; font-weight: bolder">Mark all as read</p>
                                         <span class="material-icons-outlined">done</span>
                                     </li>
-                                    <li class="link-notice">
-                                        <a style="height: 80px" href="/viewNoti/1">
-                                            <p>Date:</p>
-                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
-                                        </a>
-                                    </li>
-                                    <li class="link-notice">
-                                        <a style="height: 80px" href="/viewNoti/1">
-                                            <p>Date:</p>
-                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
-                                        </a>
-                                    </li>
-                                    <li class="link-notice">
-                                        <a style="height: 80px" href="/viewNoti/1">
-                                            <p>Date:</p>
-                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
-                                        </a>
-                                    </li>
-                                    <li class="link-notice">
-                                        <a style="height: 80px" href="/viewNoti/1">
-                                            <p>Date:</p>
-                                            <p>Note: Đơn hàng #50 của bạn đã được chuyển đi</p>
-                                        </a>
-                                    </li>
+                                    <?php foreach ($notifications as $notification) { ?>
+                                        <li class="link-notice">
+                                            <a style="height: 80px" href="/viewNoti/1">
+                                                <p><span style="font-weight: bolder">Date: </span><?php echo $notification["created_at"] ?></p>
+                                                <p><span style="font-weight: bolder">Note: </span><?php echo $notification["content"] ?></p>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li class="position-relative"><a class="top_menu" href="/account">My Account</a></li>
