@@ -9,13 +9,32 @@ class NotificationController extends BaseController
 
     public function viewNoti($id)
     {
+        $notification = $this->notification->getNotiById($id);
+        $this->notification->markView($id);
+        header("Location: " . $notification["url"]);
+    }
+    public function markViewAll()
+    {
+        $result = $this->notification->markViewAll($_SESSION["user_id"]);
+        echo json_encode(array("success" => $result));
+    }
+    public function getNumberUnread()
+    {
+        $numberUnread = $this->notification->countUnread($_SESSION["user_id"]);
+        echo json_encode(array("numberUnread" => $numberUnread));
+    }
+    public function viewAll()
+    {
+        $data["title"] = "Notification";
 
-        // ddansh dấu đã xem
-        // chuyển trang sang url
-        //header("Location: url từ noti");
-        if (isset($_SESSION["user_id"])) {
-            $user_id = $_SESSION["user_id"];
-            $data["notifications"] = $this->notification->getAllNoti($user_id);
-        }
+        $data["cssFiles"] = [
+            "css/customer/commons/breadcum.css",
+        ];
+
+        $data["notis"] = $this->notification->getAllNoti_($_SESSION["user_id"]);
+        $data["notifications"] = $this->notification->getAllNoti($_SESSION["user_id"]);
+
+
+        $this->load->view("layouts/client", "client/notification/view_all", $data);
     }
 }

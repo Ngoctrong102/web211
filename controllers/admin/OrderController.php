@@ -60,7 +60,8 @@ class OrderController extends BaseController
                 "url" => "/orderproduct/".$order["id"],
                 "content" => "Đơn hàng #".$order["id"]." của bạn đã được chuyển đi",
             );
-            $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $notiId = $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $notification["url"] = "/viewNoti/".$notiId;
             $this->sendData($_SESSION["user_id"],"notification",$notification);
         } else {
             $_SESSION["error"] = "You can't update a " . $order["status"] . " order!";
