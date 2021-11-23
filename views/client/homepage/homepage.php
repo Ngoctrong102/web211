@@ -815,6 +815,7 @@
             $dem = 0;
             $i = count($categoryhomeCus);
             $giua = (int)($i/2) + 1 ; // Cho nay hoi lu :V ket qua no cu bi lam sao y
+
             if($i%2==0){
               
               $giua = $giua - 1;
@@ -924,17 +925,28 @@
         
                 <div class='product'>
     
-                  <div class='img-seller'>
-                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
-    
+                  <div class='img-seller'>";
+                  if(isset($categoryhomeCus[$giua]['id']) && isset($categoryhomeCus[$giua]['thumbnails'])){
+                    echo"<a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>";
+                  }
+                    
+            echo"
                     <div class='next-img'>
                       <p>";
-                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
-                        echo "<a href=''>".$c["title"]."</a> "; 
+                      if(isset($categoryhomeCus[$giua]["categories"])){
+                        foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
                       }
+                     
                       echo "</p>
                       <div class='name-bottom'>
-                        <a href=''>".$categoryhomeCus[$giua]['name']."</a>
+                       ";
+                       if(isset($categoryhomeCus[$giua]["categories"])){
+                        echo"  <a href=''>".$categoryhomeCus[$giua]['name']."</a>";
+                       }
+                      
+                      echo "</p>
                       </div>
                       <div class='price'><span>850000</span>".$categoryhomeCus[$giua]['price']."</div>
                     </div>

@@ -5,7 +5,7 @@ class ContactController extends BaseController
     {
         parent::__construct();
         $this->load->model("contact");
-        $this->load->model("nootification");
+        $this->load->model("notification");
     }
     public function renderPageContact()
     {
