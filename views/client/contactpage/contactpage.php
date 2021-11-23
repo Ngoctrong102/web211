@@ -59,7 +59,7 @@
                 <div class="titleContact">
                     <span>Tell Us Your Message</span>
                 </div>
-                <form action="contact/addnewcontact" method="POST" class="formContact" name="formContact" onsubmit="return validateFormContact()">
+                <form action="contact/addnewcontact" method="POST" id="ismForm" class="formContact" name="formContact" onsubmit="return validateFormContact()">
                     <div class="inputform">
                         <div class="nametext">
                             <span>Your Name *</span> <span id="spanNameCon"></span>
@@ -93,7 +93,34 @@
         </div>
     </div> 
 
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast_err" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header" style="background: #f23333;">
+      <strong class="me-auto" style="color:#fff;">Error</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Một số thông tin nhập bị lỗi, vui lòng kiểm tra kỹ!!
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <script>
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+    
+
 function validateFormContact() {
   let name = document.forms["formContact"]["name"].value;
   let email = document.forms["formContact"]["email"].value;
@@ -105,6 +132,10 @@ function validateFormContact() {
     errName.textContent = " Name not null please!";
     dem++;
   }
+  else{
+    var errName = document.getElementById("spanNameCon");
+    errName.textContent = "";
+  }
   if (email == "") {
     var errEmail = document.getElementById("spanEmailCon");
     errEmail.textContent = " Email not null please!";
@@ -115,23 +146,42 @@ function validateFormContact() {
     errEmail.textContent = " Type email sth@sth.sth";
     dem++;
   }
+  else{
+    var errEmail = document.getElementById("spanEmailCon");
+    errEmail.textContent = "";
+  }
   if (title == "") {
     var errTitle = document.getElementById("spanTitleCon");
     errTitle.textContent = " Title not null please!";
     dem++;
+  }
+  else{
+    var errTitle = document.getElementById("spanTitleCon");
+    errTitle.textContent = "";
   }
   if (message == "") {
     var errMess = document.getElementById("spanMessCon");
     errMess.textContent = " Message not null please!";
     dem++;
   }
+  else{
+    var errMess = document.getElementById("spanMessCon");
+    errMess.textContent = "";
+  }
   if(dem != 0){
+    var toastLiveExample = document.getElementById('liveToast_err');
+        var toast = new bootstrap.Toast(toastLiveExample);
+        toast.show();
       return false;
+
   }
   else{
-      alert("successful");
-  }
+    return true;
+  }  
+ 
 }
+
+
 
 function validateEmail(email) 
     {

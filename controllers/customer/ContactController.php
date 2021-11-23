@@ -5,7 +5,7 @@ class ContactController extends BaseController
     {
         parent::__construct();
         $this->load->model("contact");
-        $this->load->model("nootification");
+        $this->load->model("notification");
     }
     public function renderPageContact()
     {
@@ -22,8 +22,13 @@ class ContactController extends BaseController
 
     public function Addnewcontact()
     {
+        $data["title"] = "Success Contact";
+        $data["cssFiles"] = [
+            "css/customer/contact/successcontact.css"
+        ];
         $contact = $_POST;
         $this->contact->insertNewContact($contact);
-        header("Location: /contact");
+        $this->load->view("layouts/client", "client/contactpage/successcontact", $data);
     }
 }
+

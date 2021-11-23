@@ -60,9 +60,9 @@ class OrderController extends BaseController
                 "url" => "/orderproduct/".$order["id"],
                 "content" => "Đơn hàng #".$order["id"]." của bạn đã được chuyển đi",
             );
-            $notiId = $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $notiId = $this->notification->addNotification($order["user_id"], $notification);
             $notification["url"] = "/viewNoti/".$notiId;
-            $this->sendData($_SESSION["user_id"],"notification",$notification);
+            $this->sendData($order["user_id"],"notification",$notification);
         } else {
             $_SESSION["error"] = "You can't update a " . $order["status"] . " order!";
         }
@@ -86,9 +86,9 @@ class OrderController extends BaseController
                 "content" => "Đơn hàng #".$order["id"]." của bạn đã bị hủy",
             );
 
-            $notiId = $this->notification->addNotification($_SESSION["user_id"], $notification);
+            $notiId = $this->notification->addNotification($order["user_id"], $notification);
             $notification["url"] = "/viewNoti/".$notiId;
-            $this->sendData($_SESSION["user_id"],"notification",$notification);
+            $this->sendData($order["user_id"],"notification",$notification);
         } else {
             $_SESSION["error"] = "You can't update a " . $order["status"] . " order!";
         }
