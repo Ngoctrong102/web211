@@ -34,6 +34,12 @@
     color: #333;
 }
 
+.wrapper-register-form .register-form .form-group span{
+    margin-left: 15px;
+    font-size: 14px;
+    color: red;
+}
+
 .wrapper-register-form .register-form .form-group input {
     padding: 10px 10px;
     border: none;

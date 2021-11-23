@@ -135,7 +135,7 @@
                           <div class='product'>
               
                             <div class='img-container'>
-                              <a href='detail/".$newCategoryHome[$dem]['id']."'><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
+                              <a href='detail/".$newCategoryHome[$dem]['id']."' style ='height:0px;'><img src='".$newCategoryHome[$dem]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
               
                               <ul class='side-icons'>
                                 <!--<a><i class='fas fas fa-cart-plus'></i></a>  -->
