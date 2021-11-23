@@ -31,7 +31,9 @@
                                         </li>
                                     <?php } ?>
                                     <li class="view-all" id="title-notification">
-                                        <a href="/notification/viewAll">View all</a>
+                                        <a style="text-decoration: none;" href="/notification/viewAll">
+                                            <p>View all</p>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
