@@ -37,6 +37,17 @@ create table news
     created_at  timestamp default CURRENT_TIMESTAMP null
 );
 
+create table notification
+(
+    id         int auto_increment
+        primary key,
+    user_id    int                                  null,
+    content    varchar(255)                         null,
+    url        varchar(255)                         null,
+    is_read    tinyint(1) default 0                 null,
+    created_at datetime   default CURRENT_TIMESTAMP null
+);
+
 create table `order`
 (
     id         int auto_increment
@@ -44,6 +55,7 @@ create table `order`
     user_id    int                                          not null,
     address_id int                                          not null,
     status     enum ('Processing', 'Canceled', 'Delivered') null,
+    note       varchar(255)                                 null,
     created_at timestamp default CURRENT_TIMESTAMP          not null on update CURRENT_TIMESTAMP
 );
 
