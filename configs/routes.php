@@ -36,35 +36,35 @@ $routes = array(
     ),
     "cart" => array(
         "handler" => "cart/renderShoppingCart",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "cart/setQuantity" => array(
         "handler" => "cart/setQuantity",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "cart/productDeleted/:num(id)" => array(
         "handler" => "cart/ProductDeleted",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "orderproduct/:num(id)" => array(
         "handler" => "customer/order/renderOrderProductPage",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/:num(id)" => array(
         "handler" => "customer/order/addOrder",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order" => array(
         "handler" => "customer/order/renderOrderPage",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/:num(address_id)/:num(order_id)" => array(
         "handler" => "customer/order/orderUpdated",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/orderCancelled/:num(id)" => array(
         "handler" => "customer/order/orderCancelled",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "detail/:num(id)" => array(
         "handler" => "customer/product/renderDetailPage",
@@ -76,7 +76,7 @@ $routes = array(
     ),
     "logout" => array(
         "handler" => "user/logout",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "shop" => array(
         "handler" => "customer/product/renderHomeShop",
@@ -84,19 +84,19 @@ $routes = array(
     ),
     "account" => array(
         "handler" => "customer/account/renderAccountPage",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/addNewAddress" => array(
         "handler" => "customer/account/addNewAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/deleteAddress" => array(
         "handler" => "customer/account/deleteAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/updateAddress" => array(
         "handler" => "customer/account/updateAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "news" => array(
         "handler" => "customer/news/renderAllNews",
@@ -112,15 +112,15 @@ $routes = array(
     ),
     "user/uploadAvatar" => array(
         "handler" => "customer/account/uploadAvatar",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "user/updateEmail" => array(
         "handler" => "customer/account/updateEmail",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "user/updatePhone" => array(
         "handler" => "customer/account/updatePhone",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "news/loadComments" => array(
         "handler" => "customer/news/loadComments",
@@ -140,7 +140,7 @@ $routes = array(
     ),
     "product/comment" => array(
         "handler" => "customer/product/addComment",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "product/loadComments" => array(
         "handler" => "customer/product/loadComments",
@@ -148,7 +148,7 @@ $routes = array(
     ),
     "product/rate" => array(
         "handler" => "customer/product/addRate",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "product/loadRates" => array(
         "handler" => "customer/product/loadRates",
@@ -156,155 +156,155 @@ $routes = array(
     ),
     "viewNoti/:num(id)" => array(
         "handler" => "customer/notification/viewNoti",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/markViewAll" => array(
         "handler" => "customer/notification/markViewAll",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/getNumberUnread" => array(
         "handler" => "customer/notification/getNumberUnread",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/viewAll" => array(
         "handler" => "customer/notification/viewAll",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/form" => array(
         "handler" => "admin/form/renderForm",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories" => array(
         "handler" => "admin/category/renderAllCategories",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/add" => array(
         "handler" => "admin/category/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/addNew" => array(
         "handler" => "admin/category/addNewCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/edit/:num(id)" => array(
         "handler" => "admin/category/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/editCategory/:num(id)" => array(
         "handler" => "admin/category/editCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/delete/:num(id)" => array(
         "handler" => "admin/category/deteleCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units" => array(
         "handler" => "admin/unit/renderAllUnits",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/add" => array(
         "handler" => "admin/unit/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/addNew" => array(
         "handler" => "admin/unit/addNewUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/edit/:num(id)" => array(
         "handler" => "admin/unit/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/editUnit/:num(id)" => array(
         "handler" => "admin/unit/editUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/delete/:num(id)" => array(
         "handler" => "admin/unit/deteleUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products" => array(
         "handler" => "admin/product/renderAllProducts",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/add" => array(
         "handler" => "admin/product/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/addNew" => array(
         "handler" => "admin/product/addNewProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/edit/:num(id)" => array(
         "handler" => "admin/product/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/editProduct/:num(id)" => array(
         "handler" => "admin/product/editProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/delete/:num(id)" => array(
         "handler" => "admin/product/deleteProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/file-manager" => array(
         "handler" => "admin/fileManager/renderFileManager",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news" => array(
         "handler" => "admin/news/renderAllNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/add" => array(
         "handler" => "admin/news/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/addNew" => array(
         "handler" => "admin/news/addNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/edit/:num(id)" => array(
         "handler" => "admin/news/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/editNews/:num(id)" => array(
         "handler" => "admin/news/editNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/delete/:num(id)" => array(
         "handler" => "admin/news/deleteNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders" => array(
         "handler" => "admin/order/renderAllOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/:num(id)" => array(
         "handler" => "admin/order/renderDetail",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/deliver/:num(id)" => array(
         'handler' => "admin/order/deliverOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/cancel/:num(id)" => array(
         'handler' => "admin/order/cancelOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact" => array(
         "handler" => "admin/contact/renderContact",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact/delete/:num(id)" => array(
         "handler" => "admin/contact/deleteContact",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact/detail/:num(id)" => array(
         "handler" => "admin/contact/LoadDetailPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
 );

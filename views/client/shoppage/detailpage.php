@@ -198,16 +198,15 @@
                     <a style="text-decoration: none" href="/redirectLogin?location=/detail/<?php echo $product["id"]; ?>"> <span><i style="color: red;margin:0" class="fa fa-shopping-cart mr-10"></i></span><span style="color: red">LOGIN FIRST</span></a>
                 <?php } ?>
             </form>
-            <br>
 
             <!--  <a href="" class="category">
                 <i class="far fa-heart">Add to wishlist</i>
             </a> 
             <br><br> -->
 
-            <a href="" style="text-decoration: none;">
+            <!-- <a href="" style="text-decoration: none;">
                 <p class="buy">Buy it now</p>
-            </a>
+            </a>-->
             <hr>
             <p>CATEGORIES:
                 <?php for ($cgcount = 0; $cgcount < sizeof($categories); $cgcount++) {
