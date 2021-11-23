@@ -33,6 +33,8 @@ class ProductController extends BaseController
 
     public function renderAddPage()
     {
+        $data["title"] = "Add Products";
+
         $data["nav"] = "products";
         $data["cssFiles"] = [
             "css/admin/form.css",
@@ -65,6 +67,8 @@ class ProductController extends BaseController
 
     public function renderEditPage($id)
     {
+        $data["title"] = "Edit Products";
+
         $data["nav"] = "products";
         $data["cssFiles"] = [
             "css/admin/form.css",

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap");
 * {
     box-sizing: border-box;
 }
@@ -95,7 +95,7 @@ div#header-top-menu {
     width: 50%;
 }
 
-div#header-top-menu ul {
+div#header-top-menu ul.user-menu {
     height: 24px;
     margin: 0;
     padding: 0;
@@ -104,12 +104,72 @@ div#header-top-menu ul {
     justify-content: end;
 }
 
-div#header-top-menu ul li {
+.link-notice {
+    background-color: white;
+    height: 80px;
+    padding: 10px;
+    border-bottom: 1pt solid #bdc3c7;
+    list-style: none;
+}
+
+.link-notice.unread p,
+.link-notice.unread span {
+    color: rgb(20, 77, 161);
+}
+
+.view-all {
+    text-align: center;
+}
+
+.link-notice a {
+    text-decoration: none;
+}
+
+.link-notice a p {
+    margin-bottom: 10px;
+}
+
+.allread {
+    background-color: #7f8c8d;
+    height: 25px;
+    padding: 0 10px;
+    border-bottom: 1pt solid #bdc3c7;
+    display: flex;
+    justify-content: space-between;
+}
+
+.allread .material-icons-outlined {
+    cursor: pointer;
+    color: white;
+}
+
+.allread .material-icons-outlined:hover {
+    color: #f1c40f;
+}
+
+.notices {
+    position: absolute;
+    width: max-content;
+    background-color: white;
+    padding: 0;
+    z-index: 1;
+    visibility: hidden;
+    padding-top: 10px;
+    background-color: #f5f5f5;
+    direction: ltr;
+}
+
+#noti-item:hover .notices {
+    visibility: visible;
+}
+
+div#header-top-menu ul li.position-relative {
     list-style: none;
     height: 24px;
     line-height: 24px;
     width: auto;
     margin-left: 5%;
+    direction: rtl;
 }
 
 div#header-top-menu ul li a.top_menu {
@@ -217,7 +277,7 @@ div#header-bottom div#cover-right div#cover-right-top div#search form button {
     height: 40px;
     border-radius: 20px;
     border: none;
-    background-color: #70B100;
+    background-color: #70b100;
     padding: 8px 7px;
 }
 
@@ -250,6 +310,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart div#hover-objects
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul {
+    z-index: 1;
     direction: ltr;
     visibility: hidden;
     position: absolute;
@@ -320,7 +381,7 @@ div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-butto
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover {
-    background-color: #70B100;
+    background-color: #70b100;
 }
 
 div#header-bottom div#cover-right div#cover-right-top div#cart ul div#cart-button p a:hover span {
@@ -397,7 +458,7 @@ div#cover-right-bottom ul li i.fa.fa-chevron-down {
     font-size: 10px;
     height: auto;
     width: auto;
-    margin: 0
+    margin: 0;
 }
 
 div#cover-right-bottom ul li:hover ul.direction {
@@ -444,6 +505,7 @@ div#cover-right-bottom ul li a:hover {
 
 div#cover-right-bottom ul li a i {
     margin: 0px 0px 10px 5px;
+    font-size: 10px;
 }
 
 div#contact-ways {

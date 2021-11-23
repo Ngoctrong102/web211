@@ -6,7 +6,9 @@ class OrderController extends BaseController
         parent::__construct();
         $this->load->model("order");
         $this->load->model("cart");
+        $this->load->model("notification");
     }
+
     public function renderOrderPage()
     {
         $data["title"] = "Your Orders";
@@ -18,6 +20,10 @@ class OrderController extends BaseController
             $user_id = $_SESSION["user_id"];
             $data["orders"] = $this->order->getAllOrderInfo($user_id);
         }
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/orderpage", $data);
     }
@@ -28,7 +34,12 @@ class OrderController extends BaseController
         $data["cssFiles"] = [
             "css/customer/commons/breadcum.css",
             "css/customer/order/orderproduct.css",
+            "css/customer/order/status.css",
         ];
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $user_id = $_SESSION["user_id"];
         $data["orders"] = $this->order->getOrderInfo($user_id, $id);
         $data["orderproducts"] = $this->order->getAllProducts_order($id);

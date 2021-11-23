@@ -45,10 +45,10 @@
             <div class="footer-mid-common">
               <h3>INFORMATION</h3>
               <ul>
-                <li><a href="#">ABOUT US</a></li>
-                <li><a href="#">DELIVERY INFORMATION</a></li>
-                <li><a href="#">PRIVACY POLICY</a></li>
-                <li><a href="#">TERMS & CONDITION</a></li>
+                <li><a href="">ABOUT US</a></li>
+                <li><a href="">DELIVERY INFORMATION</a></li>
+                <li><a href="">PRIVACY POLICY</a></li>
+                <li><a href="">TERMS & CONDITION</a></li>
               </ul>
             </div>
           </div>
@@ -56,10 +56,10 @@
             <div class="footer-mid-common">
               <h3>ACCOUNT</h3>
               <ul>
-                <li><a href="#">MY ACCOUNT</a></li>
-                <li><a href="#">WISHLIST</a></li>
-                <li><a href="#">SHOPPING CART</a></li>
-                <li><a href="#">NEWS</a></li>
+                <li><a href="/account">MY ACCOUNT</a></li>
+                <li><a href="">WISHLIST</a></li>
+                <li><a href="/cart">SHOPPING CART</a></li>
+                <li><a href="/news">NEWS</a></li>
               </ul>
             </div>
           </div>
@@ -67,10 +67,10 @@
             <div class="footer-mid-common">
               <h3>CUSTOMER SERVICE</h3>
               <ul>
-                <li><a href="#">CONTACT</a< /li>
-                <li><a href="#">OUR SERVICE</a></li>
-                <li><a href="#">RETURNS</a></li>
-                <li><a href="#">GIFT VOUCHERS</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <li><a href="">OUR SERVICE</a></li>
+                <li><a href="">RETURNS</a></li>
+                <li><a href="">GIFT VOUCHERS</a></li>
               </ul>
             </div>
           </div>

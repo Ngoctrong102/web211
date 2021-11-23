@@ -61,15 +61,19 @@
         </form>
     </div>
     <div style="display: flex;justify-content: space-between; width: 100%;margin-bottom: 50px; padding: 10px">
-        <div style="background-color: #dedede;width: 60%;padding: 10px 30px;height: 175px; border-right: 1pt solid #fff">
+        <div style="background-color: #dedede;width: 60%;padding: 10px 30px; border-right: 1pt solid #fff">
             <?php foreach ($orders as $order) { ?>
                 <p class="info" style="font-weight: bolder">Full name:&nbsp;&nbsp;&nbsp;<span><?php echo ($order["first_name"] . " " . $order["last_name"]) ?></span></p>
                 <p class="info" style="font-weight: bolder">Address:&nbsp;&nbsp;&nbsp;<span><?php echo $order["address"] ?></span></p>
                 <p class="info" style="font-weight: bolder">Phone:&nbsp;&nbsp;&nbsp;<span><?php echo $order["phone"] ?></span></p>
+                <p class="info" style="font-weight: bolder">Status:&nbsp;&nbsp;&nbsp;<span class="status <?php echo strtolower($order["status"]); ?>"><?php echo $order["status"] ?></span></p>
+                <?php if ($order["note"] != "") { ?>
+                    <p class="info" style="font-weight: bolder">Note:&nbsp;&nbsp;&nbsp;<span><?php echo $order["note"] ?></span></p>
+                <?php } ?>
                 <p class="info" style="font-weight: bolder">Date:&nbsp;&nbsp;&nbsp;<span><?php echo $order["created_at"] ?></span></p>
             <?php  } ?>
         </div>
-        <div style="height: 175px;background-color: #dedede;padding: 30px; width: 40%">
+        <div style="background-color: #dedede;padding: 30px; width: 40%">
             <h5>Order Total</h5>
             <br>
 

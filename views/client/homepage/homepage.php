@@ -50,12 +50,12 @@
           <div class="swiper-slide">
                   <div class="product-cate">
                     <div class="img-categories">
-                      <a href=""><img src="<?php echo $loadTI['thumbnails'] ?>" alt=""></a>
+                      <a href="/shop?category=<?php echo $loadTI["id"];?>&page=1"><img src="<?php echo $loadTI['thumbnails'] ?>" alt=""></a>
                       
                     </div>
                     <div class="bottom">
                       <div class="name-bottom">
-                        <a href=""><?php echo $loadTI['title'] ?></a>
+                        <a href="/shop?category=<?php echo $loadTI["id"];?>&page=1"><?php echo $loadTI['title'] ?></a>
                       </div>
                     </div>
       

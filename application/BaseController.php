@@ -32,7 +32,7 @@ abstract class BaseController
 			'1289950',
 			$options
 		);
-		$channel = $userId;
+		$channel = "c_".$userId;
 		$pusher->trigger($channel, $event, $data);
 	}
 }

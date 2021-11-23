@@ -21,31 +21,31 @@
             <div class="image-cover">
                 <img id="main-image" src="<?php echo $product["thumbnails"] ?>" alt="vegetable" width="100%" height="500px">
             </div>
-
-            <div class="slide-cover">
-                <div class="turn-left"><i class="fa fa-angle-left" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
-                <div class="cover-image-content">
-                    <div class="image-content">
-                        <?php foreach ($product["images"] as $image) { ?>
-                            <div class="each-image">
-                                <img class="sub-image" alt="" src="<?php echo $image["image_url"] ?>">
-                            </div>
-                        <?php } ?>
+            <?php if (sizeof($product["images"]) != 0) { ?>
+                <div class="slide-cover">
+                    <div class="turn-left"><i class="fa fa-angle-left" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
+                    <div class="cover-image-content">
+                        <div class="image-content">
+                            <?php foreach ($product["images"] as $image) { ?>
+                                <div class="each-image">
+                                    <img class="sub-image" alt="" src="<?php echo $image["image_url"] ?>">
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
+
+                    <div class="turn-right"><i class="fa fa-angle-right" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
+
+
                 </div>
-
-                <div class="turn-right"><i class="fa fa-angle-right" style="display: block;width:100%; height:160px;line-height:160px"></i></div>
-
-
-            </div>
-
+            <?php } ?>
 
         </div>
 
         <div class="column2">
             <h1 id="product_name_detailpage"><?php echo $product["name"] ?></h1>
             <div>
-                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
+                <div class="rateit" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-resetable="false" data-rateit-value="<?php echo $product["rating"]; ?>"></div>
                 <span>
                     <?php echo $product["rating"]; ?>
                 </span>
@@ -209,7 +209,15 @@
                 <p class="buy">Buy it now</p>
             </a>
             <hr>
-            <p>CATEGORIES: <a class="category" href="">Beans</a>, <a class="category" href="">Bread</a>, <a class="category" href="">Fast Foods</a>, <a class="category" href="">Featured</a>, <a class="category" href="">Fish & Meats</a></p>
+            <p>CATEGORIES:
+                <?php for ($cgcount = 0; $cgcount < sizeof($categories); $cgcount++) {
+                    if ($cgcount == sizeof($categories) - 1) { ?>
+                        <a class="category" href=""><?php echo $categories[$cgcount]["title"] ?></a>
+                    <?php } else { ?>
+                        <a class="category" href=""><?php echo $categories[$cgcount]["title"] ?></a>,
+                <?php }
+                } ?>
+            </p>
             <hr>
             <p>SHARE:</p>
             <a href="https://www.facebook.com/sharer.php?u=https://greenfarm-demo.myshopify.com/products/11-product-with-video"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEU8Wpn///8jSpHx8/c5WJhQaaLX3OgoTZLu8PUwUpU0VJahrMiGlLp8jLU2VpceR5Da3umxutFIY567w9eQnsBacaXl6PBne6tzhbH3+PpRaqGbp8UAO4umsMvg4+yLmr1uga7M0uFedKevuNDnQpi/AAAEN0lEQVR4nO3d7XaiMBSFYcAIBpVUxa86itr7v8dp62itteZIOIST2e//ruZZgCiEEMWhF/keAHv/n7AnvwfCtJqaJICm5ctdYdpPchWFkNLJfPdTWJrC98gaTJntrXCc+R5UwyXVd2EZGvCduL0Wpsb3eBgyiythP6Rj8Fyx/BKmie/RsHTaiJ/CKvc9GJb08CKchnEevE0tL8IQP2eijzP/WdgL8zB8P2FAKD4I5Qeh/CCUH4Tyg1B+EMoPQvlBKD8IO1BR5KeKvChUoaLnLgp2WahynSUmmu/Ho6qqRqPxeLVfzqdRZkySZFmmdV7YtZ0V6sy8VpN0EN9r3VvsDrPJsFq9WomdFCqdROVhfRd3m/VSfQeFKsu+3aF+3EicUGXTGZknUPjuOzzjEycssslzPmnCZE/7dJEqVOapA1CesFCLGkBBwvz1+T1UlFAfa/nkCPN5TaAUoZrWBUoR6tvZkqEJTVobKEOoN/WBIoQOB6EQodlZENKF+cgFKEGY1PsuI0eYl05AAUJT/1QoQ+h4FAoQJvRrTjKFbudCCUK9tQDEC5Nav+sFCd130q4LtePJsPvC7OAs7Ph9i+SJ0306G5aj8Y+sN588H4dE3frtaDL9cb8wv63bd9eKFQ24SXT9h0G8Cmk/7ntT7fJPvAozymX8nnZ74syvkHIF6tXxkTqvQso3monrY59+hYSf90/OLbnzT7wK7UD3pyJ9ClVuF26cn4r0ug0J37uPzk9Fet2GBKH7qLwK+1bgOnjhInjhzn0RhI4LX4IXphDag5AzCCGkBSFnEEJIC0LOIISQFoScQQghLQg5C0Sof18I19hXaE7/WBbT9f+UrN70Br9nFa4f/PFH6773+/inhRn5su/FwoWEUQsXEq4YCxceghe+2SeiCBeW9lvEwoV7+1QU4ULC0sDChYRByxYOghdSvpjLFs6CFw4J8zJlC63T2MULl4QZU7KFlClhsoWUMYsWkmZMiRYSfjsJF84ok/hFCzfBC8eUafyihfPghaRnhSQLaROIJQtpE4glC0mnQ9HCCemZNslCwqVE4cJV8EL7nbU2hDmjkHZ/WPI9YNoAcB+fMwghpAUhZxBCSAtCziCEkBaEnEEIIS0IOYMQQloQcgYhhLQg5AxCCGlByBmEENKCkDMIIaQFIWcQQkgLQs4ghJAWhJxBCCEtCDmDEEJaEHIGIYS0IOQMQghpQcgZhBDSgpAzCCGkBSFnEEJI6yJs4I2fz9aK8PTC2k8hbZWJJmtFWCwvwtLpDeZ1akWotxfhS+u7aStCM7gI43nbu2kbwmIVfwl3ppFx02tDeNqE/4TxtuX9tAWhmcXXwrhql8gvNOf1fy4r4WwNZZ2+puIWFucteCWMF0ujVVufOJxCVWiz+nrLy/VqRovh8cHCR43WxJt0fitfbq/fYmP/T9KDUH7hC/8CYjpgljRwcJIAAAAASUVORK5CYII=" alt="facebook" width="30" height="30"></a>
@@ -342,7 +350,7 @@
                             </div>
                             <div class="body-comment">
                                 <h5><b><?php echo $rate["first_name"] . " " . $rate["last_name"]; ?></b></h5>
-                                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-value="<?php echo $rate["rate"]; ?>"></div>
+                                <div class="rateit" data-rateit-ispreset="true" data-rateit-resetable="false" data-rateit-readonly="true" data-rateit-value="<?php echo $rate["rate"]; ?>"></div>
                                 <small><?php echo $rate["created_at"]; ?></small>
                                 <p class="content" style="padding: 0px;"><?php echo $rate["content"]; ?></p>
                             </div>
@@ -392,7 +400,7 @@
         <div class="avatar">
             <img src="/upload/images/shin.jpg" alt="">
         </div>
-        <div class="body-rate">
+        <div class="body-comment">
             <h5><b>Username</b></h5>
             <div class="rateit" data-rateit-ispreset="false" data-rateit-readonly="true"></div>
             <small>20:38 20/10/2021</small>
@@ -400,3 +408,14 @@
         </div>
     </div>
 </template>
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="color: white; background-color: red;">
+            <strong class="me-auto" style="color: white;">Error</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>

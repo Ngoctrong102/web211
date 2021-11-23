@@ -6,6 +6,7 @@ class ProductController extends BaseController
         parent::__construct();
         $this->load->model("cart");
         $this->load->model("product");
+        $this->load->model("notification");
     }
 
     public function renderHomeShop()
@@ -25,7 +26,8 @@ class ProductController extends BaseController
 
         ];
         $data["jsFiles"] = [
-            "libs/rateit.js-master/scripts/jquery.rateit.js"
+            "libs/rateit.js-master/scripts/jquery.rateit.js",
+            "js/customer/shoppage/filter.js"
         ];
         $_GET["page"] = isset($_GET["page"]) && $_GET["page"] != "" ? $_GET["page"] : 1;
         $condition = array(
@@ -36,12 +38,16 @@ class ProductController extends BaseController
         );
 
         if (isset($_GET["category"])) {
-
             $condition["categoryId"] = $_GET["category"];
         }
         if (isset($_GET["q"])) {
-
             $condition["q"] = $_GET["q"];
+        }
+        if (isset($_GET["sort"])) {
+            $condition["sort"] = $_GET["sort"];
+        }
+        if (isset($_GET["order"])) {
+            $condition["order"] = $_GET["order"];
         }
         $data["products"] = $this->product->getAllProductsShopPage($condition);
         unset($condition["pagination"]);
@@ -49,6 +55,10 @@ class ProductController extends BaseController
         $data["top_ratings"] = $this->product->getTopRating(array());
         $this->load->model("category");
         $data["categories"] = $this->category->getAllCategories();
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $this->load->view("layouts/client", "client/shoppage/shoppage", $data);
     }
@@ -69,11 +79,16 @@ class ProductController extends BaseController
         ];
         $data["relatedproducts"] = $this->product->getRelatedProduct($id);
         $data["product"] = $this->product->getProductForDetail($id);
+        $data["categories"] = $this->product->getAllProductCategory($id);
         $data["cartproducts"] = $this->cart->getAllProducts_cart();
         $pagination = array(
             "page" => 0,
             "size" => 5
         );
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["comments"] = $this->product->loadCommentsOfProduct($id, $pagination);
         $data["rates"] = $this->product->loadRatesOfProduct($id, $pagination);
         $this->load->model("user");

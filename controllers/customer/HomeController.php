@@ -7,6 +7,7 @@ class HomeController extends BaseController
         $this->load->model("product");
         $this->load->model("cart");
         $this->load->model("news");
+        $this->load->model("notification");
     }
 
     public function renderHomePage()
@@ -26,7 +27,10 @@ class HomeController extends BaseController
         $data["specialCss"] = '
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.css"/>';
-
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+            $data["notifications"] = $this->notification->getAllNoti($user_id);
+        }
         $data["specialJs"] = '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.js"></script>
         ';

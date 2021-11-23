@@ -12,13 +12,34 @@
 
 
                 <div id="header-top-menu">
-                    <ul>
-                        <li><a class="top_menu" href="/account">My Account</a></li>
+                    <ul class="user-menu">
                         <?php if (isset($_SESSION["user_id"])) { ?>
-                            <li><a class="top_menu" href="/logout">Logout</a></li>
+                            <li id="noti-item" data-user-id="<?php echo $_SESSION["user_id"]; ?>" class="position-relative">
+                                <span id="badge-unread" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;padding: 2px; border-radius: 20px; width: 14px"></span>
+                                <a class="top_menu">Notification</a>
+                                <ul class="notices" id="notifications">
+                                    <li class="allread" id="title-notification">
+                                        <p style="color: white; font-weight: bolder">Mark all as read</p>
+                                        <span class="material-icons-outlined mark-view-all-btn">done</span>
+                                    </li>
+                                    <?php foreach ($notifications as $notification) { ?>
+                                        <li class="link-notice <?php echo $notification["is_read"] ? "" : "unread"; ?>">
+                                            <a style="height: 80px" href="/viewNoti/<?php echo $notification["id"]; ?>">
+                                                <p><span style="font-weight: bolder">Note: </span><?php echo $notification["content"] ?></p>
+                                                <p><span style="font-weight: bolder">Date: </span><?php echo substr($notification["created_at"], 0, 11); ?></p>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                    <li class="view-all" id="title-notification">
+                                        <a href="/notification/viewAll">View all</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="position-relative"><a class="top_menu" href="/account">My Account</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/logout">Logout</a></li>
                         <?php } else { ?>
-                            <li><a class="top_menu" href="/login">Sign in</a></li>
-                            <li><a class="top_menu" href="/register">Register</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/login">Sign in</a></li>
+                            <li class="position-relative"><a class="top_menu" href="/register">Register</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -115,23 +136,27 @@
 
                     <div id="cover-right-bottom">
                         <ul>
-                            <li><a href="/">HOME<i class="fa fa-chevron-down"></i></a>
-                                <ul class="direction">
+                            <li><a href="/">HOME
+                                </a>
+                                <!--<ul class="direction">
                                     <li><a href="#">Home 1</a></li>
                                     <li><a href="#">Home 2</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li><a href="/shop">SHOP<i class="fa fa-chevron-down"></i></a>
-                                <ul class="direction">
+                            <li><a href="/shop">SHOP
+                                </a>
+                                <!--<ul class="direction">
                                     <li><a href="/shop">Shop 1</a></li>
                                     <li><a href="/shop">Shop 2</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li><a href="#">PAGES<i class="fa fa-chevron-down"></i></a>
+                            <!--<li><a href="#">PAGES
+                                    <i class="fa fa-chevron-down"></i>
+                                </a>
                                 <ul class="direction">
                                     <li><a href="#">Col 1</a></li>
                                     <li><a href="#">Account</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
                             <li><a href="/news">BLOG</a></li>
                             <li><a href="/contact">CONTACT</a></li>
