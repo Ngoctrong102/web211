@@ -173,138 +173,138 @@ $routes = array(
     // admin
     "admin" => array(
         "handler" => "admin/dashboard/renderDashboard",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/form" => array(
         "handler" => "admin/form/renderForm",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories" => array(
         "handler" => "admin/category/renderAllCategories",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/add" => array(
         "handler" => "admin/category/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/addNew" => array(
         "handler" => "admin/category/addNewCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/edit/:num(id)" => array(
         "handler" => "admin/category/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/editCategory/:num(id)" => array(
         "handler" => "admin/category/editCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/categories/delete/:num(id)" => array(
         "handler" => "admin/category/deteleCategory",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units" => array(
         "handler" => "admin/unit/renderAllUnits",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/add" => array(
         "handler" => "admin/unit/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/addNew" => array(
         "handler" => "admin/unit/addNewUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/edit/:num(id)" => array(
         "handler" => "admin/unit/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/editUnit/:num(id)" => array(
         "handler" => "admin/unit/editUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/units/delete/:num(id)" => array(
         "handler" => "admin/unit/deteleUnit",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products" => array(
         "handler" => "admin/product/renderAllProducts",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/add" => array(
         "handler" => "admin/product/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/addNew" => array(
         "handler" => "admin/product/addNewProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/edit/:num(id)" => array(
         "handler" => "admin/product/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/editProduct/:num(id)" => array(
         "handler" => "admin/product/editProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/products/delete/:num(id)" => array(
         "handler" => "admin/product/deleteProduct",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/file-manager" => array(
         "handler" => "admin/fileManager/renderFileManager",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news" => array(
         "handler" => "admin/news/renderAllNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/add" => array(
         "handler" => "admin/news/renderAddPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/addNew" => array(
         "handler" => "admin/news/addNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/edit/:num(id)" => array(
         "handler" => "admin/news/renderEditPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/editNews/:num(id)" => array(
         "handler" => "admin/news/editNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/news/delete/:num(id)" => array(
         "handler" => "admin/news/deleteNews",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders" => array(
         "handler" => "admin/order/renderAllOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/:num(id)" => array(
         "handler" => "admin/order/renderDetail",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/deliver/:num(id)" => array(
         'handler' => "admin/order/deliverOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/orders/cancel/:num(id)" => array(
         'handler' => "admin/order/cancelOrder",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact" => array(
         "handler" => "admin/contact/renderContact",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact/delete/:num(id)" => array(
         "handler" => "admin/contact/deleteContact",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
     "admin/contact/detail/:num(id)" => array(
         "handler" => "admin/contact/LoadDetailPage",
-        "roles" => ["all"]
+        "roles" => ["admin"]
     ),
 );
