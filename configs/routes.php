@@ -36,35 +36,35 @@ $routes = array(
     ),
     "cart" => array(
         "handler" => "cart/renderShoppingCart",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "cart/setQuantity" => array(
         "handler" => "cart/setQuantity",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "cart/productDeleted/:num(id)" => array(
         "handler" => "cart/ProductDeleted",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "orderproduct/:num(id)" => array(
         "handler" => "customer/order/renderOrderProductPage",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/:num(id)" => array(
         "handler" => "customer/order/addOrder",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order" => array(
         "handler" => "customer/order/renderOrderPage",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/:num(address_id)/:num(order_id)" => array(
         "handler" => "customer/order/orderUpdated",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "order/orderCancelled/:num(id)" => array(
         "handler" => "customer/order/orderCancelled",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "detail/:num(id)" => array(
         "handler" => "customer/product/renderDetailPage",
@@ -76,7 +76,7 @@ $routes = array(
     ),
     "logout" => array(
         "handler" => "user/logout",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "shop" => array(
         "handler" => "customer/product/renderHomeShop",
@@ -84,19 +84,19 @@ $routes = array(
     ),
     "account" => array(
         "handler" => "customer/account/renderAccountPage",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/addNewAddress" => array(
         "handler" => "customer/account/addNewAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/deleteAddress" => array(
         "handler" => "customer/account/deleteAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "account/updateAddress" => array(
         "handler" => "customer/account/updateAddress",
-        "roles" => ["customer"]
+        "roles" => ["customer", "admin"]
     ),
     "news" => array(
         "handler" => "customer/news/renderAllNews",
@@ -112,15 +112,15 @@ $routes = array(
     ),
     "user/uploadAvatar" => array(
         "handler" => "customer/account/uploadAvatar",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "user/updateEmail" => array(
         "handler" => "customer/account/updateEmail",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "user/updatePhone" => array(
         "handler" => "customer/account/updatePhone",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "news/loadComments" => array(
         "handler" => "customer/news/loadComments",
@@ -140,7 +140,7 @@ $routes = array(
     ),
     "product/comment" => array(
         "handler" => "customer/product/addComment",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "product/loadComments" => array(
         "handler" => "customer/product/loadComments",
@@ -148,7 +148,7 @@ $routes = array(
     ),
     "product/rate" => array(
         "handler" => "customer/product/addRate",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "product/loadRates" => array(
         "handler" => "customer/product/loadRates",
@@ -156,19 +156,19 @@ $routes = array(
     ),
     "viewNoti/:num(id)" => array(
         "handler" => "customer/notification/viewNoti",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/markViewAll" => array(
         "handler" => "customer/notification/markViewAll",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/getNumberUnread" => array(
         "handler" => "customer/notification/getNumberUnread",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     "notification/viewAll" => array(
         "handler" => "customer/notification/viewAll",
-        "roles" => ["all"]
+        "roles" => ["customer", "admin"]
     ),
     // admin
     "admin" => array(
