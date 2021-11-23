@@ -26,6 +26,8 @@
             <div class="chude2"> <span class="titleh5">Nội dung tin nhắn:</span> </div>
             <div class="noidungchude2"><span class="spancontantD"><?php echo $contact["message"]; ?></span></div>
         </div> <br>
-        <button class="buttonDetailContact"><a href="/admin/contact">Back</a></button>
+        <form action="/admin/contact">
+            <button class="buttonDetailContact" type="submit">Back</button>
+        </form>
     </div>
 </div>
