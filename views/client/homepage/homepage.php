@@ -818,6 +818,7 @@
 
             if($i%2==0){
               
+              
               $giua = $giua - 1;
               for($dem;$dem<$giua;$dem++){
                 echo "

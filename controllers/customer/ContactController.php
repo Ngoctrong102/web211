@@ -31,3 +31,4 @@ class ContactController extends BaseController
         $this->load->view("layouts/client", "client/contactpage/successcontact", $data);
     }
 }
+
