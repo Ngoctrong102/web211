@@ -947,8 +947,13 @@
                        }
                       
                       echo "</p>
-                      </div>
-                      <div class='price'><span>850000</span>".$categoryhomeCus[$giua]['price']."</div>
+                      </div>";
+                      if(isset($categoryhomeCus[$giua]["categories"])){
+                        echo"<div class='price'><span>850000</span>".$categoryhomeCus[$giua]['price']."</div>";
+                       }
+                      
+
+                      echo"
                     </div>
                   </div>
     
@@ -956,19 +961,33 @@
 
                 <div class='product'>
     
-                  <div class='img-seller'>
-                    <a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>
-    
+                  <div class='img-seller'>";
+                  if(isset($categoryhomeCus[$giua]['id'])&&isset($categoryhomeCus[$giua]['thumbnails'])){
+                    echo"<a href='detail/".$categoryhomeCus[$giua]['id']."'><img src='".$categoryhomeCus[$giua]['thumbnails']."' alt=''><span class='discount'>-50%</span></a>";
+                   }
+                    
+            echo"
                     <div class='next-img'>
                       <p>";
-                      foreach ($categoryhomeCus[$giua]["categories"] as $c) {
-                        echo "<a href=''>".$c["title"]."</a> "; 
+                      if(isset($categoryhomeCus[$giua]["categories"])){
+                        foreach ($categoryhomeCus[$giua]["categories"] as $c) {
+                          echo "<a href=''>".$c["title"]."</a> "; 
+                        }
                       }
+                     
                       echo "</p>
-                      <div class='name-bottom'>
-                        <a href=''>".$categoryhomeCus[$giua]['name']."</a>
-                      </div>
-                      <div class='price'><span>850000</span>".$categoryhomeCus[$giua]['price']."</div>
+                      <div class='name-bottom'>";
+                      if(isset($categoryhomeCus[$giua]['name'])){
+                        echo" <a href=''>".$categoryhomeCus[$giua]['name']."</a>";
+                      }
+                       
+                        echo"
+                      </div>";
+                      if(isset($categoryhomeCus[$giua]['name'])){
+                        echo"  <div class='price'><span>850000</span>".$categoryhomeCus[$giua]['price']."</div>";
+                      }
+                    
+                      echo"
                     </div>
                   </div>
     
