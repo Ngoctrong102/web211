@@ -41,14 +41,14 @@
 
     <div class="toast position-fixed top-0 end-0" style="z-index: 11; margin: 10px; opacity:1" id="toast-noti" role="alert" aria-live="assertive" aria-atomic="true">
         <a href="" style="text-decoration: none;">
-            <div style="background-color: #70b100" class="toast-header">
-                <strong style="color: white" class="me-auto">Notification</strong>
+            <div style="background-color: #70b100;height:52px" class="toast-header">
+                <strong style="color: white; font-size:14px" class="me-auto">Notification</strong>
                 <small class="text-muted">
-                    <p style="color: white">now</p>
+                    <p style="color: white; font-size: 12.25px">now</p>
                 </small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body">
+            <div class="toast-body" style="font-size:14px;min-height:45px">
                 message
             </div>
         </a>

@@ -50,14 +50,16 @@
                     <br>
                     <div class="box">
                         <?php foreach ($recentnews as $recentnew) { ?>
-                            <div class="card">
-                                <img src="<?php echo $recentnew["thumbnails"]; ?>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h4 class="card-title"><?php echo $recentnew["title"]; ?></h4>
-                                    <small><b>Posted on: </b><?php echo substr($recentnew["created_at"], 0, 10); ?></small>
-                                    <hr>
-                                    <p class="card-text"><?php echo $recentnew["description"]; ?></p>
-                                    <a href="/news/<?php echo $recentnew["id"] ?>" class="btn">Continue</a>
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                                <div class="card">
+                                    <img src="<?php echo $recentnew["thumbnails"]; ?>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?php echo $recentnew["title"]; ?></h4>
+                                        <small><b>Posted on: </b><?php echo substr($recentnew["created_at"], 0, 10); ?></small>
+                                        <hr>
+                                        <p class="card-text"><?php echo $recentnew["description"]; ?></p>
+                                        <a href="/news/<?php echo $recentnew["id"] ?>" class="btn">Continue</a>
+                                    </div>
                                 </div>
                             </div>
                         <?php } ?>
