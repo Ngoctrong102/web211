@@ -115,9 +115,13 @@
             </div>
             <br>
             <div style="display: flex;justify-content: space-around;">
+                <?php if (sizeof($addresses)*strlen($phonenumber["phone"])==0) { ?>
                 <a id="order" style="text-decoration: none;">
                     <p class="khung">Checkout</p>
                 </a>
+                <?php } else { ?>
+                    <a href="/account">Thêm thông tin liên hệ</a>
+                <?php } ?>
             </div>
         </div>
     </div>
