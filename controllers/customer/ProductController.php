@@ -105,6 +105,9 @@ class ProductController extends BaseController
         $user_id = $_SESSION["user_id"];
         $quantity_in_stock = $this->product->checkInStock($product_id);
         $quantity_in_cart = $this->product->checkQuantityCart($product_id, $user_id);
+        if ($quantity_in_cart == null) {
+            $quantity_in_cart["quantity"] = 0;
+        }
         if (($quantity + $quantity_in_cart["quantity"]) <= $quantity_in_stock["quantity"]) {
 
 

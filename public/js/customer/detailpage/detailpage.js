@@ -22,9 +22,9 @@ $(".addbutton").click(function (e) {
           .find(".eachprice")
           .text(response.productinfo[0].price);
         var count_dup = nameincart.includes(checkname);
-        if (count_dup == false) {
-          $("#cart-items").prepend(newCartItemEle);
+        if (count_dup == false || nameincart.length == 0) {
           $("#empty").css("display", "none");
+          $("#cart-items").prepend(newCartItemEle);
           var total = parseFloat($("#price-total").text());
           total +=
             parseFloat(response.productinfo[0].price) *
