@@ -234,7 +234,7 @@
         <div class="absolute">
             <p style="color:white">RELATED PRODUCT</p>
         </div>
-        <br><br>
+        <br>
         <div class="box">
             <?php for ($count = 0; $count < 3 && $count < sizeof($relatedproducts); $count++) { ?>
                 <div class="img">
@@ -250,11 +250,11 @@
                 </div>
             <?php } ?>
         </div>
-        <br><br>
+        <br>
         <?php if (sizeof($relatedproducts) > 3) { ?>
             <div class="box">
                 <?php
-                for ($count = 3; $count < 6; $count++) { ?>
+                for ($count = 3; $count < sizeof($relatedproducts); $count++) { ?>
                     <div class="img">
                         <a href="/detail/<?php echo $relatedproducts[$count]["re_productId"]  ?>" style="float: left;"><img width="160px" height="160px" src="<?php echo $relatedproducts[$count]["thumbnails"] ?>" alt="product">
                         </a>
@@ -269,6 +269,7 @@
                 <?php } ?>
 
             </div>
+            <br>
         <?php } ?>
 
         <!-- san pham lien quan -->
